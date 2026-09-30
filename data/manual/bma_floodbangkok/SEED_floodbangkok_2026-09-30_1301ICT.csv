@@ -1,0 +1,11 @@
+# SEED / DEMONSTRATION DATA — historical, NOT current conditions.
+# Source: FloodBangkok (BMA Department of Drainage and Sewerage) dashboard snapshot preserved by the research team.
+# Dashboard timestamp: 2026-09-30 13:01 ICT.
+# These are network-level COUNTS of road flood sensors by state, not point depths (flag AGGREGATE_COUNT).
+# Counts sum to 240 stations; the dashboard's own total was not preserved, so completeness is not asserted.
+# retrieved_at left blank: original page-view time not recorded; runner uses seed ingest time and notes it.
+external_station_id,station_name,node_type,district,variable,value_num,value_text,unit,measurement_at,measurement_timezone,retrieved_at,evidence_class,quality_flag,external_record_id,source_url,notes
+BMA:FLOODBANGKOK_NETWORK,BMA road flood sensor network (aggregate),road_flood_sensor_network,,flooded_stations,12,,stations,2026-09-30T13:01:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION;AGGREGATE_COUNT,,https://floodbangkok.bangkok.go.th/,
+BMA:FLOODBANGKOK_NETWORK,BMA road flood sensor network (aggregate),road_flood_sensor_network,,slight_ponding_stations,5,,stations,2026-09-30T13:01:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION;AGGREGATE_COUNT,,https://floodbangkok.bangkok.go.th/,
+BMA:FLOODBANGKOK_NETWORK,BMA road flood sensor network (aggregate),road_flood_sensor_network,,normal_stations,210,,stations,2026-09-30T13:01:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION;AGGREGATE_COUNT,,https://floodbangkok.bangkok.go.th/,
+BMA:FLOODBANGKOK_NETWORK,BMA road flood sensor network (aggregate),road_flood_sensor_network,,failed_stations,13,,stations,2026-09-30T13:01:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION;AGGREGATE_COUNT,,https://floodbangkok.bangkok.go.th/,

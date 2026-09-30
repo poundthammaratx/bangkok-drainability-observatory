@@ -1,0 +1,25 @@
+# Streamlit configuration for the Public Alpha deployment (Streamlit Community Cloud).
+#
+# This ships with the repository, so it applies to the public deployment by default. A local
+# developer who wants full tracebacks can override it with a personal ~/.streamlit/config.toml or
+# `streamlit run app.py --client.showErrorDetails=full`.
+
+[client]
+# Never show stack traces, file paths or exception internals to a public viewer.
+showErrorDetails = "none"
+toolbarMode = "viewer"
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+# Dark, technical, high-information-density — no startup-marketing aesthetic.
+base = "dark"
+primaryColor = "#3B82F6"
+backgroundColor = "#0E1117"
+secondaryBackgroundColor = "#161B22"
+textColor = "#E6EDF3"
+font = "monospace"
+
+[server]
+enableStaticServing = false

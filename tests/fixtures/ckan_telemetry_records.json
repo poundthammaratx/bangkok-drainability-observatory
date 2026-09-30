@@ -1,0 +1,79 @@
+{
+ "fields": [
+  {
+   "id": "_id",
+   "type": "x"
+  },
+  {
+   "id": "station_code",
+   "type": "x"
+  },
+  {
+   "id": "station_name",
+   "type": "x"
+  },
+  {
+   "id": "station_lat",
+   "type": "x"
+  },
+  {
+   "id": "station_long",
+   "type": "x"
+  },
+  {
+   "id": "District",
+   "type": "x"
+  },
+  {
+   "id": "station_type",
+   "type": "x"
+  }
+ ],
+ "records": [
+  {
+   "_id": 1,
+   "station_code": "WL.KKS.01",
+   "station_name": "สถานีสูบน้ำ เทเวศร์",
+   "station_lat": 13.7717,
+   "station_long": 100.50113,
+   "District": "เขตพระนคร",
+   "station_type": 4
+  },
+  {
+   "_id": 2,
+   "station_code": "WL.PKG.01",
+   "station_name": "แม่น้ำเจ้าพระยา บริเวณปากคลองตลาด",
+   "station_lat": 13.74228,
+   "station_long": 100.49454,
+   "District": "เขตพระนคร",
+   "station_type": 4
+  },
+  {
+   "_id": 3,
+   "station_code": "WL.KLD.02",
+   "station_name": "จุดวัดคลองหลอด ตอนถนนราชดำเนินใน",
+   "station_lat": 13.75512,
+   "station_long": 100.49554,
+   "District": "เขตพระนคร",
+   "station_type": 4
+  },
+  {
+   "_id": 4,
+   "station_code": "WL.KLD.01",
+   "station_name": "จุดวัดคลองหลอด ตอนสถานีสูบน้ำปากคลองตลาด",
+   "station_lat": 13.74261,
+   "station_long": 100.49492,
+   "District": "เขตพระนคร",
+   "station_type": 4
+  },
+  {
+   "_id": 5,
+   "station_code": "WL.BLP.02",
+   "station_name": "จุดวัดคลองบางลำพู ตอนสะพานผ่านฟ้า",
+   "station_lat": 13.75655,
+   "station_long": 100.50563,
+   "District": "เขตพระนคร",
+   "station_type": 4
+  }
+ ]
+}

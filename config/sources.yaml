@@ -1,0 +1,256 @@
+# Bangkok Drainability Observatory — source registry
+#
+# Every source here is seeded into the `sources` table by `python scripts/seed_sources.py`.
+# `status` is the initial registry status; the ingestion runner updates it from healthchecks.
+#
+# adapter:           python adapter key (see src/bdo/ingestion/adapters/__init__.py)
+# enabled:           whether `ingest --all` runs the automatic adapter
+# access_mode:       api | web_page | manual | citizen_platform
+# evidence_class:    default class for records normalised from this source
+# freshness:         minutes since measurement_at -> LIVE / RECENT / STALE; beyond -> VERY_STALE
+#
+# Manual transcriptions for any source go in data/manual/<source_key>/*.csv and are ingested
+# with `python scripts/ingest.py --source <key> --manual` (full provenance, same runner).
+
+sources:
+
+  - source_key: bkk_open_data_dds
+    name: "BKK Open Data — Department of Drainage and Sewerage"
+    agency: "Bangkok Metropolitan Administration"
+    base_url: "https://data.bangkok.go.th/"
+    data_domain: "water-level history / telemetry / pumps / gates / tunnels / drainage assets"
+    access_mode: api
+    adapter: ckan
+    enabled: true
+    priority: high
+    status: UNKNOWN
+    evidence_class: OFFICIAL_REPORTED
+    typical_freshness_minutes: null   # published datasets are periodic batch uploads, not telemetry
+    freshness: { live_minutes: 60, recent_minutes: 1440, stale_minutes: 43200 }
+    notes: >
+      First automatic source. Generic CKAN adapter (package_search / package_show / datastore_search).
+      BMA datasets are harvested into the national CKAN (data.go.th) under the same resource IDs;
+      the adapter tries api_base_urls in order and records which host actually served each payload.
+    ckan:
+      api_base_urls:
+        - "https://data.bangkok.go.th/api/3/action/"
+        - "https://data.go.th/api/3/action/"
+      # Optional discovery query used by `python scripts/ingest.py --discover bkk_open_data_dds`
+      discovery_query: "สำนักการระบายน้ำ"
+      resources:
+        # Resource IDs and field names below were inspected on 2026-09-30 via data.go.th CKAN API.
+
+        - key: dds_telemetry_stations
+          title: "ข้อมูลตำแหน่งของระบบโทรมาตรที่อยู่ในความรับผิดชอบของสำนักการระบายน้ำ (telemetry station positions)"
+          package: telemetry-stations
+          resource_id: "638f3adb-2fca-4767-b8f0-7528035ce319"
+          enabled: true
+          kind: station_registry
+          page_size: 1000
+          max_records: 5000
+          fields:
+            external_id: station_code
+            name: station_name
+            latitude: station_lat
+            longitude: station_long
+            district: District
+            type_code: station_type
+          # 'station_type' numeric codes are not documented in the resource; they are stored
+          # verbatim. Node type is inferred from the station_code prefix and flagged as inferred.
+          node_type_by_code_prefix:
+            "WL.": water_level_station
+            "RF.": rain_gauge
+          default_node_type: other
+
+        - key: dds011_pak_khlong_talat_wl_max
+          title: "ข้อมูลระดับน้ำในแม่น้ำเจ้าพระยาสูงสุดรายวันที่จุดวัดปากคลองตลาด (daily max Chao Phraya level, Pak Khlong Talat)"
+          package: wl-max-chaophraya-river
+          resource_id: "313cd96f-8610-495d-875e-f6d0ec08a3bc"
+          enabled: true
+          kind: records
+          page_size: 1000
+          max_records: 50000
+          record_id_field: _id
+          time:
+            date_field: wl_date
+            time_field: wl_time
+            source_timezone: "Asia/Bangkok"
+            # Inspection 2026-09-30: records are daily and ordered by _id, but for day <= 12 the
+            # published timestamp has day and month transposed (e.g. _id 2 -> 2023-02-01 for 2 Jan).
+            # nearest_forward: choose, per record, the reading (as-published vs DM-swapped) that is
+            # the smallest non-negative step from the previous record. Repairs are flagged and the
+            # as-published value is kept in notes. Raw payload is untouched.
+            dm_swap_repair: nearest_forward
+          station:
+            mode: fixed
+            external_station_id: "dds011:pak_khlong_talat"
+            name: "Chao Phraya River at Pak Khlong Talat (dds011)"
+            node_type: river_boundary
+            notes: "Possibly the same gauge as telemetry WL.PKG.01; link NOT verified."
+          variables:
+            - field: wl_max
+              variable: water_level_daily_max
+              unit: "m"
+              # Vertical datum is not stated in the resource.
+              unit_basis: declared_unverified
+
+        - key: frd_dds_road_flood_statistics
+          title: "ข้อมูลสถิติน้ำท่วมข้างบนถนนสายหลัก (main-road flood event statistics)"
+          package: frd_dds
+          resource_id: "95716a53-4544-4c9b-af07-63298ace7c07"
+          enabled: true
+          kind: records
+          page_size: 1000
+          max_records: 50000
+          record_id_field: _id
+          time:
+            date_field: frd_flood_date_begin
+            time_field: frd_flood_begin
+            source_timezone: "Asia/Bangkok"
+            # Rows are not chronologically ordered, so no sequence repair is possible.
+            # 'flag' marks every timestamp whose day <= 12 (day/month could be transposed).
+            dm_swap_repair: flag
+          station:
+            mode: per_record
+            id_template: "frd:{district}|{frd_road}|{frd_area}"
+            name_template: "{frd_road} — {frd_area}"
+            district_field: district
+            node_type: road_node
+          variables:
+            - field: frd_flood_height
+              variable: road_flood_depth_event_max
+              unit: "cm"
+              unit_basis: declared_unverified
+            - field: frd_flood_distance
+              variable: road_flood_extent_length
+              unit: "m"
+              unit_basis: declared_unverified
+            - field: frd_flood_total
+              variable: road_flood_duration
+              value_type: text
+              unit: "h:mm"
+              unit_basis: declared_unverified
+            - field: frd_flood_lane
+              variable: road_flood_lane_coverage
+              value_type: text
+            - field: frd_total_rainfall
+              variable: event_rainfall_total
+              unit: "mm"
+              unit_basis: declared_unverified
+
+        - key: dds_drainage_tunnels
+          title: "ข้อมูลทางกายภาพและตำแหน่งของอุโมงค์ระบายน้ำ (drainage tunnels)"
+          package: water-drainage-tunnel
+          resource_id: "0ce8456f-d503-4d62-b7f0-df725048317e"
+          enabled: false   # field schema not yet inspected; raw archive only once enabled
+          kind: raw_only
+          page_size: 1000
+          max_records: 5000
+
+        - key: dds_flood_risk_points
+          title: "จุดเสี่ยงน้ำท่วม (flood-risk points)"
+          package: flood_risk
+          resource_id: "8f1102d5-52a2-4494-9131-403e4f87a242"
+          enabled: false   # field schema not yet inspected
+          kind: raw_only
+          page_size: 1000
+          max_records: 5000
+
+  - source_key: bma_floodbangkok
+    name: "FloodBangkok"
+    agency: "Bangkok Metropolitan Administration — Department of Drainage and Sewerage"
+    base_url: "https://floodbangkok.bangkok.go.th/"
+    data_domain: "road flood depth / flood sensor / CCTV"
+    access_mode: web_page
+    adapter: floodbangkok
+    enabled: false
+    priority: critical
+    status: MANUAL
+    evidence_class: OFFICIAL_REPORTED
+    typical_freshness_minutes: 5
+    freshness: { live_minutes: 15, recent_minutes: 60, stale_minutes: 360 }
+    notes: >
+      No stable public machine endpoint verified. MANUAL: transcribe dashboard snapshots into
+      data/manual/bma_floodbangkok/*.csv. Adapter shell only; no scraping.
+
+  - source_key: tmd_bangkok_radar
+    name: "Bangkok Weather Radar"
+    agency: "Thai Meteorological Department"
+    base_url: "https://weather.tmd.go.th/THA_Z.php"
+    data_domain: "weather radar / rainfall disturbance"
+    access_mode: web_page
+    adapter: tmd_radar
+    enabled: false
+    priority: high
+    status: UNAVAILABLE
+    evidence_class: OFFICIAL_REPORTED
+    typical_freshness_minutes: 15
+    freshness: { live_minutes: 15, recent_minutes: 60, stale_minutes: 360 }
+    # Setting archive_page: true lets the adapter archive the page HTML as a RawSnapshot
+    # (no value extraction, no computer-vision rainfall estimation).
+    archive_page: false
+    notes: "Adapter shell. Image URL discovery not yet verified."
+
+  - source_key: thaiwater_bangkok
+    name: "ThaiWater Bangkok"
+    agency: "Hydro-Informatics Institute"
+    base_url: "https://bangkok.thaiwater.net/"
+    data_domain: "rainfall / water level / hydrology"
+    access_mode: web_page
+    adapter: thaiwater
+    enabled: false
+    priority: high
+    status: UNAVAILABLE
+    evidence_class: OFFICIAL_REPORTED
+    typical_freshness_minutes: 15
+    freshness: { live_minutes: 30, recent_minutes: 120, stale_minutes: 720 }
+    archive_page: false
+    notes: "Adapter interface only. No official public API endpoint verified yet."
+
+  - source_key: rid_water_situation
+    name: "RID Water Situation"
+    agency: "Royal Irrigation Department"
+    base_url: "https://www.rid.go.th/th/water-situation"
+    data_domain: "dam discharge / river discharge / Chao Phraya system"
+    access_mode: web_page
+    adapter: rid_report
+    enabled: false
+    priority: high
+    status: MANUAL
+    evidence_class: OFFICIAL_REPORTED
+    typical_freshness_minutes: 1440   # daily bulletin, typically 07:00/08:00 ICT
+    freshness: { live_minutes: 360, recent_minutes: 1440, stale_minutes: 4320 }
+    archive_page: false
+    notes: >
+      MANUAL until the official bulletin structure is inspected. Each value carries the bulletin's
+      stated measurement time, never the page retrieval time.
+
+  - source_key: traffy_bangkok
+    name: "Traffy x Bangkok"
+    agency: "Bangkok Metropolitan Administration / Traffy Fondue"
+    base_url: "https://share.traffy.in.th/"
+    data_domain: "citizen issue reports"
+    access_mode: citizen_platform
+    adapter: manual_csv
+    enabled: false
+    priority: medium
+    status: MANUAL
+    evidence_class: THIRD_PARTY_REPORTED
+    typical_freshness_minutes: null
+    freshness: { live_minutes: 60, recent_minutes: 360, stale_minutes: 2880 }
+    notes: "Corroborating public-report evidence only. Never an authoritative hydraulic measurement."
+
+  - source_key: research_field_observations
+    name: "Research team field observations"
+    agency: "Bangkok Drainability Observatory (independent research)"
+    base_url: null
+    data_domain: "in-situ observations: ponding depth, passability, trend, photos"
+    access_mode: manual
+    adapter: manual_csv
+    enabled: false
+    priority: high
+    status: MANUAL
+    evidence_class: OBSERVED
+    typical_freshness_minutes: null
+    freshness: { live_minutes: 60, recent_minutes: 360, stale_minutes: 1440 }
+    notes: "Imported via scripts/import_field_observations.py; the imported CSV is archived as a RawSnapshot."

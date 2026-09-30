@@ -1,0 +1,17 @@
+# SEED / DEMONSTRATION DATA — historical, NOT current conditions.
+# Source: Royal Irrigation Department water-situation bulletin, values preserved by the research team.
+# Bulletin measurement time: 2026-09-30 08:00 ICT (applies to every row below).
+# retrieved_at left blank: the research team's original page-view time was not recorded in this file,
+# so the runner uses the seed ingest time and says so in each row's notes. Edit if the true time is known.
+# Station/node identifiers are observatory-local (RID:*); gauge codes C.2 / C.29 are RID's.
+# Coordinates intentionally absent: none were preserved, none are invented.
+external_station_id,station_name,node_type,district,variable,value_num,value_text,unit,measurement_at,measurement_timezone,retrieved_at,evidence_class,quality_flag,external_record_id,source_url,notes
+RID:C.2,C.2 Nakhon Sawan (Chao Phraya),river_gauge,,flow_rate,2026,,m3/s,2026-09-30T08:00:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION,,https://www.rid.go.th/th/water-situation,
+RID:CHAO_PHRAYA_DAM,Chao Phraya Dam (Chai Nat),barrage,,water_level_upstream,17.69,,m MSL,2026-09-30T08:00:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION,,https://www.rid.go.th/th/water-situation,conceptual model groups this node with C.13; gauge identity not asserted
+RID:CHAO_PHRAYA_DAM,Chao Phraya Dam (Chai Nat),barrage,,water_level_downstream,15.22,,m MSL,2026-09-30T08:00:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION,,https://www.rid.go.th/th/water-situation,conceptual model groups this node with C.13; gauge identity not asserted
+RID:CHAO_PHRAYA_DAM,Chao Phraya Dam (Chai Nat),barrage,,discharge,2200,,m3/s,2026-09-30T08:00:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION,,https://www.rid.go.th/th/water-situation,
+RID:PASAK_JOLASID_DAM,Pa Sak Jolasid Dam,dam,,discharge,115,,m3/s,2026-09-30T08:00:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION,,https://www.rid.go.th/th/water-situation,
+RID:RAMA_VI_BARRAGE,Rama VI Barrage,barrage,,discharge,587,,m3/s,2026-09-30T08:00:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION,,https://www.rid.go.th/th/water-situation,
+RID:C.29,C.29 Bang Sai (Chao Phraya),river_gauge,,flow_rate,2071,,m3/s,2026-09-30T08:00:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION,,https://www.rid.go.th/th/water-situation,
+RID:BHUMIBOL_DAM,Bhumibol Dam,dam,,discharge,23,,m3/s,2026-09-30T08:00:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION,,https://www.rid.go.th/th/water-situation,
+RID:SIRIKIT_DAM,Sirikit Dam,dam,,discharge,81,,m3/s,2026-09-30T08:00:00,Asia/Bangkok,,OFFICIAL_REPORTED,SEED_DEMONSTRATION,,https://www.rid.go.th/th/water-situation,

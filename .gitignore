@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.env
+
+# Local database and retrieved payloads are research records: keep them out of git,
+# back them up deliberately (they are the provenance archive).
+data/*.sqlite
+data/*.sqlite-journal
+data/raw/**
+!data/raw/.gitkeep
+data/processed/**
+!data/processed/.gitkeep
+data/exports/**
+!data/exports/.gitkeep
+logs/

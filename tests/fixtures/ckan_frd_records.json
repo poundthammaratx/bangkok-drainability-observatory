@@ -1,0 +1,138 @@
+{
+ "fields": [
+  {
+   "id": "_id",
+   "type": "x"
+  },
+  {
+   "id": "frd_id",
+   "type": "x"
+  },
+  {
+   "id": "frd_rain_datestart",
+   "type": "x"
+  },
+  {
+   "id": "frd_rain_start",
+   "type": "x"
+  },
+  {
+   "id": "frd_rain_datestop",
+   "type": "x"
+  },
+  {
+   "id": "frd_rain_stop",
+   "type": "x"
+  },
+  {
+   "id": "district",
+   "type": "x"
+  },
+  {
+   "id": "frd_road",
+   "type": "x"
+  },
+  {
+   "id": "frd_area",
+   "type": "x"
+  },
+  {
+   "id": "frd_flood_height",
+   "type": "x"
+  },
+  {
+   "id": "frd_flood_distance",
+   "type": "x"
+  },
+  {
+   "id": "frd_flood_lane",
+   "type": "x"
+  },
+  {
+   "id": "frd_flood_date_begin",
+   "type": "x"
+  },
+  {
+   "id": "frd_flood_begin",
+   "type": "x"
+  },
+  {
+   "id": "frd_flood_date_end",
+   "type": "x"
+  },
+  {
+   "id": "frd_flood_end",
+   "type": "x"
+  },
+  {
+   "id": "frd_flood_total",
+   "type": "x"
+  },
+  {
+   "id": "frd_total_rainfall",
+   "type": "x"
+  }
+ ],
+ "records": [
+  {
+   "_id": 1,
+   "frd_id": 1,
+   "frd_rain_datestart": "2023-04-30T00:00:00",
+   "frd_rain_start": "7:20",
+   "frd_rain_datestop": "2023-04-30T00:00:00",
+   "frd_rain_stop": "9:15",
+   "district": "เขตดินแดง",
+   "frd_road": "ประชาสงเคราะห์",
+   "frd_area": "ปากซอย 24",
+   "frd_flood_height": 15,
+   "frd_flood_distance": 800,
+   "frd_flood_lane": "เต็มผิว",
+   "frd_flood_date_begin": "2023-04-30T00:00:00",
+   "frd_flood_begin": "8:30",
+   "frd_flood_date_end": "2023-04-30T00:00:00",
+   "frd_flood_end": "9:30",
+   "frd_flood_total": "1:00",
+   "frd_total_rainfall": 54.5
+  },
+  {
+   "_id": 2,
+   "frd_id": 2,
+   "frd_rain_datestart": "2023-02-15T00:00:00",
+   "frd_rain_start": "6:00",
+   "frd_rain_datestop": "2023-02-15T00:00:00",
+   "frd_rain_stop": "12:50",
+   "district": "เขตประเวศ",
+   "frd_road": "เฉลิมพระเกียรติ ร.๙",
+   "frd_area": "แยกศรีอุดม (ขาเข้า)",
+   "frd_flood_height": 15,
+   "frd_flood_distance": 100,
+   "frd_flood_lane": "เต็มผิว",
+   "frd_flood_date_begin": "2023-02-15T00:00:00",
+   "frd_flood_begin": "8:15",
+   "frd_flood_date_end": "2023-02-15T00:00:00",
+   "frd_flood_end": "9:50",
+   "frd_flood_total": "1:35",
+   "frd_total_rainfall": 35.5
+  },
+  {
+   "_id": 3,
+   "frd_id": 3,
+   "frd_rain_datestart": "2023-02-15T00:00:00",
+   "frd_rain_start": "6:00",
+   "frd_rain_datestop": "2023-02-15T00:00:00",
+   "frd_rain_stop": "13:35",
+   "district": "เขตสวนหลวง",
+   "frd_road": "รามคำแหง",
+   "frd_area": "อุโมงค์ลอดแยกพระราม 9",
+   "frd_flood_height": 15,
+   "frd_flood_distance": 100,
+   "frd_flood_lane": "1-2 เลน",
+   "frd_flood_date_begin": "2023-02-15T00:00:00",
+   "frd_flood_begin": "8:20",
+   "frd_flood_date_end": "2023-02-15T00:00:00",
+   "frd_flood_end": "9:10",
+   "frd_flood_total": "0:50",
+   "frd_total_rainfall": 50
+  }
+ ]
+}

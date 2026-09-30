@@ -1,0 +1,33 @@
+# Bangkok Drainability Observatory — global settings
+project:
+  name: "Bangkok Drainability Observatory"
+  research_title: "Urban Drainability Architecture and Recovery Dynamics of Bangkok"
+  version: "0.1.0"
+
+# All timestamps are stored in UTC. This zone is used for presentation and as the
+# declared zone of sources that publish naive local timestamps.
+display_timezone: "Asia/Bangkok"
+
+paths:
+  # Relative paths resolve against the repository root.
+  database_url: "sqlite:///data/bdo.sqlite"
+  data_dir: "data"
+
+http:
+  timeout_seconds: 30
+  user_agent: "BangkokDrainabilityObservatory/0.1 (independent research; contact via repository owner)"
+  # Honour HTTPS_PROXY / SSL_CERT_FILE from the environment.
+  trust_env: true
+
+# Fallback freshness thresholds (minutes of age since measurement_at).
+# age <= live -> LIVE; <= recent -> RECENT; <= stale -> STALE; otherwise VERY_STALE.
+# measurement_at unknown -> UNKNOWN. Per-source overrides live in sources.yaml.
+freshness_defaults:
+  live_minutes: 60
+  recent_minutes: 360
+  stale_minutes: 1440
+
+logging:
+  level: "INFO"
+  # Log file is appended; payloads are never logged (they live in data/raw).
+  file: "data/processed/bdo.log"

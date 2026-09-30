@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "retrieved_at": "2026-09-30T17:50:58.682437+00:00",
+  "generated_by": "scripts/export_reference_registry.py",
+  "source": {
+    "source_key": "bkk_open_data_dds",
+    "name": "BKK Open Data — Department of Drainage and Sewerage",
+    "agency": "Bangkok Metropolitan Administration",
+    "base_url": "https://data.bangkok.go.th/",
+    "license": "License not specified by the publishing agency (inspected via CKAN package_show; not invented here)",
+    "attribution": "Bangkok Metropolitan Administration — published via data.go.th / data.bangkok.go.th CKAN"
+  },
+  "datasets": [
+    {
+      "file": "bma_telemetry_stations.csv",
+      "resource_key": "dds_telemetry_stations",
+      "resource_id": "638f3adb-2fca-4767-b8f0-7528035ce319",
+      "kind": "station_registry",
+      "record_count": 582,
+      "sha256": "fbc360e1b217bd082a54024d7daae94535f86f533101900cd059b8e4568ba275"
+    },
+    {
+      "file": "bma_drainage_assets.csv",
+      "resource_keys": [
+        "dds011_pak_khlong_talat_wl_max",
+        "frd_dds_road_flood_statistics"
+      ],
+      "kind": "derived station list (fixed + per-record, mostly no coordinates)",
+      "record_count": 213,
+      "sha256": "58e9aecb76281682fcbb1b34aa157742b53c3cbf7330f04f7ba70a1260aee68d"
+    }
+  ],
+  "totals": {
+    "total_nodes": 795,
+    "coordinate_bearing_nodes": 582
+  },
+  "notes": "No coordinates are fabricated: a node with an unpublished position is included with latitude/longitude empty and is never plotted on the map. Re-run this script to refresh the snapshot; it never writes to the project database."
+}

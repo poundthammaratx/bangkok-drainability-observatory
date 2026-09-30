@@ -5,7 +5,19 @@ from __future__ import annotations
 import pandas as pd
 import streamlit as st
 
+from bdo.live import manager as live_manager
 from bdo.ui import components as c
+from bdo.util.time import format_duration, format_ts
+
+# (source_key, variables-or-None-for-all) per analyst-oriented group. thaiwater_bangkok appears
+# twice because one source publishes both a rain-gauge and a water-level network.
+LIVE_GROUPS: list[tuple[str, list[tuple[str, list[str] | None]]]] = [
+    ("RAINFALL / DISTURBANCE", [("thaiwater_bangkok", ["rainfall_24h"]), ("tmd_bangkok_radar", None)]),
+    ("SURFACE FLOODING", [("bma_floodbangkok", None)]),
+    ("URBAN HYDRAULIC STATE", [("bkk_open_data_dds", None), ("thaiwater_bangkok", ["water_level_msl"])]),
+    ("UPSTREAM / DOWNSTREAM CONTEXT", [("rid_water_situation", None)]),
+]
+_REFRESH_CHOICES = {"OFF": None, "1 min": 60, "5 min": 300, "10 min": 600}
 
 
 def latest_per_series(df: pd.DataFrame) -> pd.DataFrame:
@@ -27,6 +39,86 @@ def current_verified_state(meas: pd.DataFrame) -> pd.DataFrame:
         return meas
     latest = latest_per_series(meas)
     return latest[(latest["freshness_label"] == "LIVE") & (~latest["demo"].astype(bool))]
+
+
+def _group_rows(live_states: dict, sources: list[tuple[str, list[str] | None]]) -> list[dict]:
+    rows = []
+    now = c.now_utc()
+    for source_key, variables in sources:
+        state = live_states.get(source_key)
+        if state is None:
+            continue
+        for m in state.measurements:
+            if variables is not None and m.variable not in variables:
+                continue
+            age = None if m.measurement_at is None else now - m.measurement_at
+            value = m.value_num if m.value_num is not None else (m.value_text or "—")
+            rows.append({
+                "source": m.source_key, "station": m.station_name or m.external_station_id or "—",
+                "variable": m.variable, "value": f"{value} {m.unit or ''}".strip(),
+                "measured": format_ts(m.measurement_at, c.tz()) if m.measurement_at else "UNKNOWN",
+                "age": format_duration(age), "evidence_class": m.evidence_class,
+                "notes": m.notes or "",
+            })
+        if not state.measurements:
+            # source contributes to this group but returned no per-station values (e.g. RID, TMD):
+            # surface its source-level state instead of silently omitting the group.
+            rows.append({
+                "source": source_key, "station": "(source-level)", "variable": "—", "value": "—",
+                "measured": "UNKNOWN", "age": "UNKNOWN", "evidence_class": "—",
+                "notes": f"health={state.health.value}"
+                        + (f"; {state.error}" if state.error else "")
+                        + (f"; {state.context.get('note')}" if state.context.get("note") else ""),
+            })
+    return rows
+
+
+def render_live_current_state(settings) -> None:
+    st.subheader("Live read-through current state (not persisted)")
+    st.caption("Independent GET against official public endpoints, cached briefly per source — "
+               "never written to the database, never combined with 'Current verified state' "
+               "above. See docs/LIVE_DATA_ARCHITECTURE.md and docs/SOURCE_ENDPOINTS.md.")
+
+    ctl = st.columns([1, 3])
+    choice = ctl[0].selectbox("Auto refresh", list(_REFRESH_CHOICES), index=2, key="bdo_auto_refresh_choice")
+    interval = _REFRESH_CHOICES[choice]
+
+    def _body() -> None:
+        _render_live_body(settings, interval)
+
+    st.fragment(_body, run_every=interval)()
+
+
+def _render_live_body(settings, interval: int | None) -> None:
+    page_refreshed = c.now_utc()
+    live_states = live_manager.get_all_live_states(settings)
+    freshest = max((v.source_measurement_at for v in live_states.values() if v.source_measurement_at is not None),
+                  default=None)
+
+    info = st.columns(3)
+    info[0].markdown(f"**Page refreshed:**  \n{c.fmt(page_refreshed)}")
+    info[1].markdown(f"**Freshest source measurement:**  \n{c.fmt(freshest) if freshest else 'UNKNOWN'}")
+    info[2].markdown("**Next refresh:**  \n" + (f"~{interval}s (auto)" if interval else "manual (auto-refresh OFF)"))
+
+    for title, sources in LIVE_GROUPS:
+        st.markdown(f"**{title}**")
+        rows = _group_rows(live_states, sources)
+        if not rows:
+            st.caption("No live data for this group this cycle.")
+            continue
+        st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
+
+    with st.expander("Live source health (all sources)"):
+        health_rows = [{
+            "source_key": k, "health": v.health.value, "records": v.record_count,
+            "freshness": v.freshness.value, "age_min": None if v.age_minutes is None else round(v.age_minutes, 1),
+            "http_status": v.http_status, "endpoint": v.endpoint, "error": v.error,
+        } for k, v in live_states.items()]
+        st.dataframe(pd.DataFrame(health_rows), hide_index=True, width="stretch")
+        st.caption("HEALTHY requires both a reachable endpoint and a recent data timestamp — HTTP "
+                   "200 alone is never enough. UNAVAILABLE falls back to the last successful "
+                   "in-memory result where one exists (shown as DEGRADED); it is never replaced by "
+                   "SEED/DEMO data.")
 
 
 def data_gaps(src: pd.DataFrame, meas: pd.DataFrame, stations: pd.DataFrame) -> list[str]:
@@ -105,6 +197,8 @@ def render() -> None:
     st.caption("Only records with a known measurement time that are LIVE per source-specific "
                "thresholds appear above. SEED/DEMONSTRATION and historical records never do — see "
                "Stations and Event Archive for history.")
+
+    render_live_current_state(settings)
 
     last_retrieved = meas["retrieved_at"].max() if not meas.empty else None
     last_measured = meas["measurement_at"].max() if not meas.empty else None

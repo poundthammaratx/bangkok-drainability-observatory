@@ -31,3 +31,15 @@ logging:
   level: "INFO"
   # Log file is appended; payloads are never logged (they live in data/raw).
   file: "data/processed/bdo.log"
+
+# Read-through live-source cache TTLs (seconds). The live layer (src/bdo/live/) never writes to
+# the database or filesystem; these only bound how often each source's public endpoint is
+# actually polled. See docs/LIVE_DATA_ARCHITECTURE.md.
+live:
+  default_ttl_seconds: 300
+  ttl_seconds:
+    bma_floodbangkok: 180        # Directus API; sensors report every ~5 min
+    bkk_open_data_dds: 300       # CKAN datastore; batch-published, polled defensively
+    tmd_bangkok_radar: 300       # radar product images
+    thaiwater_bangkok: 300       # HII api-v3 province endpoints
+    rid_water_situation: 1800    # daily bulletin; poll no faster than source cadence

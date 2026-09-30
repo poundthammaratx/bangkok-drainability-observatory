@@ -1,0 +1,583 @@
+external_station_id,name,node_type,latitude,longitude,district,source_type_code,validation_status,coordinate_evidence_class,notes
+WL.KKS.01,สถานีสูบน้ำ เทเวศร์,water_level_station,13.7717,100.50113,เขตพระนคร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PKG.01,แม่น้ำเจ้าพระยา บริเวณปากคลองตลาด,water_level_station,13.74228,100.49454,เขตพระนคร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KLD.02,จุดวัดคลองหลอด ตอนถนนราชดำเนินใน,water_level_station,13.75512,100.49554,เขตพระนคร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KLD.01,จุดวัดคลองหลอด ตอนสถานีสูบน้ำปากคลองตลาด,water_level_station,13.74261,100.49492,เขตพระนคร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BLP.02,จุดวัดคลองบางลำพู ตอนสะพานผ่านฟ้า,water_level_station,13.75655,100.50563,เขตพระนคร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KKS.02,จุดวัดคลองผดุงกรุงเกษม ตอนทำเนียบรัฐบาล,water_level_station,13.76099,100.51212,เขตดุสิต,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BSU.01,สถานีสูบน้ำ คลองบางซื่อ,water_level_station,13.80023,100.51848,เขตดุสิต,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSN.01,สถานีสูบน้ำ คลองสามเสน,water_level_station,13.78483,100.50825,เขตดุสิต,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSN.02,จุดวัดคลองสามเสน ช่วงถนนพระรามที่ 5,water_level_station,13.77772,100.52121,เขตดุสิต,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BKB.01,จุดวัดคลองบางกระบือ ตอนถนนสามเสน,water_level_station,13.79154,100.51662,เขตดุสิต,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPT.01,จุดวัดคลองลำปลาทิว ตอนถนนสังฆสันติสุข,water_level_station,13.85366,100.86679,เขตหนองจอก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPT.04,จุดวัดคลองลำปลาทิว ตอนซอยเชื่อมสัมพันธ์ 25,water_level_station,13.81747,100.85013,เขตหนองจอก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPC.01,จุดวัดคลองลำผักชี ตอนโรงเรียนลำผักชี,water_level_station,13.79205,100.83524,เขตหนองจอก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSB.12,สถานีสูบน้ำ คลองแสนแสบ หนองจอก,water_level_station,13.85516,100.87292,เขตหนองจอก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KKO.01,จุดวัดคลองเก้า ตอนวัดศรีสุขสถาพร,water_level_station,13.92046,100.79228,เขตหนองจอก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSG.01,จุดวัดคลองสิบสอง ตอนถนนประชาสำราญ,water_level_station,13.91368,100.86244,เขตหนองจอก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSM.01,ประตูระบายน้ำ คลองสิบสาม,water_level_station,13.85874,100.86779,เขตหนองจอก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSB.11,จุดวัดคลองแสนแสบ ตอนวัดทรัพย์สโมสรนิกรเกษม,water_level_station,13.8515,100.80361,เขตหนองจอก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPG.02,ประตูระบายน้ำ คลองหลวงแพ่ง,water_level_station,13.81321,100.93742,เขตหนองจอก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPG.01,จุดวัดคลองหลวงแพ่ง ตอนโรงเรียนผลลีรุ่งเรือง,water_level_station,13.7917,100.91164,เขตหนองจอก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPG.03,จุดวัดคลองหลวงแพ่ง ตอนวัดลำต้อยติ่ง,water_level_station,13.75489,100.88956,เขตหนองจอก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.CNS.02,จุดวัดคลองช่องนนทรี ตอนถนนนราธิวาสราชนครินทร์,water_level_station,13.7276,100.52735,เขตบางรัก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KKS.04,สถานีสูบน้ำ กรุงเกษม,water_level_station,13.73042,100.51397,เขตบางรัก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.STR.01,สถานีสูบน้ำ คลองสาทร,water_level_station,13.71839,100.51496,เขตบางรัก,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BBU.01,จุดวัดคลองบางบัว,water_level_station,13.85796,100.58682,เขตบางเขน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPI.01,จุดวัดคลองหลุมไผ่ ตอนซอยลาดปลาเค้า 63,water_level_station,13.84656,100.60057,เขตบางเขน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LOA.01,จุดวัดคลองรางอ้อ-รางแก้ว ตอนถนนพหลโยธิน,water_level_station,13.88471,100.60201,เขตบางเขน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KSG.01,จุดวัดคลองสอง ตอนถนนพหลโยธิน,water_level_station,13.89974,100.61087,เขตบางเขน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSB.06,จุดวัดคลองแสนแสบ ช่วงสถานีสูบน้ำคลองเจ้าคุณสิงห์,water_level_station,13.76127,100.61532,เขตบางกะปิ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TNG.01,จุดวัดคลองตาหนัง ตอนถนนลาดพร้าว,water_level_station,13.76725,100.64345,เขตบางกะปิ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KJG.01,จุดวัดคลองจิก ตอนถนนหัวหมาก,water_level_station,13.7528,100.63296,เขตบางกะปิ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KJA.01,จุดวัดคลองกะจะ ตอนถนนพระราม 9,water_level_station,13.74381,100.61168,เขตบางกะปิ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KJA.02,จุดวัดคลองกะจะ ตอนถนนพระราม 9 ซอย 57,water_level_station,13.74953,100.63387,เขตบางกะปิ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSB.07,จุดวัดคลองแสนแสบ ตอนสำนักงานเขตบางกะปิ,water_level_station,13.76509,100.64791,เขตบางกะปิ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KJN.02,จุดวัดคลองจั่น ตอนถนนโยธินพัฒนา,water_level_station,13.80547,100.6226,เขตบางกะปิ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.YPN.02,จุดวัดคลองยายเผื่อน ตอนถนนลาดพร้าว,water_level_station,13.76832,100.63938,เขตบางกะปิ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.YPN.01,จุดวัดคลองยายเผื่อน ตอนแฮปปี้แลนด์,water_level_station,13.77868,100.64013,เขตบางกะปิ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SKT.02,จุดวัดคลองทรงกระเทียม ตอนปตร.คลองทรงกระเทียม,water_level_station,13.80003,100.62285,เขตบางกะปิ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSB.05,จุดวัดคลองแสนแสบ ตอนรามคำแหง 9,water_level_station,13.75228,100.60555,เขตบางกะปิ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSB.02,จุดวัดคลองแสนแสบ ตอนซอยสมคิด,water_level_station,13.74846,100.54583,เขตปทุมวัน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KKS.03,จุดวัดคลองผดุงกรุงเกษม ตอนหัวลำโพง,water_level_station,13.74126,100.51582,เขตปทุมวัน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.ORC.01,สถานีสูบน้ำ คลองอรชร,water_level_station,13.74807,100.53618,เขตปทุมวัน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSB.01,จุดวัดคลองแสนแสบ ช่วงคลองผดุงกรุงเกษม (โบ๊เบ๊),water_level_station,13.75287,100.51722,เขตป้อมปราบฯ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BLY.01,จุดวัดคลองบ้านหลาย ตอนถนนสุขุมวิท 77,water_level_station,13.70918,100.6217,เขตพระโขนง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BJK.01,สถานีสูบน้ำ คลองบางจาก,water_level_station,13.6891,100.59068,เขตพระโขนง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KJK.01,สถานีสูบน้ำ คลองเจ็ก,water_level_station,13.69223,100.58991,เขตพระโขนง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BOA.01,สถานีสูบน้ำ คลองบางอ้อ,water_level_station,13.68212,100.59254,เขตพระโขนง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BON.01,จุดวัดคลองบางอ้อน้อย ตอนซอยสุขุมวิท 64,water_level_station,13.68495,100.60233,เขตพระโขนง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BOA.03,จุดวัดคลองบางอ้อใหญ่ ตอนซอยสุขุมวิท 66/1,water_level_station,13.68076,100.60305,เขตพระโขนง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BNJ.01,จุดวัดคลองบางนางจีน ตอนสถานีสูบน้ำบางนางจีน,water_level_station,13.71075,100.60308,เขตพระโขนง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BNJ.03,จุดวัดคลองบางนางจีน ตอนซอยสุขุมวิท 93,water_level_station,13.7006,100.60891,เขตพระโขนง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KKD.02,จุดวัดคลองเคล็ด ตอนถนนสุภาพงษ์ 1,water_level_station,13.68886,100.63809,เขตพระโขนง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BOA.02,จุดวัดคลองบางอ้อ ตอนซอยสุขุมวิท 64,water_level_station,13.68559,100.60441,เขตพระโขนง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KJK.02,จุดวัดคลองเจ็ก ตอนถนนสุขุมวิท 60/1,water_level_station,13.69734,100.6024,เขตพระโขนง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BNJ.04,จุดวัดคลองบางนางจีน ตอนถนนสุขุมวิท 101/1,water_level_station,13.68443,100.61107,เขตพระโขนง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KSI.01,จุดวัดคลองสี่ ตอนถนนสุวินทวงศ์,water_level_station,13.81383,100.76524,เขตมีนบุรี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LBK.01,จุดวัดคลองลาดบัวขาว ตอนถนนรามคำแหง,water_level_station,13.79549,100.70761,เขตมีนบุรี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BYI.01,จุดวัดคลองบึงใหญ่ ตอนวัดทองสัมฤทธิ์,water_level_station,13.80045,100.78827,เขตมีนบุรี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BKG.01,ประตูระบายน้ำ คลองบึงขวาง,water_level_station,13.79988,100.74482,เขตมีนบุรี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSB.10,ประตูระบายน้ำ คลองแสนแสบ ตอนถนนประชาร่วมใจ,water_level_station,13.8212,100.74717,เขตมีนบุรี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PSR.06,จุดวัดคลองพระยาสุเรนทร์ ตอนบางชัน,water_level_station,13.80274,100.70165,เขตมีนบุรี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.STN.01,จุดวัดคลองสองต้นนุ่น ตอนถนนรามคำแหง,water_level_station,13.80817,100.73067,เขตมีนบุรี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.STN.02,จุดวัดคลองสองต้นนุ่น ตอนซอยร่มเกล้า 20,water_level_station,13.7771,100.73883,เขตลาดกระบัง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.STN.03,จุดวัดคลองสองต้นนุ่น ตอนถนนมอเตอร์เวย์,water_level_station,13.72975,100.73899,เขตลาดกระบัง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPT.02,จุดวัดคลองลำปลาทิว ตอนซอยฉลองกรุง 54,water_level_station,13.77005,100.81298,เขตลาดกระบัง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPT.03,จุดวัดคลองลำปลาทิว ตอนซอยฉลองกรุง 8,water_level_station,13.74068,100.79474,เขตลาดกระบัง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PWT.04,ประตูระบายน้ำ คลองประเวศบุรีรมย์ ตอนลาดกระบัง,water_level_station,13.72386,100.74979,เขตลาดกระบัง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PWT.05,จุดวัดคลองประเวศบุรีรมย์ ตอน รพ.ลาดกระบัง,water_level_station,13.72396,100.78399,เขตลาดกระบัง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PWT.06,จุดวัดคลองประเวศบุรีรมย์ ตอนถนนร่วมพัฒนา,water_level_station,13.70102,100.85095,เขตลาดกระบัง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TPK.01,จุดวัดคลองลาดกระบัง ตอนซอยลาดกระบัง 54/6,water_level_station,13.72294,100.75193,เขตลาดกระบัง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TPK.03,จุดวัดคลองตาพุก ตอนคลองทับช้างบน,water_level_station,13.74247,100.70891,เขตลาดกระบัง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KSM.01,จุดวัดคลองสาม ตอนร่มเกล้า 17,water_level_station,13.77538,100.75395,เขตลาดกระบัง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KSM.02,จุดวัดคลองสาม ตอนมอเตอร์เวย์,water_level_station,13.7302,100.7541,เขตลาดกระบัง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KSI.02,จุดวัดคลองสี่ ตอนถนนเจ้าคุณทหาร,water_level_station,13.75363,100.7689,เขตลาดกระบัง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KDN.01,ประตูระบายน้ำ คลองวัดด่าน,water_level_station,13.67071,100.54018,เขตยานนาวา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.CNS.01,สถานีสูบน้ำช่องนนทรี,water_level_station,13.69493,100.54874,เขตยานนาวา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSN.03,จุดวัดคลองสามเสน ตอนถนนพระราม ที่ 6,water_level_station,13.77292,100.52991,เขตพญาไท,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SPP.01,จุดวัดบ่อสูบน้ำสะพานพรหม,water_level_station,13.76308,100.54288,เขตพญาไท,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BKY.01,สถานีสูบน้ำ คลองบางกอกใหญ่,water_level_station,13.7402,100.48992,เขตธนบุรี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SRE.01,สถานีสูบน้ำ คลองสำเหร่,water_level_station,13.70671,100.49647,เขตธนบุรี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.YSN.02,จุดวัดคลองยายสุ่น ตอนถนนรัชดาภิเษก,water_level_station,13.76324,100.56823,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSN.09,จุดวัดคลองสามเสน ช่วงถนนเอกมัย,water_level_station,13.75038,100.59268,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.CBJ.01,จุดวัดคลองชวดบางจาก ตอนถนนประชาอุทิศ,water_level_station,13.77211,100.58021,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSN.07,จุดวัดคลองสามเสน ตอนถนนอโศก,water_level_station,13.75512,100.56505,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPW.05,จุดวัดคลองลาดพร้าว ช่วงถนนประดิษฐ์มนูธรรม,water_level_station,13.75954,100.59646,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSN.08,สถานีสูบน้ำ คลองสามเสน ตอนคลองแสนแสบ,water_level_station,13.74842,100.5992,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BSU.06,จุดวัดคลองบางซื่อ ช่วงถนนรัชดาภิเษก (เจ้าพระยาปาร์ค),water_level_station,13.79624,100.57422,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.CYI.02,จุดวัดคลองชวดใหญ่ ตอนถนนพระราม 9,water_level_station,13.75502,100.58113,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.CYI.01,จุดวัดคลองชวดใหญ่ ตอนถนนพระราม 9 ซอย 13,water_level_station,13.76217,100.58648,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.NKW.02,จุดวัดคลองน้ำแก้ว ตอนซอยลาดพร้าว 41,water_level_station,13.80278,100.58458,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.HKG.02,จุดวัดคลองห้วยขวาง ตอนถนนเทียมร่วมมิตร,water_level_station,13.76755,100.57674,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.CTC.01,จุดวัดคลองชวดตาเชียง ตอนสถานีสูบน้ำคลองชวดตาเชียง,water_level_station,13.76884,100.59302,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.CYI.03,จุดวัดคลองชวดใหญ่-ตอนคลองลาดพร้าว,water_level_station,13.7631,100.59243,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BSU.07,จุดวัดคลองบางซื่อ - ตอนถนนลาดพร้าว,water_level_station,13.79875,100.58655,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSN.10,จุดวัดคลองสามเสน -ตอนคลองชวดใหญ่,water_level_station,13.75383,100.58091,เขตห้วยขวาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BSK.01,สถานีสูบน้ำ คลองบางไส้ไก่,water_level_station,13.70692,100.49737,เขตคลองสาน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KBU.01,ประตูระบายน้ำ คลองบัว ตอนทางรถไฟสายใต้,water_level_station,13.79974,100.41609,เขตตลิ่งชัน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BPM.01,จุดวัดคลองบางพรม ตอนคลองชักพระ,water_level_station,13.75973,100.45337,เขตตลิ่งชัน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BPM.02,จุดวัดคลองบางพรม ตอนถนนฉิมพลี,water_level_station,13.75707,100.43334,เขตตลิ่งชัน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.MSW.01,จุดวัดคลองมหาสวัสดิ์ ตอนคลองสวนแดน 2,water_level_station,13.79841,100.45451,เขตตลิ่งชัน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.WKT.01,จุดวัดคลองวัดไก่เตี้ย ตอนสถานีสูบน้ำคลองวัดไก่เตี้ย,water_level_station,13.78422,100.46424,เขตตลิ่งชัน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KBU.02,จุดวัดคลองบัว ตอนถนนพุทธมณฑลสาย 1,water_level_station,13.7797,100.42681,เขตตลิ่งชัน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SDN.01,จุดวัดคลองสวนแดน ตอนถนนชัยพฤกษ์,water_level_station,13.79063,100.46199,เขตตลิ่งชัน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KJU.01,จุดวัดคลองขุนจันทร์ ตอนถนนฉิมพลี,water_level_station,13.78277,100.44432,เขตตลิ่งชัน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SCO.01,จุดวัดคลองศาลเจ้า ตอนถนนสวนผัก,water_level_station,13.79815,100.44488,เขตตลิ่งชัน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BBR.01,จุดวัดคลองบางบำหรุ ตอนถนนบรมราชชนนี,water_level_station,13.77927,100.47591,เขตบางกอกน้อย,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.CPA.01,สถานีสูบน้ำ คลองชักพระ,water_level_station,13.77892,100.465,เขตบางกอกน้อย,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KMN.01,สถานีสูบน้ำ คลองมอญ,water_level_station,13.74703,100.48489,เขตบางกอกน้อย,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SBT.01,สถานีสูบน้ำ คลองสี่บาท,water_level_station,13.67325,100.44615,เขตบางขุนเทียน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPN.01,สถานีสูบน้ำ คลองเลนเปน,water_level_station,13.60695,100.41311,เขตบางขุนเทียน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.RHN.01,สถานีสูบน้ำ คลองระหาญ,water_level_station,13.60384,100.3946,เขตบางขุนเทียน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.RMT.01,สถานีสูบน้ำ คลองพระยาราชมนตรี,water_level_station,13.62817,100.43914,เขตบางขุนเทียน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SNC.01,สถานีสูบน้ำ คลองสนามชัย,water_level_station,13.63806,100.44765,เขตบางขุนเทียน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PLK.01,จุดวัดคลองพิทยาลงกรณ์ ช่วงโรงเรียนพิทยาลงกรณ์พิทยาคม,water_level_station,13.52834,100.41782,เขตบางขุนเทียน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.RMT.02,จุดวัดคลองพระยาราชมนตรี ตอนถนนพระรามที่ 2,water_level_station,13.66885,100.4299,เขตบางขุนเทียน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SKG.01,จุดวัดคลองสะแกงาม ตอนถนนกาญจนาภิเษก,water_level_station,13.62715,100.43402,เขตบางขุนเทียน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PSC.02,จุดวัดคลองภาษีเจริญ ตอนวัดรางบัว,water_level_station,13.71167,100.43889,เขตภาษีเจริญ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.YPE.01,จุดคลองยายเพียร ตอนถนนเพชรเกษม,water_level_station,13.71253,100.43219,เขตภาษีเจริญ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BJK.03,จุดวัดคลองบางจาก ตอนคลองบางหว้า,water_level_station,13.71868,100.44174,เขตภาษีเจริญ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BWK.01,จุดวัดคลองบางแวก ตอนคลองบางกอกใหญ่,water_level_station,13.73823,100.45901,เขตภาษีเจริญ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BWK.02,จุดวัดคลองบางแวก ตอนถนนพุทธมณฑลสาย 1,water_level_station,13.73345,100.43283,เขตภาษีเจริญ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BKY.02,จุดวัดคลองบางเชือกหนัง ตอนวัดปากน้ำฝั่งใต้,water_level_station,13.74358,100.45955,เขตภาษีเจริญ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BCN.02,จุดวัดคลองบางเชือกหนัง ตอนถนนพุทธมณฑลสาย 1,water_level_station,13.74223,100.42765,เขตภาษีเจริญ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PSC.01,สถานีสูบน้ำ คลองภาษีเจริญ,water_level_station,13.72221,100.46868,เขตภาษีเจริญ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PSC.03,จุดวัดคลองภาษีเจริญ ตอนคลองราชมนตรี,water_level_station,13.70818,100.42615,เขตภาษีเจริญ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PSC.04,จุดวัดคลองภาษีเจริญ ตอนคลองมหาศร,water_level_station,13.68142,100.3504,เขตหนองแขม,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BWK.03,จุดวัดคลองบางแวก ตอนคลองทวีวัฒนา,water_level_station,13.72619,100.36426,เขตหนองแขม,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.JRN.01,สถานีสูบน้ำ คลองแจงร้อน,water_level_station,13.67634,100.52111,เขตราษฏร์บูรณะ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.DKN.01,สถานีสูบน้ำ คลองดาวคะนอง,water_level_station,13.69486,100.48759,เขตราษฏร์บูรณะ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BYK.02,จุดวัดคลองบางยี่ขัน ตอนสถานีสูบน้ำคลองบางยี่ขัน,water_level_station,13.76741,100.49361,เขตบางพลัด,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BYK.01,จุดวัดคลองบางยี่ขัน ตอนถนนจรัญสนิทวงศ์,water_level_station,13.77571,100.48371,เขตบางพลัด,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BBR.02,จุดวัดคลองบางบำหรุ ตอนถนนสิรินธร,water_level_station,13.78876,100.48166,เขตบางพลัด,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.NSG.01,จุดวัดคลองนาซอง ตอนถนนประชาสุข,water_level_station,13.77895,100.56654,เขตดินแดง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.FTM.01,จุดวัดคลองโบสถ์แม่พระ ตอนถนนดินแดง,water_level_station,13.75957,100.55618,เขตดินแดง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.HKG.01,จุดวัดคลองห้วยขวาง ตอนถนนประชาสงเคราะห์,water_level_station,13.77814,100.57206,เขตดินแดง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSN.06,จุดวัดคลองสามเสน ช่วงถนนดินแดง,water_level_station,13.75604,100.5526,เขตดินแดง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSB.08,จุดวัดคลองแสนแสบ ช่วงซอยเสรีไทย 24,water_level_station,13.7805,100.67387,เขตบึงกุ่ม,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BTY.01,จุดวัดคลองบางเตย ตอนถนนนวมินทร์ 66/3,water_level_station,13.8065,100.64899,เขตบึงกุ่ม,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.CNS.03,จุดวัดคลองช่องนนทรี ตอนถนนจันทน์,water_level_station,13.70724,100.53762,เขตสาทร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.CNS.04,จุดวัดคลองช่องนนทรี ตอนถนนสาทรใต้,water_level_station,13.71979,100.53124,เขตสาทร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.STR.02,จุดวัดคลองสาทร ตอนถนนพระรามที่ 4,water_level_station,13.72592,100.54402,เขตสาทร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KTK.03,จุดวัดคลองขรัวตาแก่น ตอนซอยสะพานขวา,water_level_station,13.80504,100.52867,เขตบางซื่อ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BKA.02,จุดวัดคลองบางเขน ช่วงถนนกรุงเทพ-นนทบุรี,water_level_station,13.83374,100.52207,เขตบางซื่อ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BKA.03,จุดวัดคลองบางเขน ช่วงถนนประชาชื่น,water_level_station,13.84933,100.54268,เขตบางซื่อ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BSU.02,จุดวัดคลองบางซื่อ ช่วงถนนพระรามที่ 5,water_level_station,13.79815,100.53226,เขตบางซื่อ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BKA.01,สถานีสูบน้ำ คลองบางเขนใหม่,water_level_station,13.81729,100.5105,เขตบางซื่อ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KPM.01,จุดวัดคลองเปรมประชากร ช่วงสถานีน้ำอุโมงค์คลองเปรมประชากร,water_level_station,13.80463,100.53595,เขตบางซื่อ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KPM.03,จุดวัดคลองเปรมประชากร ช่วงวัดเทวสุนทร,water_level_station,13.85069,100.56091,เขตจตุจักร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPW.02,จุดวัดคลองลาดพร้าว ช่วงวัดลาดพร้าว,water_level_station,13.80293,100.58822,เขตจตุจักร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.VPV.01,สถานีสูบน้ำ รัชดา-วิภาวดี,water_level_station,13.83021,100.5571,เขตจตุจักร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BSU.04,จุดวัดคลองบางซื่อ ช่วงถนนพหลโยธิน,water_level_station,13.79619,100.55035,เขตจตุจักร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BSU.05,จุดวัดคลองบางซื่อ ช่วงถนนวิภาวดีรังสิต,water_level_station,13.79486,100.56157,เขตจตุจักร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.NKW.01,จุดวัดคลองน้ำแก้ว ตอนถนนรัชดาภิเษก,water_level_station,13.80104,100.57494,เขตจตุจักร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KPM.02,จุดวัดคลองเปรมประชากร ตอนถนนรัชดาภิเษก,water_level_station,13.82993,100.54935,เขตจตุจักร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BSU.03,จุดวัดคลองบางซื่อ ตอนถนนพระรามที่ 6,water_level_station,13.79759,100.53881,เขตจตุจักร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LYW.02,จุดวัดคลองลาดยาว ตอนถนนวิภาวดีรังสิต 44,water_level_station,13.84162,100.55997,เขตจตุจักร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LYW.01,จุดวัดคลองลาดยาว ตอน ถนนรัชดาภิเษก,water_level_station,13.83042,100.56229,เขตจตุจักร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PYW.01,จุดวัดคลองพญาเวิก ตอนปตร.คลองพญาเวิก,water_level_station,13.79676,100.56697,เขตจตุจักร,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.WSI.01,สถานีสูบน้ำ คลองวัดไทร,water_level_station,13.68653,100.51643,เขตบางคอแหลม,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.NBN.01,จุดวัดบึงหนองบอน,water_level_station,13.69529,100.65375,เขตประเวศ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PWT.03,ประตูระบายน้ำ คลองประเวศบุรีรมย์ ตอนวัดกระทุ่มเสือปลา,water_level_station,13.7241,100.68957,เขตประเวศ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KNB.02,จุดวัดคลองหนองบอน ตอนถนนเฉลิมพระเกียรติรัชกาลที่ 9,water_level_station,13.678,100.66295,เขตประเวศ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TCG.01,จุดวัดคลองตาช้าง ตอนถนนศรีนครินทร์,water_level_station,13.68353,100.64666,เขตประเวศ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KKD.03,จุดวัดคลองเคล็ด ตอนถนนศรีนครินทร์,water_level_station,13.67123,100.6439,เขตประเวศ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SLL.01,จุดวัดคลองศาลาลอย ตอนถนนอ่อนนุช 61,water_level_station,13.71599,100.67942,เขตประเวศ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TPK.02,จุดวัดคลองตาพุก ตอนถนนลาดกระบัง,water_level_station,13.72193,100.70919,เขตประเวศ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.JKK.01,ประตูระบายน้ำคลองจระเข้ขบ,water_level_station,13.721,100.7011,เขตประเวศ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PKN.01,สถานีสูบน้ำ พระโขนง,water_level_station,13.70857,100.59542,เขตคลองเตย,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KTY.01,สถานีสูบน้ำ คลองเตย,water_level_station,13.70635,100.58779,เขตคลองเตย,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PWT.02,จุดวัดคลองประเวศบุรีรมย์ ตอนวัดขจรศิริ,water_level_station,13.71545,100.6415,เขตสวนหลวง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BPA.01,จุดวัดคลองบ้านป่า ตอนถนนพัฒนาการ,water_level_station,13.7367,100.61167,เขตสวนหลวง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KLT.01,จุดวัดคลองแสนแสบ ช่วงคลองตัน,water_level_station,13.73776,100.60436,เขตสวนหลวง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PWT.01,จุดวัดคลองประเวศ ตอนซอยอ่อนนุช 17,water_level_station,13.71556,100.6106,เขตสวนหลวง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KSK.01,จุดวัดคลองขุนสกล ตอนซอยศรีนครินทร์ 36,water_level_station,13.70346,100.64388,เขตสวนหลวง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KKD.01,จุดวัดคลองเคล็ด ตอนถนนสุขุมวิท 77,water_level_station,13.7091,100.6307,เขตสวนหลวง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KLA.01,จุดวัดคลองลาว ตอนถนนพัฒนาการ,water_level_station,13.73722,100.62499,เขตสวนหลวง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.HMK.01,จุดวัดคลองหัวหมาก ตอนถนนศรีนครินทร์,water_level_station,13.73309,100.64107,เขตสวนหลวง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KNB.01,จุดวัดคลองหนองบอน ตอนอ่อนนุช 66 ซอย 13,water_level_station,13.70382,100.65075,เขตสวนหลวง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SNC.02,จุดวัดคลองสนามชัย ตอนคลองบางขุนเทียน,water_level_station,13.70123,100.46491,เขตจอมทอง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KPM.05,จุดวัดคลองเปรมประชากร ตอนถนนสรงประภา,water_level_station,13.92316,100.60051,เขตดอนเมือง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KPM.06,จุดวัดคลองเปรมประชากร ตอนคลองบ้านใหม่,water_level_station,13.94336,100.60579,เขตดอนเมือง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KNK.01,จุดวัดคลองคูนากิม ตอนถนนประชาอุทิศ,water_level_station,13.9272,100.58565,เขตดอนเมือง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TUT.02,จุดวัดคลองตาอูฐ ตอนถนนพิงคนคร,water_level_station,13.91159,100.56559,เขตดอนเมือง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.MID.01,จุดวัดคูน้ำกรมสารวัตรทหาร,water_level_station,13.76074,100.53037,เขตราชเทวี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSN.05,จุดวัดคลองสามเสน ตอน รพ.พระมงกุฎเกล้า,water_level_station,13.76898,100.53477,เขตราชเทวี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.IDE.01,จุดวัดบ่อสูบน้ำอินโดนีเซีย,water_level_station,13.7551,100.53601,เขตราชเทวี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSB.03,จุดวัดคลองแสนแสบ ช่วงอโศก,water_level_station,13.74783,100.56304,เขตราชเทวี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSN.04,จุดวัดคลองสามเสน ช่วงถนนพหลโยธิน,water_level_station,13.76551,100.5396,เขตราชเทวี,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPI.02,จุดวัดคลองหลุมไผ่ ตอนถนนประเสริฐมนูกิจ29,water_level_station,13.84703,100.6218,เขตลาดพร้าว,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPW.03,จุดวัดคลองลาดพร้าว ช่วงซอยเสนานิคม,water_level_station,13.83224,100.58974,เขตลาดพร้าว,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SKT.01,จุดวัดคลองทรงกระเทียม ตอนถนนนาคนิวาส,water_level_station,13.80028,100.6068,เขตลาดพร้าว,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SNO.01,จุดวัดคลองเสือน้อย ตอนถนนสุคนธสวัสดิ์,water_level_station,13.82306,100.60897,เขตลาดพร้าว,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KPG.01,จุดวัดคลองเป้ง ตอนซอยเอกมัย 23,water_level_station,13.74048,100.58877,เขตวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BMK.01,จุดวัดคลองบางมะเขือ ตอนถนนสุขุมวิท 71,water_level_station,13.71693,100.59558,เขตวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.WTN.02,จุดวัดคูน้ำวัฒนา ตอนโรงเรียนวัฒนาวิทยาลัย,water_level_station,13.74233,100.56054,เขตวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TSK.01,จุดวัดคูน้ำต่อศักดิ์ ตอนซอยทองหล่อ 25,water_level_station,13.74019,100.58037,เขตวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SWU.01,จุดวัดคูน้ำ มศว.,water_level_station,13.7423,100.56775,เขตวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSB.04,สถานีสูบน้ำ คลองแสนแสบตอนคลองตัน,water_level_station,13.7411,100.5964,เขตวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PSI.01,จุดวัดคลองพร้อมศรี 2 ตอนถนนสุขุมวิท 49/13,water_level_station,13.73827,100.57522,เขตวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TWW.05,จุดวัดคลองทวีวัฒนา ตอนคลองภาษีเจริญ,water_level_station,13.69163,100.38106,เขตบางแค,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BJK.04,จุดวัดคลองบางจาก ตอนถนนพุทธมณฑลสาย 2,water_level_station,13.71484,100.39596,เขตบางแค,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BCN.01,จุดวัดคลองบางเชือกหนัง ตอนถนนกาญจนาภิเษก,water_level_station,13.74925,100.40654,เขตบางแค,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BCN.03,จุดวัดคลองบางเชือกหนัง ตอนถนนพุทธมณฑลสาย 2,water_level_station,13.75173,100.39162,เขตบางแค,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.RSK.01,จุดวัดคลองราษฎร์สามัคคี ตอนถนนเพชรเกษม 63,water_level_station,13.70339,100.39142,เขตบางแค,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TWW.03,จุดวัดคลองทวีวัฒนา ตอนถนนเพชรเกษม,water_level_station,13.70769,100.37369,เขตบางแค,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BJK.02,จุดวัดคลองบางจาก ตอนซอยเพชรเกษม 68,water_level_station,13.71575,100.41648,เขตบางแค,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.RKC.01,จุดวัดคลองข้างศูนย์ราชการ,water_level_station,13.88457,100.56277,เขตหลักสี่,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TTN.01,จุดวัดคลองลาดโตนด ตอน ปตร.คลองลาดโตนด,water_level_station,13.85509,100.56001,เขตหลักสี่,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.WLS.01,จุดวัดคลองวัดหลักสี่ ตอนถนนวิภาวดีรังสิต,water_level_station,13.89041,100.5847,เขตหลักสี่,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BKA.04,จุดวัดคลองบางเขน ช่วงถนนวิภาวดีรังสิต,water_level_station,13.85572,100.56673,เขตหลักสี่,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TUT.01,สถานีสูบน้ำ คลองตาอูฐ,water_level_station,13.89981,100.58666,เขตหลักสี่,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KPM.04,คลองเปรมประชากร ตอนคลองบางตลาด,water_level_station,13.87546,100.57424,เขตหลักสี่,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BTL.01,จุดวัดคลองบางตลาด ตอนท่าทราย,water_level_station,13.87579,100.55819,เขตหลักสี่,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SST.01,ประตูระบายน้ำ คลองสองสายใต้,water_level_station,13.92314,100.63447,เขตสายไหม,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PSR.01,ประตูระบายน้ำ คลองพระยาสุเรนทร์,water_level_station,13.92126,100.68741,เขตสายไหม,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LCL.01,จุดวัดคลองลำชะล่า ตอนถนนนวมินทร์,water_level_station,13.83637,100.66131,เขตคันนายาว,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SSB.09,ประตูระบายน้ำ คลองแสนแสบ ตอนบางชัน,water_level_station,13.79734,100.70451,เขตคันนายาว,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LCL.02,จุดวัดคลองลำชะล่า ตอนซอยนวมินทร์ 86,water_level_station,13.8242,100.66005,เขตคันนายาว,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LBK.02,จุดวัดคลองลาดบัวขาว ตอนถนนเคหะร่มเกล้า,water_level_station,13.76991,100.71494,เขตสะพานสูง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LBK.03,จุดวัดคลองลาดบัวขาว ตอนซอยกาญจนาภิเษก 24,water_level_station,13.74974,100.70291,เขตสะพานสูง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KJN.01,จุดวัดคลองจั่น ตอนถนนลาดพร้าว,water_level_station,13.77609,100.62816,เขตวังทองหลาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KJT.01,จุดวัดคลองจิต ตอนซอยลาดพร้าว 122,water_level_station,13.77323,100.62173,เขตวังทองหลาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PPA.02,จุดวัดคลองพลับพลา ตอนศูนย์แพทย์พัฒนา,water_level_station,13.76206,100.59756,เขตวังทองหลาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.WTK.01,จุดวัดคลองวัดตึก ตอนถนนลาดพร้าว,water_level_station,13.78678,100.60758,เขตวังทองหลาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPW.01,ประตูระบายน้ำ คลองลาดพร้าว,water_level_station,13.79446,100.58957,เขตวังทองหลาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.CKS.01,สถานีสูบน้ำ คลองเจ้าคุณสิงห์,water_level_station,13.76172,100.61521,เขตวังทองหลาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.CKS.02,จุดวัดคลองเจ้าคุณสิงห์ ตอนถนนลาดพร้าว,water_level_station,13.78408,100.61341,เขตวังทองหลาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LPW.04,จุดวัดคลองลาดพร้าว ตอนถนนประชาอุทิศ,water_level_station,13.76874,100.59356,เขตวังทองหลาง,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PSR.04,ปตร.พระยาสุเรนทร์ ตอนคู้บอน,water_level_station,13.85077,100.67829,เขตคลองสามวา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PSR.03,จุดวัดคลองพระยาสุเรนทร์ ตอนถนนจตุโชติ,water_level_station,13.87621,100.68614,เขตคลองสามวา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PSR.02,จุดวัดคลองพระยาสุเรนทร์ ตอนถนนหนองระแหง,water_level_station,13.90121,100.69049,เขตคลองสามวา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.PSR.05,จุดวัดคลองพระยาสุเรนทร์ ตอนปัญญาอินทรา,water_level_station,13.83698,100.68803,เขตคลองสามวา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SWA.01,ประตูระบายน้ำ คลองสามวา,water_level_station,13.85954,100.72909,เขตคลองสามวา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BNA.01,สถานีสูบน้ำ คลองบางนา,water_level_station,13.67493,100.58757,เขตบางนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BNA.03,จุดวัดคลองบางนา ตอนถนนศรีนครินทร์,water_level_station,13.66106,100.63942,เขตบางนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LSM.01,จุดวัดคลองหลอด 3 ตอนถนนบางนา ตราด,water_level_station,13.66882,100.63356,เขตบางนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BNJ.02,จุดวัดคลองบางนางจีน ตอนซอยสุขุมวิท 66/1,water_level_station,13.68202,100.60746,เขตบางนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.LSG.01,จุดวัดคลองหลอด 2 ตอนถนนบางนา ตราด,water_level_station,13.67099,100.62222,เขตบางนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BNA.04,จุดวัดคลองบางนา ตอนซอยบางนา-ตราด 56,water_level_station,13.6594,100.64935,เขตบางนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BNA.02,จุดวัดคลองบางนา ตอนถนนสุขุมวิท,water_level_station,13.66948,100.60535,เขตบางนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KSO.01,จุดวัดคลองซอย ตอนถนนบรมราชชนนี,water_level_station,13.78884,100.35271,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KSO.02,จุดวัดคลองซอย ตอนถนนศาลาธรรมสพน์,water_level_station,13.80014,100.34874,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TWW.02,จุดวัดคลองทวีวัฒนา ตอนถนนบรมราชชนนี,water_level_station,13.78838,100.33518,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.MSW.02,จุดวัดคลองมหาสวัสดิ์ ตอนวัดปุรณาวาส,water_level_station,13.8036,100.33512,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KKY.01,จุดวัดคลองควาย ตอนถนนศาลาธรรมสพน์,water_level_station,13.79744,100.38155,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.KKY.02,จุดวัดคลองควาย ตอนถนนบรมราชชนนี,water_level_station,13.78593,100.38354,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SBR.02,จุดวัดคลองบางขุนศรีบุรีรักษ์ ตอนถนนบรมราชชนนี,water_level_station,13.78651,100.37053,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TWW.04,จุดวัดคลองทวีวัฒนา ตอนคลองบางเชือกหนัง,water_level_station,13.75037,100.35351,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SBR.01,ประตูระบายน้ำ คลองขุนศรีบุรีรักษ์ ตอนคลองมหาสวัสดิ์,water_level_station,13.80244,100.3707,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.TWW.01,ประตูระบายน้ำ คลองทวีวัฒนา,water_level_station,13.80042,100.32977,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.MSW.03,จุดวัดคลองมหาสวัสดิ์ ตอนถนนพุทธมณฑลสาย 2,water_level_station,13.80187,100.39432,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BPM.03,จุดวัดคลองบางพรม ตอนถนนกาญจนาภิเษก,water_level_station,13.76264,100.39624,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BPM.04,จุดวัดคลองบางพรม ตอนถนนพุทธมณฑลสาย 3,water_level_station,13.76866,100.36401,เขตทวีวัฒนา,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.RJK.01,ประตูระบายน้ำ คลองรางจาก ตอนถนนประชาอุทิศ,water_level_station,13.63494,100.50218,เขตทุ่งครุ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BBN.03,จุดวัดคลองบางบอน ตอนคลองสะแกงาม,water_level_station,13.64249,100.37944,เขตบางบอน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BPN.02,จุดวัดคลองบางพราน ตอนถนนบางบอน 2,water_level_station,13.66731,100.40662,เขตบางบอน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BPN.01,จุดวัดคลองบางพราน ตอนถนนบางบอน 1,water_level_station,13.67782,100.42555,เขตบางบอน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BBN.02,จุดวัดคลองบางบอน ตอนถนนกาญจนาภิเษก,water_level_station,13.65786,100.40551,เขตบางบอน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BBN.01,จุดวัดคลองบางบอน ตอนถนนบางขุนเทียน,water_level_station,13.67055,100.42713,เขตบางบอน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BKL.01,จุดวัดคลองบางโคลัด ตอนถนนบางบอน 1,water_level_station,13.68658,100.42615,เขตบางบอน,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.BPU.01,จุดวัดสถานตากอากาศบางปู,water_level_station,13.51295,100.65425,เขตอำเภอเมืองสมุทรปราการ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WL.SRG.01,สถานีสูบน้ำ คลองสำโรง,water_level_station,13.64819,100.59514,เขตอำเภอเมืองสมุทรปราการ,4,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+WS.PNK.01,สำนักงานเขตพระนคร,other,13.76476,100.49893,พระนคร,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.PPS.01,สำนักงานเขตป้อมปราบศัตรูพ่าย,other,13.75807,100.51285,ป้อมปราบศัตรูพ่าย,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.SPW.01,สำนักงานเขตสัมพันธวงศ์,other,13.73135,100.51395,สัมพันธวงศ์,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BRK.01,สำนักงานเขตบางรัก,other,13.73102,100.52419,บางรัก,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.STN.01,สำนักงานเขตสาทร,other,13.7082,100.52641,สาทร,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BKL.01,สำนักงานเขตบางคอแหลม,other,13.6931,100.50229,บางคอแหลม,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.YNW.01,สำนักงานเขตยานนาวา,other,13.69636,100.54213,ยานนาวา,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.PTW.01,สำนักงานเขตปทุมวัน,other,13.73647,100.5237,ปทุมวัน,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.DST.01,สำนักงานเขตดุสิต,other,13.77693,100.52032,ดุสิต,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BSU.01,สำนักงานเขตบางซื่อ,other,13.80973,100.53723,บางซื่อ,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.PYT.01,สำนักงานเขตพญาไท,other,13.77967,100.54221,พญาไท,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.CTC.01,สำนักงานเขตจตุจักร,other,13.82879,100.5599,จตุจักร,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.LSI.01,สำนักงานเขตหลักสี่,other,13.88732,100.57936,หลักสี่,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.DMG.01,สำนักงานเขตดอนเมือง,other,13.91053,100.59492,ดอนเมือง,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.SMI.01,สำนักงานเขตสายไหม,other,13.89531,100.6609,สายไหม,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BKA.01,สำนักงานเขตบางเขน,other,13.87348,100.59643,บางเขน,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.HKG.01,สำนักงานเขตห้วยขวาง,other,13.77678,100.57906,ห้วยขวาง,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.WTL.01,สำนักงานเขตวังทองหลาง,other,13.76403,100.60584,วังทองหลาง,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.RTW.01,สำนักงานเขตราชเทวี,other,13.75917,100.53405,ราชเทวี,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.LPW.01,สำนักงานเขตลาดพร้าว,other,13.80369,100.60746,ลาดพร้าว,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.KSW.01,สำนักงานเขตคลองสามวา,other,13.85937,100.70445,คลองสามวา,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.MBR.01,สำนักงานเขตมีนบุรี,other,13.8136,100.73122,มีนบุรี,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.NJK.01,สำนักงานเขตหนองจอก,other,13.85546,100.86273,หนองจอก,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.LKB.01,สำนักงานเขตลาดกระบัง,other,13.72353,100.78418,ลาดกระบัง,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.SPS.01,สำนักงานเขตสะพานสูง,other,13.76885,100.68548,สะพานสูง,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.PWT.01,สำนักงานเขตประเวศ,other,13.717,100.69472,ประเวศ,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.SLG.01,สำนักงานเขตสวนหลวง,other,13.73042,100.65154,สวนหลวง,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BKM.01,สำนักงานเขตบึงกุ่ม,other,13.78554,100.66937,บึงกุ่ม,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.WTN.01,สำนักงานเขตวัฒนา,other,13.74248,100.58571,วัฒนา,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.KTY.01,สำนักงานเขตคลองเตย,other,13.70791,100.58363,คลองเตย,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.PKN.01,สำนักงานเขตพระโขนง,other,13.70233,100.60197,พระโขนง,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BNA.01,สำนักงานเขตบางนา,other,13.66746,100.64225,บางนา,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.TBR.01,สำนักงานเขตธนบุรี,other,13.72497,100.48558,ธนบุรี,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.KSN.01,สำนักงานเขตคลองสาน,other,13.73044,100.50947,คลองสาน,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BKN.01,สำนักงานเขตบางกอกน้อย,other,13.76276,100.47785,บางกอกน้อย,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BKY.01,สำนักงานเขตบางกอกใหญ่,other,13.72343,100.47614,บางกอกใหญ่,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BPD.01,สำนักงานเขตบางพลัด,other,13.79441,100.50493,บางพลัด,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.TLC.01,สำนักงานเขตตลิ่งชัน,other,13.77663,100.45653,ตลิ่งชัน,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.PSC.01,สำนักงานเขตภาษีเจริญ,other,13.71445,100.43682,ภาษีเจริญ,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.JTG.01,สำนักงานเขตจอมทอง,other,13.67773,100.48411,จอมทอง,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.RBN.01,สำนักงานเขตราษฎร์บูรณะ,other,13.68213,100.50564,ราษฏร์บูรณะ,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.TKU.01,สำนักงานเขตทุ่งครุ,other,13.61135,100.50878,ทุ่งครุ,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.TWW.01,สำนักงานเขตทวีวัฒนา,other,13.77281,100.35324,ทวีวัฒนา,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BKE.01,สำนักงานเขตบางแค,other,13.69605,100.40938,บางแค,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BBN.01,สำนักงานเขตบางบอน,other,13.63373,100.36871,บางบอน,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BKT.01,สำนักงานเขตบางขุนเทียน,other,13.66059,100.43563,บางขุนเทียน,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.NKM.01,สำนักงานเขตหนองแขม,other,13.70529,100.34898,หนองแขม,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.BKP.01,สำนักงานเขตบางกะปิ,other,13.76563,100.64793,บางกะปิ,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.KNY.01,สำนักงานเขตคันนายาว,other,13.79924,100.68264,คันนายาว,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.DDG.02,ศูนย์ควบคุมระบบป้องกันน้ำท่วมกรุงเทพมหานคร เขตดินแดง,other,13.76903,100.5546,ดินแดง,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.PSC.02,ศูนย์ป้องกันน้ำท่วมธนบุรี เขตภาษีเจริญ,other,13.72117,100.46625,ภาษีเจริญ,5,UNVERIFIED,OFFICIAL_REPORTED,
+WS.KTY.02,สถานีสูบน้ำพระโขนง เขตคลองเตย,other,13.70861,100.59469,คลองเตย,5,UNVERIFIED,OFFICIAL_REPORTED,
+RF.PNK.01,สำนักงานเขตพระนคร,rain_gauge,13.7649,100.49872,พระนคร,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PPS.01,สำนักงานเขตป้อมปราบศัตรูพ่าย,rain_gauge,13.75826,100.51304,ป้อมปราบฯ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.SPW.01,บ่อสูบน้ำ ท่าน้ำสวัสดี,rain_gauge,13.73664,100.5096,สัมพันธวงศ์,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BRK.01,สำนักงานเขตบางรัก,rain_gauge,13.73067,100.52382,บางรัก,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.STN.01,สำนักงานเขตสาทร,rain_gauge,13.70821,100.52641,สาทร,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKL.01,สำนักงานเขตบางคอแหลม,rain_gauge,13.69311,100.50229,บางคอแหลม,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.YNW.01,สำนักงานเขตยานนาวา,rain_gauge,13.69627,100.54222,ยานนาวา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PTW.01,สำนักงานเขตปทุมวัน,rain_gauge,13.74493,100.5222,ปทุมวัน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.DST.01,สำนักงานเขตดุสิต,rain_gauge,13.77693,100.52032,ดุสิต,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BSU.01,สำนักงานเขตบางซื่อ,rain_gauge,13.80973,100.53723,บางซื่อ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PYT.01,สำนักงานเขตพญาไท,rain_gauge,13.78003,100.54287,พญาไท,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.CTC.01,บ่อสูบน้ำศาลอาญา ถนนรัชดาภิเษก,rain_gauge,13.80967,100.57498,จตุจักร,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.LSI.01,สำนักงานเขตหลักสี่,rain_gauge,13.88748,100.57893,หลักสี่,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.DMG.01,สำนักงานเขตดอนเมือง,rain_gauge,13.91053,100.59492,ดอนเมือง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.SMI.01,สำนักงานเขตสายไหม,rain_gauge,13.89531,100.6609,สายไหม,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKA.01,สำนักงานเขตบางเขน,rain_gauge,13.87349,100.59643,บางเขน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.HKG.01,สำนักงานเขตห้วยขวาง,rain_gauge,13.77678,100.57906,ห้วยขวาง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.WTL.01,สำนักงานเขตวังทองหลาง,rain_gauge,13.76435,100.60553,วังทองหลาง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.RTW.01,สำนักงานเขตราชเทวี,rain_gauge,13.75917,100.53405,ราชเทวี,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.LPW.01,สำนักงานเขตลาดพร้าว,rain_gauge,13.80353,100.60746,ลาดพร้าว,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.KSW.01,สำนักงานเขตคลองสามวา,rain_gauge,13.8599,100.70424,คลองสามวา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.MBR.01,สำนักงานเขตมีนบุรี,rain_gauge,13.8136,100.73122,มีนบุรี,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.NJK.01,สำนักงานเขตหนองจอก,rain_gauge,13.85584,100.86259,หนองจอก,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKE.04,บ่อสูบน้ำหมู่บ้านเศรษฐกิจ ซอย 26,rain_gauge,13.72167,100.37676,บางแค,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.SPS.01,สำนักงานเขตสะพานสูง,rain_gauge,13.76881,100.68545,สะพานสูง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PWT.01,สำนักงานเขตประเวศ,rain_gauge,13.71701,100.69472,ประเวศ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.SLG.01,สำนักงานเขตสวนหลวง,rain_gauge,13.73043,100.65154,สวนหลวง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKM.01,สำนักงานเขตบึงกุ่ม,rain_gauge,13.7855,100.66949,บึงกุ่ม,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.WTN.01,สำนักงานเขตวัฒนา,rain_gauge,13.74248,100.58571,วัฒนา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.KTY.01,สำนักงานเขตคลองเตย,rain_gauge,13.70791,100.58363,คลองเตย,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PKN.01,สำนักงานเขตพระโขนง,rain_gauge,13.70233,100.60197,พระโขนง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BNA.01,สำนักงานเขตบางนา,rain_gauge,13.68095,100.59184,บางนา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.TBR.01,สำนักงานเขตธนบุรี,rain_gauge,13.72497,100.48558,ธนบุรี,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.KSN.01,สำนักงานเขตคลองสาน,rain_gauge,13.73044,100.50947,คลองสาน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKN.01,สำนักงานเขตบางกอกน้อย,rain_gauge,13.77078,100.46806,บางกอกน้อย,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKY.01,สำนักงานเขตบางกอกใหญ่,rain_gauge,13.72332,100.47622,บางกอกใหญ่,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BPD.01,สำนักงานเขตบางพลัด,rain_gauge,13.79429,100.50479,บางพลัด,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.TLC.01,สำนักงานเขตตลิ่งชัน,rain_gauge,13.77663,100.45653,ตลิ่งชัน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PSC.01,สำนักงานเขตภาษีเจริญ,rain_gauge,13.71441,100.43696,ภาษีเจริญ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.JTG.01,สำนักงานเขตจอมทอง,rain_gauge,13.67744,100.48427,จอมทอง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.RBN.01,สำนักงานเขตราษฎร์บูรณะ,rain_gauge,13.68207,100.50586,ราษฏร์บูรณะ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.TKU.01,สำนักงานเขตทุ่งครุ,rain_gauge,13.61135,100.50878,ทุ่งครุ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.TWW.01,สำนักงานเขตทวีวัฒนา,rain_gauge,13.77281,100.35324,ทวีวัฒนา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKE.01,สำนักงานเขตบางแค,rain_gauge,13.69622,100.40919,บางแค,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BBN.01,สำนักงานเขตบางบอน,rain_gauge,13.63392,100.36884,บางบอน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKT.01,สำนักงานเขตบางขุนเทียน,rain_gauge,13.66083,100.43531,บางขุนเทียน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.NKM.01,สำนักงานเขตหนองแขม,rain_gauge,13.70574,100.34931,หนองแขม,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BSU.04,บ่อสูบน้ำสะพานขวา ถนนประชาราษฎร์ สาย 2,rain_gauge,13.80501,100.52844,บางซื่อ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.LSI.03,จุดวัดศูนย์ราชการ-ถ.แจ้งวัฒนะ,rain_gauge,13.8921,100.56383,หลักสี่,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.SMI.04,จุดวัดซอยแอนเน็กซ์,rain_gauge,13.93786,100.62661,สายไหม,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.CTC.03,จุดวัดถนนเทศบาลสงเคราะห์,rain_gauge,13.83978,100.54175,จตุจักร,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.RTW.03,อาคารรับน้ำบึงมักกะสัน,rain_gauge,13.75665,100.54839,ราชเทวี,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKE.03,สถานีสูบน้ำคลองบางจาก,rain_gauge,13.71471,100.39555,บางแค,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PNK.03,ปากคลองตลาด,rain_gauge,13.74228,100.49454,พระนคร,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.DDG.02,ศูนย์ควบคุมระบบป้องกันน้ำท่วมกรุงเทพมหานคร สำนักการระบายน้ำ,rain_gauge,13.76902,100.55452,ดินแดง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.SMI.02,ประตูระบายน้ำ คลองสองสายใต้,rain_gauge,13.92314,100.63447,สายไหม,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.SMI.03,ประตูระบายน้ำ คลองพระยาสุเรนทร์,rain_gauge,13.92126,100.68741,สายไหม,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.KSW.02,ประตูระบายน้ำ คลองสามวา,rain_gauge,13.85954,100.72909,คลองสามวา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKA.02,จุดวัดคลองบางบัว,rain_gauge,13.85796,100.58682,บางเขน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.LSI.02,สถานีสูบน้ำ คลองตาอูฐ,rain_gauge,13.89981,100.58666,หลักสี่,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.KNY.02,จุดวัดคลองลำชะล่า ตอนถนนนวมินทร์,rain_gauge,13.83637,100.66131,คันนายาว,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.MBR.02,ประตูระบายน้ำ คลองแสนแสบ ตอนถนนประชาร่วมใจ,rain_gauge,13.8212,100.74717,มีนบุรี,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BSU.02,สถานีสูบน้ำ คลองบางเขนใหม่,rain_gauge,13.81729,100.5105,บางซื่อ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.MBR.03,ประตูระบายน้ำ คลองบึงขวาง,rain_gauge,13.79988,100.74482,มีนบุรี,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BSU.03,สถานีสูบน้ำ คลองบางซื่อ,rain_gauge,13.80023,100.51848,บางซื่อ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.SPS.02,ประตูระบายน้ำ คลองแสนแสบ ตอนบางชัน,rain_gauge,13.79734,100.70451,สะพานสูง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.WTL.02,ประตูระบายน้ำ คลองลาดพร้าว,rain_gauge,13.79432,100.58933,วังทองหลาง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.DST.02,สถานีสูบน้ำ คลองสามเสน,rain_gauge,13.78483,100.50825,ดุสิต,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.WTL.03,สถานีสูบน้ำ คลองเจ้าคุณสิงห์,rain_gauge,13.7616,100.61525,วังทองหลาง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PNK.02,สถานีสูบน้ำ เทเวศร์,rain_gauge,13.77191,100.5011,พระนคร,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.RTW.02,จุดวัดคลองสามเสน ตอน รพ.พระมงกุฎเกล้า,rain_gauge,13.76898,100.53477,ราชเทวี,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKP.02,จุดวัดคลองเแสนแสบ ตอนสำนักงานเขตบางกะปิ,rain_gauge,13.76528,100.64773,บางกะปิ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.HKG.02,สถานีสูบน้ำ คลองสามเสน ตอนคลองแสนแสบ,rain_gauge,13.74842,100.5992,ห้วยขวาง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.WTN.02,สถานีสูบน้ำคลองแสนแสบ ตอนคลองตัน,rain_gauge,13.7411,100.5964,วัฒนา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BRK.02,สถานีสูบน้ำ กรุงเกษม,rain_gauge,13.73042,100.51397,บางรัก,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.LKB.02,ประตูระบายน้ำ คลองประเวศบุรีรมย์ ตอนลาดกระบัง,rain_gauge,13.72398,100.78407,ลาดกระบัง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PWT.02,ประตูระบายน้ำ คลองประเวศบุรีรมย์ ตอนวัดกระทุ่มเสือปลา,rain_gauge,13.7241,100.68957,ประเวศ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.STN.02,สถานีสูบน้ำ คลองสาทร,rain_gauge,13.71839,100.51496,สาทร,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.SLG.02,จุดวัดคลองประเวศบุรีรมย์ ตอนวัดขจรศิริ,rain_gauge,13.71545,100.6415,สวนหลวง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.KTY.02,สถานีสูบน้ำ พระราม 4,rain_gauge,13.7087,100.55457,คลองเตย,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.KTY.03,สถานีสูบน้ำ พระโขนง,rain_gauge,13.70857,100.59542,คลองเตย,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.KTY.04,สถานีสูบน้ำ คลองเตย,rain_gauge,13.70628,100.58752,คลองเตย,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PKN.02,สถานีสูบน้ำ คลองเจ็ก,rain_gauge,13.69223,100.58991,พระโขนง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKL.02,สถานีสูบน้ำ คลองวัดไทร,rain_gauge,13.68653,100.51643,บางคอแหลม,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PKN.03,สถานีสูบน้ำ คลองบางอ้อ,rain_gauge,13.68212,100.59254,พระโขนง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BNA.02,สถานีสูบน้ำ คลองบางนา,rain_gauge,13.67493,100.58757,บางนา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BNA.03,จุดวัดคลองบางนา ตอนถนนศรีนครินทร์,rain_gauge,13.66106,100.63942,บางนา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.SPK.01,สถานีสูบน้ำ คลองสำโรง,rain_gauge,13.64819,100.59514,อำเภอเมืองสมุทรปราการ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.NJK.02,สถานีสูบน้ำ คลองแสนแสบ หนองจอก,rain_gauge,13.85516,100.87292,หนองจอก,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.YNW.02,สถานีสูบน้ำช่องนนทรี,rain_gauge,13.69493,100.54874,ยานนาวา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PKN.04,สถานีสูบน้ำ คลองบางจาก,rain_gauge,13.6891,100.59068,พระโขนง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.YNW.03,ประตูระบายน้ำ คลองวัดด่าน,rain_gauge,13.67071,100.54018,ยานนาวา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.CTC.02,สถานีสูบน้ำ รัชดา-วิภาวดี,rain_gauge,13.83022,100.55723,จตุจักร,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PTW.02,สถานีสูบน้ำ คลองอรชร,rain_gauge,13.74807,100.53618,ปทุมวัน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.KTY.05,สถานีวัดน้ำฝน อุทยานเบญจสิริ,rain_gauge,13.73159,100.56745,คลองเตย,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.KSW.03,จุดวัดคลองเก้า ตอนวัดศรีสุขสถาพร,rain_gauge,13.92046,100.79228,คลองสามวา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.NJK.03,จุดวัดคลองสิบสอง ตอนถนนประชาสำราญ,rain_gauge,13.91368,100.86244,หนองจอก,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.NJK.04,ประตูระบายน้ำ คลองสิบสาม,rain_gauge,13.85859,100.86754,หนองจอก,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.NJK.07,จุดวัดคลองแสนแสบ ตอนวัดทรัพย์สโมสรนิกรเกษม,rain_gauge,13.8515,100.80361,หนองจอก,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.NJK.05,ประตูระบายน้ำ คลองหลวงแพ่ง,rain_gauge,13.81321,100.93742,หนองจอก,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.MBR.05,จุดวัดคลองบึงใหญ่ ตอนวัดทองสัมฤทธิ์,rain_gauge,13.80045,100.78827,มีนบุรี,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.NJK.06,จุดวัดคลองลำผักชี ตอนโรงเรียนลำผักชี,rain_gauge,13.79205,100.83524,หนองจอก,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.LKB.03,จุดวัดคลองประเวศบุรีรมย์ ตอน รพ.ลาดกระบัง,rain_gauge,13.72386,100.74979,ลาดกระบัง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.LKB.04,จุดวัดคลองประเวศบุรีรมย์ ตอนถนนร่วมพัฒนา,rain_gauge,13.70097,100.85106,ลาดกระบัง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PWT.03,จุดวัดบึงหนองบอน,rain_gauge,13.69529,100.65375,ประเวศ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.TWW.02,ประตูระบายน้ำ คลองทวีวัฒนา,rain_gauge,13.80045,100.3297,ทวีวัฒนา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.TLC.02,ประตูระบายน้ำ คลองบัว ตอนทางรถไฟสายใต้,rain_gauge,13.79974,100.41609,ตลิ่งชัน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.TLC.03,สถานีสูบน้ำ คลองชักพระ,rain_gauge,13.77892,100.465,ตลิ่งชัน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKN.02,สถานีสูบน้ำ คลองมอญ,rain_gauge,13.74714,100.48531,บางกอกน้อย,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PSC.03,จุดวัดคลองบางเชือกหนัง ตอนถนนพุทธมณฑลสาย 1,rain_gauge,13.74223,100.42765,ภาษีเจริญ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKY.02,สถานีสูบน้ำ คลองบางกอกใหญ่,rain_gauge,13.74022,100.49012,บางกอกใหญ่,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PSC.04,สถานีสูบน้ำ คลองภาษีเจริญ,rain_gauge,13.72204,100.46863,ภาษีเจริญ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKE.02,จุดวัดคลองภาษีเจริญ ตอนคลองราชมนตรี,rain_gauge,13.70754,100.42622,บางแค,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.TBR.02,สถานีสูบน้ำ คลองสำเหร่,rain_gauge,13.7067,100.49646,ธนบุรี,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.JTG.02,จุดวัดคลองสนามชัย ตอนคลองบางขุนเทียน,rain_gauge,13.70123,100.46491,จอมทอง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.TBR.03,สถานีสูบน้ำ คลองดาวคะนอง,rain_gauge,13.6949,100.48758,ธนบุรี,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.NKM.02,จุดวัดคลองทวีวัฒนา ตอนคลองภาษีเจริญ,rain_gauge,13.69168,100.38097,หนองแขม,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.JTG.03,สถานีสูบน้ำ คลองสี่บาท,rain_gauge,13.67325,100.44615,จอมทอง,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.RBN.02,สถานีสูบน้ำ คลองแจงร้อน,rain_gauge,13.67627,100.52097,ราษฏร์บูรณะ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.TKU.02,ประตูระบายน้ำ คลองรางจาก ตอนถนนประชาอุทิศ,rain_gauge,13.63494,100.50218,ทุ่งครุ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKT.02,สถานีสูบน้ำ คลองเลนเปน,rain_gauge,13.607,100.41311,บางขุนเทียน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKT.03,สถานีสูบน้ำ คลองระหาญ,rain_gauge,13.60381,100.39465,บางขุนเทียน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKT.04,สถานีสูบน้ำ คลองพระยาราชมนตรี,rain_gauge,13.62782,100.4394,บางขุนเทียน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.KSN.02,สถานีสูบน้ำ คลองบางไส้ไก่,rain_gauge,13.70692,100.49737,คลองสาน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.TWW.03,ประตูระบายน้ำ คลองขุนศรีบุรีรักษ์ ตอนคลองมหาสวัสดิ์,rain_gauge,13.80244,100.3707,ทวีวัฒนา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PSC.05,จุดวัดคลองบางเชือกหนัง ตอนวัดปากน้ำฝั่งใต้,rain_gauge,13.74357,100.45954,ภาษีเจริญ,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.TWW.04,จุดวัดคลองทวีวัฒนา ตอนคลองบางเชือกหนัง,rain_gauge,13.75037,100.35351,ทวีวัฒนา,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.NKM.03,จุดวัดคลองภาษีเจริญ ตอนคลองมหาศร,rain_gauge,13.68142,100.3504,หนองแขม,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BBN.02,จุดวัดคลองบางบอน ตอนคลองสะแกงาม,rain_gauge,13.64255,100.37952,บางบอน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.BKT.05,สถานีสูบน้ำ คลองสนามชัย,rain_gauge,13.63802,100.44763,บางขุนเทียน,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+RF.PYT.02,จุดวัดคลองสามเสน ตอนถนนพระรามที่ 6,rain_gauge,13.77292,100.52991,พญาไท,1,TYPE_INFERRED,OFFICIAL_REPORTED,node_type inferred from station_code prefix
+FW.SBR.01,ประตูระบายน้ำคลองขุนศรีบุรีรักษ์,other,13.80236,100.37023,ทวีวัฒนา,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.KKY.01,ประตูระบายน้ำคลองควาย,other,13.80193,100.38023,ทวีวัฒนา,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.KSO.01,ประตูระบายน้ำคลองซอย,other,13.80242,100.34852,ทวีวัฒนา,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.TWW.01,ประตูระบายน้ำคลองทวีวัฒนา,other,13.79986,100.32988,ทวีวัฒนา,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.BKA.02,สถานีสูบน้ำคลองบางเขนใหม่,other,13.81836,100.51173,บางซื่อ,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.BSU.01,สถานีสูบน้ำคลองบางซื่อ,other,13.80012,100.51957,บางซื่อ,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.BKG.01,ประตูระบายน้ำคลองบึงขวาง,other,13.7998,100.74381,มีนบุรี,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.LKB.01,ประตูระบายน้ำลาดกระบัง,other,13.72417,100.74679,ลาดกระบัง,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.RMT.01,สถานีสูบน้ำคลองพระยาราชมนตรี,other,13.62817,100.43914,บางขุนเทียน,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.PSR.01,ประตูระบายน้ำคลองพระยาสุเรนทร์,other,13.92166,100.68734,สายไหม,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.LMT.01,ประตูระบายน้ำคลองลำหม้อแตก,other,13.92105,100.66206,มีนบุรี,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.K2W.01,ประตูระบายน้ำคลองสองตะวันตก,other,13.86395,100.72249,คลองสามวา,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.SST.01,ประตูระบายน้ำคลองสองสายใต้,other,13.92255,100.63445,สายไหม,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.SSN.01,สถานีสูบน้ำคลองสามเสน,other,13.78395,100.50904,ดุสิต,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.K3W.01,ประตูระบายน้ำคลองสามตะวันตก,other,13.87953,100.72227,คลองสามวา,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.KSW.01,ประตูระบายน้ำคลองสามวา,other,13.85903,100.72924,คลองสามวา,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.K4W.01,ประตูระบายน้ำคลองสี่ตะวันตก,other,13.89576,100.722,คลองสามวา,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.KNG.01,ประตูระบายน้ำคลองหนึ่ง,other,13.85026,100.7325,คลองสามวา,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.SSB.03,ประตูระบายน้ำคลองแสนแสบ-มีนบุรี,other,13.82095,100.74692,มีนบุรี,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.PNJ.01,สถานีสูบน้ำคลองขุนราชพินิจใจ,other,13.57202,100.44576,บางขุนเทียน,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.PKG.01,จุดวัดสะพานพระราม 8,other,13.76691,100.49455,บางพลัด,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.SSM.01,ประตูระบายน้ำคลองสิบสาม,other,13.85944,100.86848,หนองจอก,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.PWT.01,จุดวัดคลองประเวศบุรีรมย์ ตอนวัดขจรศิริ,other,13.71545,100.6415,สวนหลวง,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.LPW.01,ประตูระบายน้ำคลองลาดพร้าว,other,13.79444,100.58936,วังทองหลาง,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.SSB.02,จุดวัดคลองแสนแสบ ตอนเขตบางกะปิ,other,13.76508,100.6479,บางกะปิ,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.SSB.01,สถานีสูบน้ำคลองแสนแสบ ตอนคลองตัน,other,13.7411,100.5964,วัฒนา,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.KPM.01,จุดวัดคลองเปรมประชากร ตอนวัดเทวสุนทร,other,13.85081,100.56118,บางซื่อ,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.KPM.02,จุดวัดคลองเปรมประชากร ตอนซอยประชาชื่น 4 แยก 1-4,other,13.81061,100.53903,จตุจักร,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.BBU.01,จุดวัดคลองบางบัว,other,13.85787,100.5869,บางเขน,2,UNVERIFIED,OFFICIAL_REPORTED,
+FW.PSC.01,จุดวัดคลองภาษีเจริญ ตอนคลองมหาศร,other,13.68142,100.3504,หนองแขม,2,UNVERIFIED,OFFICIAL_REPORTED,
+FL.CTC.01,ถ.รัชดาภิเษก ช่วงแยกลาดพร้าว (หน้าธนาคารกรุงเทพ),other,13.8087,100.57528,จตุจักร,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.CTC.02,ถ.กำแพงเพชร 3,other,13.80304,100.55203,จตุจักร,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.STN.01,ถ.จันทน์ ซอย 28/2,other,13.70745,100.52105,สาทร,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.STN.02,ถ.เซนต์หลุยส์ 3,other,13.70661,100.52676,สาทร,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.STN.03,ถ.สาธุประดิษฐ์ ซอย 2,other,13.70535,100.52882,สาทร,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BKM.01,ถ.นวมินทร์ ช่วงซอย 46 (สันติอโศก),other,13.79619,100.65096,บึงกุ่ม,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PYT.01,ถ.พหลโยธิน ช่วงหน้าสนามเป้า,other,13.77169,100.54166,พญาไท,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PYT.02,ถ.พหลโยธิน ช่วงสะพานควาย,other,13.7894,100.54802,พญาไท,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.CTC.03,ถ.พหลโยธิน ช่วงแยกเกษตร,other,13.83882,100.5752,จตุจักร,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.LSI.01,ซ.แจ้งวัฒนะ 14,other,13.89569,100.56128,หลักสี่,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PKN.01,ถ.สุขุมวิท ช่วงซอยสุขุมวิท 62,other,13.6959,100.60602,พระโขนง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PTW.01,ถ.พระรามที่ 1 ช่วงสนามกีฬาแห่งชาติ,other,13.74646,100.52861,ปทุมวัน,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PYT.03,ถ.พระราม6 ช่วงทางด่วน,other,13.78645,100.53561,พญาไท,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DST.01,ถ.พิษณุโลก ช่วงบ้านพิษณุโลก,other,13.76021,100.51704,ดุสิต,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.HKG.01,ถ.เพชรบุรีตัดใหม่ ช่วงสิงห์คอมเพล็กซ์,other,13.74857,100.56524,ห้วยขวาง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PWT.01,ถ.ศรีนครินทร์ ช่วงซีคอนสแควร์,other,13.69291,100.64738,ประเวศ,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DDG.01,ถ.รัชดาภิเษก ช่วงแยกเทียมร่วมมิตร,other,13.76955,100.57265,ดินแดง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.WTL.01,ถ.ลาดพร้าว ช่วงตัดถนนประดิษฐ์มนูธรรม,other,13.78651,100.60887,วังทองหลาง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BKL.01,ถ.เจริญกรุง ช่วงวัดราชสิงขร,other,13.70542,100.50601,บางคอแหลม,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.KTY.01,ถ.พระรามที่ 3 ช่วงตลาดฮ่องกง-ปีนัง,other,13.71547,100.5562,คลองเตย,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.CTC.04,ถ.เทศบาลสงเคราะห์ ช่วงตลาดประชานิเวศน์,other,13.84029,100.54611,จตุจักร,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.WTL.02,ถ.ลาดพร้าว ช่วงซอยลาดพร้าว 89,other,13.78063,100.61937,วังทองหลาง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.CTC.05,ถ.พหลโยธิน หน้ากรมการขนส่งทางบก,other,13.79833,100.5515,จตุจักร,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.CTC.06,ถ.งามวงศ์วาน ช่วงแยกเกษตร,other,13.84041,100.57395,จตุจักร,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.RTW.01,ถ.ศรีอยุธยา ช่วงถนนพญาไท,other,13.75748,100.53565,ราชเทวี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.RTW.02,ถ.เพชรบุรี ช่วงหน้าดอนบอสโก,other,13.74944,100.56007,ราชเทวี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.RTW.03,ถ.เพชรบุรี ช่วงหน้าเมโทร,other,13.74968,100.54682,ราชเทวี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.RTW.04,ถ.พญาไท ช่วงกรมปศุสัตว์,other,13.75563,100.5333,ราชเทวี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.RTW.05,ถ.พระรามที่ 6 ช่วงตลาดประแจจีน,other,13.75812,100.52407,ราชเทวี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.RTW.06,ถ.ราชวิถี ช่วงสวนสันติภาพ,other,13.76373,100.54072,ราชเทวี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.RTW.07,ถ.ศรีอยุธยา ช่วงโรงเรียนสันติราษฏร์วิทยาลัย,other,13.75946,100.53064,ราชเทวี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.RTW.08,ถ.นิคมมักกะสัน แยกราชปรารภ,other,13.75469,100.54269,ราชเทวี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.RTW.09,ถ.บรรทัดทอง ช่วงถนนเพชรบุรี,other,13.75462,100.52689,ราชเทวี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PTW.02,ถ.พญาไท ช่วงมาบุญครอง,other,13.74338,100.53028,ปทุมวัน,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PTW.03,ถ.พระรามที่ 1 ช่วงวัดปทุมวนาราม,other,13.74492,100.53678,ปทุมวัน,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PTW.04,ถ.พระรามที่ 4 หน้าวัน แบงค็อก,other,13.72488,100.54774,ปทุมวัน,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PTW.05,ถ.ราชดำริ หน้าโรงพยาบาลตำรวจ,other,13.74189,100.53985,ปทุมวัน,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DDG.02,ถ.ประชาสงเคราะห์ ตลาดห้วยขวาง,other,13.77672,100.56792,ดินแดง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DDG.03,ถ.ดินแดง ซอยสุทธิพร 2,other,13.75834,100.55712,ดินแดง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DDG.04,ถ.รัชดาภิเษก ช่วงคลองบางซื่อ,other,13.79421,100.57424,ดินแดง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.STN.04,ถ.สวนพลู ช่วงตลาดสวนพลู,other,13.71899,100.53873,สาทร,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BSU.01,ถ.ประชาราษฏร์ แยกเตาปูน,other,13.80609,100.53216,บางซื่อ,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DST.02,ถ.สามเสน ช่วงแยกเกียกกาย,other,13.795,100.52023,ดุสิต,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DST.03,ถ.ศรีอยุธยา ลานพระราชวังดุสิต,other,13.76854,100.51112,ดุสิต,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DST.04,ถ.ราชสีมา แยกอู่ทองนอก,other,13.77218,100.50935,ดุสิต,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DST.05,ถ.นครไชยศรี (กรมสรรพสามิต),other,13.77802,100.52501,ดุสิต,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DST.06,ถ.ราชวิถี เชิงสะพานกรุงธนบุรี,other,13.77899,100.50703,ดุสิต,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PPS.01,ถ.หลานหลวง หน้าธนาคารกรุงไทย,other,13.75655,100.51491,ป้อมปราบศัตรูพ่าย,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PNK.02,ถ.วิสุทธิ์กษัตริย์  หน้าวัดอินทรวิหาร,other,13.7662,100.50231,พระนคร,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.SLG.01,ถ.พัฒนาการ แยกศรีนครินทร์,other,13.73602,100.63801,สวนหลวง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BRK.01,ถ.สุรวงศ์ ช่วงทางด่วน,other,13.7254,100.51689,บางรัก,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BRK.02,ถ.สีลม ช่วงถนนคอนแวนต์,other,13.72768,100.53287,บางรัก,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.SPW.01,ถ.เจริญกรุง แยกแปลงนาม,other,13.74071,100.5118,สัมพันธวงศ์,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.SPW.02,ถ.เยาวราช ช่วงแยกราชวงศ์,other,13.74186,100.50753,สัมพันธวงศ์,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PPS.02,ถ.หลวง ช่วงวัดเทพศิรินทราวาส,other,13.74621,100.51292,ป้อมปราบศัตรูพ่าย,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.LSI.02,ถ.งามวงศ์วาน แยกพงษ์เพชร,other,13.85473,100.54821,หลักสี่,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.LSI.03,ถ.แจ้งวัฒนะ หน้าศาลปกครองกลาง,other,13.89032,100.56792,หลักสี่,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PYT.04,ถ.สุทธิสารวินิจฉัย ซอย 19,other,13.78906,100.55674,พญาไท,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BNA.01,ถ.สุขุมวิท ช่วงกรมอุตุนิยมวิทยา,other,13.66619,100.60381,บางนา,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.WTN.01,ซ.สุขุมวิท 39 (ซอยพร้อมพงษ์),other,13.73663,100.57171,วัฒนา,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BKE.01,ถ.เพชรเกษม แยกวงแหวนกาญจนาภิเษก,other,13.71064,100.40502,บางแค,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BKE.02,ถ.เพชรเกษม ช่วงซอยวัดม่วง,other,13.70927,100.39139,บางแค,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.KSN.01,ถ.ลาดหญ้า วงเวียนใหญ่,other,13.72687,100.49486,คลองสาน,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.JTG.01,ถ.จอมทอง ช่วงแยกจอมทอง,other,13.6991,100.46759,จอมทอง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BBN.01,ถ.เอกชัย ช่วงห้างบิ๊กซีบางบอน,other,13.67942,100.43563,บางบอน,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BKN.01,ถ.อิสรภาพ ช่วงตลาดพรานนก,other,13.7547,100.4781,บางกอกน้อย,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.CTC.07,ซ.เสนานิคม,other,13.83469,100.57972,จตุจักร,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.KTY.02,ซ.สุขุมวิท 22 (ด้านถนนพระรามที่ 4),other,13.72218,100.56467,คลองเตย,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.WTL.03,ซ.รามคำแหง 43/1,other,13.76635,100.61491,วังทองหลาง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.WTL.04,ซ.รามคำแหง 65 (ซอยมหาดไทย),other,13.76368,100.62394,วังทองหลาง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.LSI.04,ถ.แจ้งวัฒนะขาเข้า (โลตัส),other,13.89468,100.55668,หลักสี่,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.LSI.05,ถ.แจ้งวัฒนะขาออก (มทบ. 11),other,13.89429,100.55657,หลักสี่,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.LSI.06,ถ.งามวงศ์วาน ซอยชินเขต,other,13.8554,100.54781,หลักสี่,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.SMI.01,ถ.พหลโยธิน ช่วงซอยพหลโยธิน 60/1,other,13.93971,100.62453,สายไหม,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BKA.01,ถ.พหลโยธิน ช่วงวงเวียนบางเขน,other,13.87547,100.59757,บางเขน,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BNA.04,ถ.สุขุมวิท ช่วงแบริ่ง,other,13.66106,100.60186,บางนา,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PYT.05,ถ.พหลโยธิน ช่วงซอยสายลม,other,13.78331,100.54605,พญาไท,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PYT.06,ถ.ประดิพัทธ์ ช่วงสะพานควาย,other,13.78994,100.54766,พญาไท,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DST.07,ถ.นครไชยศรี ช่วงตลาดศรีย่าน,other,13.7848,100.51274,ดุสิต,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DDG.05,ถ.รัชดาภิเษก สถานฑูตจีน,other,13.76336,100.56789,ดินแดง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DDG.06,ถ.ประชาสุข ซ.อินทามระ 53,other,13.78278,100.56721,ดินแดง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DDG.07,ถ.วิภาวดี(ขาออก) ช่วงกรมทหารราบที่ 1,other,13.77658,100.55451,ดินแดง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DDG.08,ถ.ดินแดง ช่วงโรงเรียนพิบูลประชาสรรค์,other,13.7624,100.55123,ดินแดง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PYT.07,ถ.พหลโยธิน  ช่วงห้างบิ๊กซีสะพานควาย,other,13.79003,100.54849,พญาไท,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.RTW.10,ถ.ศรีอยุธยา ช่วงโรงเรียนศรีอยุธยา,other,13.75705,100.53852,ราชเทวี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.WTN.02,ถ.อโศกมนตรี ช่วงแยกชิโนไทย,other,13.74046,100.56199,วัฒนา,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.KTY.03,ถ.พระราม 3 ช่วงทางรถไฟ,other,13.71687,100.55732,คลองเตย,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.KTY.04,ถ.พระราม 4 ช่วงกล้วยน้ำไท,other,13.71295,100.59028,คลองเตย,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.KTY.05,ถ.สุนทรโกษา แยก ณ ระนอง,other,13.71716,100.55856,คลองเตย,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BKM.02,ถ.นวมินทร์ ช่วงซอย 135,other,13.82104,100.65482,บึงกุ่ม,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.SLG.02,ถ.รามคำแหง ซอย 3,other,13.74498,100.60299,สวนหลวง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BKP.01,ถ.ลาดพร้าว แม็คโคร,other,13.76972,100.63847,บางกะปิ,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.SLG.03,ถ.พัฒนาการ ช่วงธนาคารกรุงไทย,other,13.73759,100.60946,สวนหลวง,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BKP.02,ถ.ศรีนครินทร์ หน้าบริษัทกรีนสปอร์ต,other,13.75448,100.64576,บางกะปิ,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.PWT.02,ถ.เฉลิมพระเกียรติ ร.9 ช่วงแยกศรีอุดม,other,13.67782,100.64679,ประเวศ,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BNA.02,ถ.ศรีนครินทร์ ช่วงวัดศรีเอี่ยม,other,13.66866,100.64443,บางนา,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BNA.03,ถ.สุขุมวิท ช่วงแยกบางนา,other,13.67062,100.60587,บางนา,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BKN.02,ถ.บรมราชชนนี ช่วงสายใต้,other,13.78705,100.46802,บางกอกน้อย,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BBN.02,ถ.เอกชัย ซอย 60,other,13.67812,100.43297,บางบอน,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BKT.01,ถ.บางขุนเทียน ชายทะเล ช่วงถ.พระรามที่ 2,other,13.65622,100.43026,บางขุนเทียน,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.DST.08,ถ.ราชวิถี หน้ามหาวิทยาลัยสวนดุสิต,other,13.77732,100.51071,ดุสิต,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.MBR.01,ถ.สุวินทวงศ์ ช่วงแยกไปรษณีย์มีนบุรี,other,13.82082,100.7418,มีนบุรี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.RTW.11,ถ.พระรามที่ 6 ช่วงพิพิธภัณฑ์กรมทางหลวง,other,13.75988,100.52524,ราชเทวี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.RTW.12,ถ.พระรามที่ 6 ช่วงกองการพัสดุ กรมทางหลวง,other,13.76043,100.52494,ราชเทวี,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BNA.05,ถ.อุดมสุข ช่วงซอยอุดมสุข 1,other,13.67895,100.60956,บางนา,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.WTN.03,ถ.สุขุมวิท 71 ช่วงซอยปรีดีพนมยงค์ 20,other,13.72295,100.59588,ทวีวัฒนา,3,UNVERIFIED,OFFICIAL_REPORTED,
+FL.BKA.02,ถ.พหลโยธิน ช่วงซอยพหลโยธิน 55/1,other,13.87642,100.5967,บางเขน,3,UNVERIFIED,OFFICIAL_REPORTED,

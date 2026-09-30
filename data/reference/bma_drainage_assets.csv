@@ -1,0 +1,214 @@
+external_station_id,name,node_type,latitude,longitude,district,source_type_code,validation_status,coordinate_evidence_class,notes
+dds011:pak_khlong_talat,Chao Phraya River at Pak Khlong Talat (dds011),river_boundary,,,,,UNVERIFIED,,Possibly the same gauge as telemetry WL.PKG.01; link NOT verified.
+frd:เขตดินแดง|ประชาสงเคราะห์|ปากซอย 24,ประชาสงเคราะห์ — ปากซอย 24,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตประเวศ|เฉลิมพระเกียรติ ร.๙|แยกศรีอุดม (ขาเข้า),เฉลิมพระเกียรติ ร.๙ — แยกศรีอุดม (ขาเข้า),road_node,,,เขตประเวศ,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสวนหลวง|รามคำแหง|อุโมงค์ลอดแยกพระราม 9,รามคำแหง — อุโมงค์ลอดแยกพระราม 9,road_node,,,เขตสวนหลวง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตประเวศ|เฉลิมพระเกียรติ ร.๙|แยกศรีอุดม (ขาออก),เฉลิมพระเกียรติ ร.๙ — แยกศรีอุดม (ขาออก),road_node,,,เขตประเวศ,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท 71|ซอยปรีดีพนมยงค์ 19-25,สุขุมวิท 71 — ซอยปรีดีพนมยงค์ 19-25,road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|รัชดาภิเษก|เเยกเทียมร่วมมิตร,รัชดาภิเษก — เเยกเทียมร่วมมิตร,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|ศรีอยุธยา|โรงเรียนศรีอยุธยา,ศรีอยุธยา — โรงเรียนศรีอยุธยา,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|บรรทัดทอง|ช่วงถนนเพชรบุรี,บรรทัดทอง — ช่วงถนนเพชรบุรี,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสวนหลวง|พัฒนาการ|หน้าธนาคารกรุงไทย,พัฒนาการ — หน้าธนาคารกรุงไทย,road_node,,,เขตสวนหลวง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|พระราม 4|ช่วงซอยสุขุมวิท 46,พระราม 4 — ช่วงซอยสุขุมวิท 46,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางนา|สุขุมวิท 103|ซอยอุดมสุข,สุขุมวิท 103 — ซอยอุดมสุข,road_node,,,เขตบางนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพระโขนง|สุขุมวิท 101/1|วชิรธรรมสาทิต 25 - 32,สุขุมวิท 101/1 — วชิรธรรมสาทิต 25 - 32,road_node,,,เขตพระโขนง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|อินทามระ|ปากซอยอินทามระ 45,อินทามระ — ปากซอยอินทามระ 45,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|ศรีอยุธยา|หน้าโรงเรียนศรีอยุธยา,ศรีอยุธยา — หน้าโรงเรียนศรีอยุธยา,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางพลัด|จรัญสนิทวงศ์|อุโมงค์ทางลอดทางเเยกบางพลัด,จรัญสนิทวงศ์ — อุโมงค์ทางลอดทางเเยกบางพลัด,road_node,,,เขตบางพลัด,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท 71|ช่วง ซอย16 -21 ขาออก,สุขุมวิท 71 — ช่วง ซอย16 -21 ขาออก,road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท 39|กลางซอย - บ่อสูบน้ำสุขุมวิท 39 (ริมคลองเเสนแสบ),สุขุมวิท 39 — กลางซอย - บ่อสูบน้ำสุขุมวิท 39 (ริมคลองเเสนแสบ),road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|พระรามที่ 3|ห้าแยก ณ ระนอง ถึง ตลาดฮ่องกงปีนัง,พระรามที่ 3 — ห้าแยก ณ ระนอง ถึง ตลาดฮ่องกงปีนัง,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุนทรโกษา|ถ.สุนทรโกษา - แยกศุลกากร,สุนทรโกษา — ถ.สุนทรโกษา - แยกศุลกากร,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสาทร|สวนพลู|ช่วงตลาดสวนพลู,สวนพลู — ช่วงตลาดสวนพลู,road_node,,,เขตสาทร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|พระราม 4|ซอยสุขุมวิท 26,พระราม 4 — ซอยสุขุมวิท 26,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางรัก|สุรวงศ์|ช่วงใต้ทางด่วนแยกสุรวงศ์,สุรวงศ์ — ช่วงใต้ทางด่วนแยกสุรวงศ์,road_node,,,เขตบางรัก,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ประชาสุข|ซอยอินทามระ 53,ประชาสุข — ซอยอินทามระ 53,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพญาไท|พหลโยธิน|ปากซอยสายลม,พหลโยธิน — ปากซอยสายลม,road_node,,,เขตพญาไท,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพญาไท|ประดิพัทธ์|แยกสะพานควาย,ประดิพัทธ์ — แยกสะพานควาย,road_node,,,เขตพญาไท,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|รัชดาภิเษก|แยกรัชดาภิเษก ตัด ลาดพร้าว,รัชดาภิเษก — แยกรัชดาภิเษก ตัด ลาดพร้าว,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ประชาสงเคราะห์|ปากซอยประชาสงเคราะห์ 14 - 27,ประชาสงเคราะห์ — ปากซอยประชาสงเคราะห์ 14 - 27,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพญาไท|สุทธิสารวินิจฉัย|แยกสะพานควาย - แยกสุทธิสาร,สุทธิสารวินิจฉัย — แยกสะพานควาย - แยกสุทธิสาร,road_node,,,เขตพญาไท,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางเขน|แจ้งวัฒนะ|วงเวียนบางเขนขาเข้า,แจ้งวัฒนะ — วงเวียนบางเขนขาเข้า,road_node,,,เขตบางเขน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสายไหม|พหลโยธิน|ซอยพหลโยธิน 60/1,พหลโยธิน — ซอยพหลโยธิน 60/1,road_node,,,เขตสายไหม,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตหลักสี่|แจ้งวัฒนะ|หน้า มทบ.11,แจ้งวัฒนะ — หน้า มทบ.11,road_node,,,เขตหลักสี่,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตหลักสี่|แจ้งวัฒนะ|หน้าห้างโลตัส แจ้งวัฒนะ,แจ้งวัฒนะ — หน้าห้างโลตัส แจ้งวัฒนะ,road_node,,,เขตหลักสี่,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางเขน|พหลโยธิน|วงเวียนบางเขน - หน้า สน.บางเขน,พหลโยธิน — วงเวียนบางเขน - หน้า สน.บางเขน,road_node,,,เขตบางเขน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสวนหลวง|พัฒนาการ|แยกศรีนครินทร์,พัฒนาการ — แยกศรีนครินทร์,road_node,,,เขตสวนหลวง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ประชาสงเคราะห์|ตลาดดินแดง - โรงบำบัดน้ำดินแดง,ประชาสงเคราะห์ — ตลาดดินแดง - โรงบำบัดน้ำดินแดง,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสวนหลวง|พัฒนาการ|ปากซอยพัฒนาการ 54,พัฒนาการ — ปากซอยพัฒนาการ 54,road_node,,,เขตสวนหลวง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสวนหลวง|พัฒนาการ|ในซอยพัฒนาการ 54,พัฒนาการ — ในซอยพัฒนาการ 54,road_node,,,เขตสวนหลวง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|รัชดาภิเษก|หน้า ธ.กรุงเทพ,รัชดาภิเษก — หน้า ธ.กรุงเทพ,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|พหลโยธิน|เซ็นทรัลลาดพร้าว,พหลโยธิน — เซ็นทรัลลาดพร้าว,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสวนหลวง|พัฒนาการ|ธ.กรุงไทย,พัฒนาการ — ธ.กรุงไทย,road_node,,,เขตสวนหลวง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางกะปิ|ศรีนครินทร์|บ.กรีนสปอร์ต,ศรีนครินทร์ — บ.กรีนสปอร์ต,road_node,,,เขตบางกะปิ,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตห้วยขวาง||อุโมงค์ทางลอดพระราม9,อุโมงค์ทางลอดพระราม9,road_node,,,เขตห้วยขวาง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบึงกุ่ม|นวมินทร์|นวมินทร์ ซ.135,นวมินทร์ — นวมินทร์ ซ.135,road_node,,,เขตบึงกุ่ม,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|พระราม 4|แยกกล้วยน้ำไท,พระราม 4 — แยกกล้วยน้ำไท,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพญาไท|สุทธิสารวินิจฉัย|แยกสะพานควายถึง ถ.วิภาวดี,สุทธิสารวินิจฉัย — แยกสะพานควายถึง ถ.วิภาวดี,road_node,,,เขตพญาไท,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวังทองหลาง|ลาดพร้าว|ลาดพร้าว ซ.89,ลาดพร้าว — ลาดพร้าว ซ.89,road_node,,,เขตวังทองหลาง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ประชาสุข|ประชาสุข ซ.53,ประชาสุข — ประชาสุข ซ.53,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|พหลโยธิน|ซ.เสนานิคม,พหลโยธิน — ซ.เสนานิคม,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตหลักสี่|แจ้งวัฒนะ|หน้าโลตัส,แจ้งวัฒนะ — หน้าโลตัส,road_node,,,เขตหลักสี่,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตหลักสี่|แจ้งวัฒนะ|มทบ.11,แจ้งวัฒนะ — มทบ.11,road_node,,,เขตหลักสี่,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางซื่อ|ประชาราษฎร์2|แยกเตาปูน,ประชาราษฎร์2 — แยกเตาปูน,road_node,,,เขตบางซื่อ,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|พหลโยธิน|ห้าแยกลาดพร้าวถึง ค.บางซื่อ,พหลโยธิน — ห้าแยกลาดพร้าวถึง ค.บางซื่อ,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางเขน|แจ้งวัฒนะ|วงเวียนบางเขน,แจ้งวัฒนะ — วงเวียนบางเขน,road_node,,,เขตบางเขน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|รัชดาภิเษก|หน้าศาลอาญารัชดา,รัชดาภิเษก — หน้าศาลอาญารัชดา,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|กำแพงเพชร 1|หมอชิตใหม่,กำแพงเพชร 1 — หมอชิตใหม่,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท|สุขุมวิท 39,สุขุมวิท — สุขุมวิท 39,road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ประชาสงเคราะห์|หน้าตลาดห้วยขวาง,ประชาสงเคราะห์ — หน้าตลาดห้วยขวาง,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพญาไท|วิภาวดีรังสิต|ร.1 พัน1 รอ.,วิภาวดีรังสิต — ร.1 พัน1 รอ.,road_node,,,เขตพญาไท,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท 21(อโศก)|ซ.ชิโนทัย,สุขุมวิท 21(อโศก) — ซ.ชิโนทัย,road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพญาไท|พหลโยธิน|แยกสะพานควาย,พหลโยธิน — แยกสะพานควาย,road_node,,,เขตพญาไท,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบึงกุ่ม|นวมินทร์|แยกสันติอโศก,นวมินทร์ — แยกสันติอโศก,road_node,,,เขตบึงกุ่ม,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุนทรโกษา|แยกศุลกากร - แยก ณ ระนอง,สุนทรโกษา — แยกศุลกากร - แยก ณ ระนอง,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุนทรโกษา|แยก ณ ระนอง - ทางรถไฟสายท่าเรือ,สุนทรโกษา — แยก ณ ระนอง - ทางรถไฟสายท่าเรือ,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|เกษมราษฎร์|ทางด่วนท่าเรือ - ค.หัวลำโพง,เกษมราษฎร์ — ทางด่วนท่าเรือ - ค.หัวลำโพง,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|พหลโยธิน|แยกเกษตร,พหลโยธิน — แยกเกษตร,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|พระราม 4|แยกเกษมราษฎร์ - ท้าย ซ.สุขุมวิท 36,พระราม 4 — แยกเกษมราษฎร์ - ท้าย ซ.สุขุมวิท 36,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุขุมวิท|ซ.สุขุมวิท 36 - 42,สุขุมวิท — ซ.สุขุมวิท 36 - 42,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|พระราม 4|กล้วยน้ำไท - สุขุมวิท,พระราม 4 — กล้วยน้ำไท - สุขุมวิท,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุขุมวิท|ซ.สุขุมวิท 26,สุขุมวิท — ซ.สุขุมวิท 26,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท 71|ค.บางมะเขือ - บ่อสูบคลองตัน,สุขุมวิท 71 — ค.บางมะเขือ - บ่อสูบคลองตัน,road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท|แยกเอกมัย - ค.พระโขนง,สุขุมวิท — แยกเอกมัย - ค.พระโขนง,road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|กำแพงเพชร 2|หน้า เจเจมอล์ล,กำแพงเพชร 2 — หน้า เจเจมอล์ล,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|พหลโยธิน|แยกรัชโยธิน-เซ็นทรัลลาดพร้าว,พหลโยธิน — แยกรัชโยธิน-เซ็นทรัลลาดพร้าว,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวังทองหลาง|รามคำแหง|ซอยรามคำแหง21,รามคำแหง — ซอยรามคำแหง21,road_node,,,เขตวังทองหลาง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตห้วยขวาง|พระราม 9|ซอยทวีมิตร อสมท.,พระราม 9 — ซอยทวีมิตร อสมท.,road_node,,,เขตห้วยขวาง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ดินแดง|หน้าซอยสุทธิพร 2,ดินแดง — หน้าซอยสุทธิพร 2,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ประชาสุข|ปากซอย,ประชาสุข — ปากซอย,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพญาไท|วิภาวดีรังสิต|หน้ากรมทหาร,วิภาวดีรังสิต — หน้ากรมทหาร,road_node,,,เขตพญาไท,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ประชาสงเคราะห์|ปากซอย 14 - 24,ประชาสงเคราะห์ — ปากซอย 14 - 24,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสาทร|สาธุประดิษฐ์|แยกถนนจันทน์ - สาธุประดิษฐ์ 16,สาธุประดิษฐ์ — แยกถนนจันทน์ - สาธุประดิษฐ์ 16,road_node,,,เขตสาทร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางเขน|แจ้งวัฒนะ|วงเวียนบางเขน  (ขาเข้า),แจ้งวัฒนะ — วงเวียนบางเขน  (ขาเข้า),road_node,,,เขตบางเขน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพญาไท|ประดิพัทธิ|แยกสะพานควาย,ประดิพัทธิ — แยกสะพานควาย,road_node,,,เขตพญาไท,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|เทศบาลสงเคราะห์|หน้าตลาดประชานิเวศน์,เทศบาลสงเคราะห์ — หน้าตลาดประชานิเวศน์,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|กำแพงเพชร 3|ถนนกำแพงเพชร,กำแพงเพชร 3 — ถนนกำแพงเพชร,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตหลักสี่|งามวงศ์วาน|ตลาดพงษ์เพชร,งามวงศ์วาน — ตลาดพงษ์เพชร,road_node,,,เขตหลักสี่,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|รัชดาภิเษก|หน้าแบงค์กรุงเทพ,รัชดาภิเษก — หน้าแบงค์กรุงเทพ,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพญาไท|สุทธิสารวินิจฉัย|แยกสุทธิสาร - สะพานควาย,สุทธิสารวินิจฉัย — แยกสุทธิสาร - สะพานควาย,road_node,,,เขตพญาไท,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตหลักสี่|งามวงศ์วาน|ซอยชินเขต,งามวงศ์วาน — ซอยชินเขต,road_node,,,เขตหลักสี่,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสายไหม|พหลโยธิน|ช่วงซอยพหลโยธิน 60/1,พหลโยธิน — ช่วงซอยพหลโยธิน 60/1,road_node,,,เขตสายไหม,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|พหลโยธิน|กองบังคับการปราบปราม,พหลโยธิน — กองบังคับการปราบปราม,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตหลักสี่|วิภาวดีรังสิต|หน้าปั็ม ปตทถึงแยกหลักสี่,วิภาวดีรังสิต — หน้าปั็ม ปตทถึงแยกหลักสี่,road_node,,,เขตหลักสี่,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตหลักสี่|แจ้งวัฒนะ|มทบ 11,แจ้งวัฒนะ — มทบ 11,road_node,,,เขตหลักสี่,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสายไหม|พหลโยธิน|พหลโยธิน 60/1,พหลโยธิน — พหลโยธิน 60/1,road_node,,,เขตสายไหม,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|บรรทัดทอง|แยกเพชรบุรี,บรรทัดทอง — แยกเพชรบุรี,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตหลักสี่|แจ้งวัฒนะ|หน้าโลตัสหลักสี่,แจ้งวัฒนะ — หน้าโลตัสหลักสี่,road_node,,,เขตหลักสี่,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสาทร|สาธุประดิษฐ์|ปากซอย 2,สาธุประดิษฐ์ — ปากซอย 2,road_node,,,เขตสาทร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตห้วยขวาง|รัชดาภิเษก|ซอยเทียมร่วมมิตร,รัชดาภิเษก — ซอยเทียมร่วมมิตร,road_node,,,เขตห้วยขวาง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ประชาสงเคราะห์|ตลาดเช้า-แยกองค์พระ,ประชาสงเคราะห์ — ตลาดเช้า-แยกองค์พระ,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท 39|ซอยสุขุมวิท 39,สุขุมวิท 39 — ซอยสุขุมวิท 39,road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวังทองหลาง|ลาดพร้าว|ซอยลาดพร้าว 64 แยก 14,ลาดพร้าว — ซอยลาดพร้าว 64 แยก 14,road_node,,,เขตวังทองหลาง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางแค|เพชรเกษม|แยกวงแหวนบางแค,เพชรเกษม — แยกวงแหวนบางแค,road_node,,,เขตบางแค,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|เพชรบุรี|บรรทัดทอง,เพชรบุรี — บรรทัดทอง,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองสาน|เจริญนคร|สะพานสาทร - คลองต้นไทร,เจริญนคร — สะพานสาทร - คลองต้นไทร,road_node,,,เขตคลองสาน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตลาดกระบัง|หลวงแพ่ง|หน้าห้างโลตัส,หลวงแพ่ง — หน้าห้างโลตัส,road_node,,,เขตลาดกระบัง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตตลิ่งชัน|พุทธมณฑลสาย 1|ตลาดสายใต้เซ็นเตอร์,พุทธมณฑลสาย 1 — ตลาดสายใต้เซ็นเตอร์,road_node,,,เขตตลิ่งชัน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางขุนเทียน|ท่าข้าม|คลองกล้วย - ซอยท่าข้าม 61/1,ท่าข้าม — คลองกล้วย - ซอยท่าข้าม 61/1,road_node,,,เขตบางขุนเทียน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|พระราม 4|แยกกล้วยน้ำไทย - แยกพระโขนง,พระราม 4 — แยกกล้วยน้ำไทย - แยกพระโขนง,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางนา|อุดมสุข|หน้าตลาดอุดม,อุดมสุข — หน้าตลาดอุดม,road_node,,,เขตบางนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางนา|สุขุมวิท|แยกบางนา,สุขุมวิท — แยกบางนา,road_node,,,เขตบางนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพระโขนง|สุขุมวิท101/1|ปากซอยวชิรธรรมสาธิต 25,สุขุมวิท101/1 — ปากซอยวชิรธรรมสาธิต 25,road_node,,,เขตพระโขนง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุขุมวิท26|หน้าโรงแรมโฟร์วิง,สุขุมวิท26 — หน้าโรงแรมโฟร์วิง,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางนา|สรรพาวุธ|แยกสรรพาวุธ,สรรพาวุธ — แยกสรรพาวุธ,road_node,,,เขตบางนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางแค|เพชรเกษม|ซอยวัดม่วง,เพชรเกษม — ซอยวัดม่วง,road_node,,,เขตบางแค,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางแค|หมู่บ้านเศรษฐกิจ|ซ.3 - วงเวียนอู่ทอง,หมู่บ้านเศรษฐกิจ — ซ.3 - วงเวียนอู่ทอง,road_node,,,เขตบางแค,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสาทร|สวนพลู|เทคนิคกรุงเทพ,สวนพลู — เทคนิคกรุงเทพ,road_node,,,เขตสาทร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุนทรโกษา|แยก ณ ระนอง,สุนทรโกษา — แยก ณ ระนอง,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางรัก|สุรวงศ์|ทางด่วน,สุรวงศ์ — ทางด่วน,road_node,,,เขตบางรัก,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|เพชรบุรี|ถนนบรรทัดทอง,เพชรบุรี — ถนนบรรทัดทอง,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|พระราม 3|ฮ่องกง-ปีนัง,พระราม 3 — ฮ่องกง-ปีนัง,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|พระราม 3|ทางรถไฟ,พระราม 3 — ทางรถไฟ,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตปทุมวัน|พระราม 1|สนามกีฬา,พระราม 1 — สนามกีฬา,road_node,,,เขตปทุมวัน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|ศรีอยุธยา|หน้าวังสวนผักกาด,ศรีอยุธยา — หน้าวังสวนผักกาด,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|ศรีอยุธยา|หน้าโรงเรียนสันติราษฏร์,ศรีอยุธยา — หน้าโรงเรียนสันติราษฏร์,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุขุมวิท|ถ.สุขุมวิท26 - พระราม 4,สุขุมวิท — ถ.สุขุมวิท26 - พระราม 4,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|พญาไท|กรมปศุสัตว์,พญาไท — กรมปศุสัตว์,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพระนคร|สนามไชย|วัดโพธิ์,สนามไชย — วัดโพธิ์,road_node,,,เขตพระนคร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองสาน|เจริญนคร|ซอย3 - ไอคอนสยาม,เจริญนคร — ซอย3 - ไอคอนสยาม,road_node,,,เขตคลองสาน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|พระราม 4|สุนทรโกษา - แสนสบาย,พระราม 4 — สุนทรโกษา - แสนสบาย,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสาทร|นางลิ้นจี่|แยกถนนจันทร์-ซอยเทคนิคกรุงเทพ,นางลิ้นจี่ — แยกถนนจันทร์-ซอยเทคนิคกรุงเทพ,road_node,,,เขตสาทร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสาทร|นราธิวาสราชนครินทร์|ซอย17-แยกเทคนิคกรุงเทพ,นราธิวาสราชนครินทร์ — ซอย17-แยกเทคนิคกรุงเทพ,road_node,,,เขตสาทร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุนทรโกษา|หน้ากรมศุลกากร,สุนทรโกษา — หน้ากรมศุลกากร,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุขุมวิท|สุขุมวิท22 - ถ.พระราม 4,สุขุมวิท — สุขุมวิท22 - ถ.พระราม 4,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|ศรีอยุธยา|สน.พญาไท,ศรีอยุธยา — สน.พญาไท,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|นิคมมักกะสัน|แยกราชปรารภ,นิคมมักกะสัน — แยกราชปรารภ,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|พระราม 6|แยกตึกชัย - หน้าโรงพยาบาลรามา,พระราม 6 — แยกตึกชัย - หน้าโรงพยาบาลรามา,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|พระราม 6|หน้ากรมทางหลวง,พระราม 6 — หน้ากรมทางหลวง,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ประชาสงเคราะห์|แยกพร้อมพรรณ-หอนาฬิกา,ประชาสงเคราะห์ — แยกพร้อมพรรณ-หอนาฬิกา,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ประชาสุข|อินทามะระ45 -53,ประชาสุข — อินทามะระ45 -53,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ประชาสงเคราะห์|หอนาฬิกา - สามแยกตลาดห้วยขวาง,ประชาสงเคราะห์ — หอนาฬิกา - สามแยกตลาดห้วยขวาง,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|พระราม 6|กรมทางหลวง,พระราม 6 — กรมทางหลวง,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตตลิ่งชัน|เลียบทางรถไฟสายใต้๑|หน้าศาลตลิ่งชัน,เลียบทางรถไฟสายใต้๑ — หน้าศาลตลิ่งชัน,road_node,,,เขตตลิ่งชัน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางนา|สุขุมวิท|ซอยแบริ่ง,สุขุมวิท — ซอยแบริ่ง,road_node,,,เขตบางนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|พระรามที่4|หน้าห้างบิ๊กซี- อาคารมาลีนนท์,พระรามที่4 — หน้าห้างบิ๊กซี- อาคารมาลีนนท์,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางนา|สุขุมวิท|หน้ากรมอุตุนิยมวิทยา,สุขุมวิท — หน้ากรมอุตุนิยมวิทยา,road_node,,,เขตบางนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุขุมวิท|ซอยสุขุมวิท 26,สุขุมวิท — ซอยสุขุมวิท 26,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางนา|สุขุมวิท|ช่วงซอยอุดมสุข 1,สุขุมวิท — ช่วงซอยอุดมสุข 1,road_node,,,เขตบางนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวังทองหลาง|ลาดพร้าว|บ่อสูบน้ำคลองเจ้าคุณสิงห์,ลาดพร้าว — บ่อสูบน้ำคลองเจ้าคุณสิงห์,road_node,,,เขตวังทองหลาง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางซื่อ|ประชาราษฎร์|แยกเตาปูน,ประชาราษฎร์ — แยกเตาปูน,road_node,,,เขตบางซื่อ,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพญาไท|วิภาวดีรังสิต|ร1 พัน1 รอ.,วิภาวดีรังสิต — ร1 พัน1 รอ.,road_node,,,เขตพญาไท,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจตุจักร|พหลโยธิน|หน้าห้างโลตัส สาขาลาดพร้าว,พหลโยธิน — หน้าห้างโลตัส สาขาลาดพร้าว,road_node,,,เขตจตุจักร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|ศรีอยุธยา|โรงเรียนสันติราษฎร์,ศรีอยุธยา — โรงเรียนสันติราษฎร์,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวังทองหลาง|ประดิษฐ์มนูธรรม|แยกศรีวรา,ประดิษฐ์มนูธรรม — แยกศรีวรา,road_node,,,เขตวังทองหลาง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตหลักสี่|แจ้งวัฒนะ|หน้าห้างโลตัส,แจ้งวัฒนะ — หน้าห้างโลตัส,road_node,,,เขตหลักสี่,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตหลักสี่|งามวงศ์วาน|แยกพงษ์เพชร,งามวงศ์วาน — แยกพงษ์เพชร,road_node,,,เขตหลักสี่,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางแค|หมู่บ้านเศรษฐกิจ|ซอย 3 - ซอย 7,หมู่บ้านเศรษฐกิจ — ซอย 3 - ซอย 7,road_node,,,เขตบางแค,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางแค|เพชรเกษม|วัดม่วง,เพชรเกษม — วัดม่วง,road_node,,,เขตบางแค,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางรัก|สุรวงศ์|ใต้ทางด่วน,สุรวงศ์ — ใต้ทางด่วน,road_node,,,เขตบางรัก,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบึงกุ่ม|นวมินทร์|สันติอโศก,นวมินทร์ — สันติอโศก,road_node,,,เขตบึงกุ่ม,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางบอน|เอกชัย|หน้าห้างบิ๊กซี,เอกชัย — หน้าห้างบิ๊กซี,road_node,,,เขตบางบอน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตจอมทอง|จอมทอง|จอมทอง ซ.8-12,จอมทอง — จอมทอง ซ.8-12,road_node,,,เขตจอมทอง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองสาน|เจริญนคร|ใต้สะพานสาทร,เจริญนคร — ใต้สะพานสาทร,road_node,,,เขตคลองสาน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตลาดพร้าว|นาคนิวาส|ปากซอยนาคนิวาส 57,นาคนิวาส — ปากซอยนาคนิวาส 57,road_node,,,เขตลาดพร้าว,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตลาดพร้าว|นาคนิวาส|ปากซอยนาคนิวาส 20 - 42,นาคนิวาส — ปากซอยนาคนิวาส 20 - 42,road_node,,,เขตลาดพร้าว,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางบอน|เอกชัย|ซอยเอกชัย60 - 68,เอกชัย — ซอยเอกชัย60 - 68,road_node,,,เขตบางบอน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางบอน|เอกชัย|ซอยเอกชัย65- คลองราชมนตรี,เอกชัย — ซอยเอกชัย65- คลองราชมนตรี,road_node,,,เขตบางบอน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตลาดกระบัง|ลาดกระบัง|แยกกิ่งแก้ว,ลาดกระบัง — แยกกิ่งแก้ว,road_node,,,เขตลาดกระบัง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตลาดกระบัง|หลวงแพ่ง|หน้าโลตัสลาดกระบัง,หลวงแพ่ง — หน้าโลตัสลาดกระบัง,road_node,,,เขตลาดกระบัง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท 39|ซ.พร้อมใจ-แยกพร้อมศรี,สุขุมวิท 39 — ซ.พร้อมใจ-แยกพร้อมศรี,road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท|ซอยชิโนไทย - สุขุมวิทซอย23,สุขุมวิท — ซอยชิโนไทย - สุขุมวิทซอย23,road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุขุมวิท26|ถ.พระราม4-โรงแรมโฟร์วิงส์,สุขุมวิท26 — ถ.พระราม4-โรงแรมโฟร์วิงส์,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสาทร|สวนพลู|ตลาดสวนพลู,สวนพลู — ตลาดสวนพลู,road_node,,,เขตสาทร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสาทร|สาธุประดิษฐ์|สาธุประดิษฐ์ 2,สาธุประดิษฐ์ — สาธุประดิษฐ์ 2,road_node,,,เขตสาทร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|พระราม 4|แยกกล้วยน้ำไทย,พระราม 4 — แยกกล้วยน้ำไทย,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|รัชดาภิเษก|ซอยเทียมร่วมมิตร,รัชดาภิเษก — ซอยเทียมร่วมมิตร,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสวนหลวง|พัฒนาการ|ธนาคารกรุงไทย,พัฒนาการ — ธนาคารกรุงไทย,road_node,,,เขตสวนหลวง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|ศรีอยุธยา|ถนนพญาไท,ศรีอยุธยา — ถนนพญาไท,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท 71|ซอยปรีดีพนมยงค์ 20,สุขุมวิท 71 — ซอยปรีดีพนมยงค์ 20,road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|บรรทัดทอง|ถนนเพชรบุรี,บรรทัดทอง — ถนนเพชรบุรี,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตป้อมปราบศัตรูพ่าย|หลานหลวง|ธนาคารกรุงไทย,หลานหลวง — ธนาคารกรุงไทย,road_node,,,เขตป้อมปราบศัตรูพ่าย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตห้วยขวาง|เพชรบุรีตัดใหม่|์สิงห์คอมเพล็กซ์,เพชรบุรีตัดใหม่ — ์สิงห์คอมเพล็กซ์,road_node,,,เขตห้วยขวาง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตปทุมวัน|ราชดำริห์|โรงพยาบาลตำรวจ,ราชดำริห์ — โรงพยาบาลตำรวจ,road_node,,,เขตปทุมวัน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดุสิต|ราชวิถี|สะพานกรุงธนบุรี,ราชวิถี — สะพานกรุงธนบุรี,road_node,,,เขตดุสิต,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ดินแดง|โรงเรียนพิบูลฯ,ดินแดง — โรงเรียนพิบูลฯ,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|พระรามที่ 6|พิพิธภัณฑ์กรมทางหลวง,พระรามที่ 6 — พิพิธภัณฑ์กรมทางหลวง,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดุสิต|นครไชยศรี|ตลาดศรีย่าน,นครไชยศรี — ตลาดศรีย่าน,road_node,,,เขตดุสิต,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพญาไท|พระราม 6|ลงทางด่วน,พระราม 6 — ลงทางด่วน,road_node,,,เขตพญาไท,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตพระนคร|สนามไชย|หน้าวัดโพธิ์,สนามไชย — หน้าวัดโพธิ์,road_node,,,เขตพระนคร,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตภาษีเจริญ|เพชรเกษม|หน้าซีคอน,เพชรเกษม — หน้าซีคอน,road_node,,,เขตภาษีเจริญ,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|พระรามที่4|สุขุมวิท26 - ซอยแสนสบาย,พระรามที่4 — สุขุมวิท26 - ซอยแสนสบาย,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตตลิ่งชัน|พุทธมณฑลสาย 1|สายใต้ใหม่,พุทธมณฑลสาย 1 — สายใต้ใหม่,road_node,,,เขตตลิ่งชัน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางแค|หมู่บ้านเศรษฐกิจ|บางจาก-วงเวียนกาญจนา,หมู่บ้านเศรษฐกิจ — บางจาก-วงเวียนกาญจนา,road_node,,,เขตบางแค,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|ประชาสงเคราะห์|องค์พระ,ประชาสงเคราะห์ — องค์พระ,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตตลิ่งชัน|เข้าคลองศาลเจ้า|หน้าศาลตลิ่งชัน,เข้าคลองศาลเจ้า — หน้าศาลตลิ่งชัน,road_node,,,เขตตลิ่งชัน,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางกอกน้อย|อิสรภาพ|หน้าตลาดพรานนก,อิสรภาพ — หน้าตลาดพรานนก,road_node,,,เขตบางกอกน้อย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุขุมวิท26|สุขุมวิท26,สุขุมวิท26 — สุขุมวิท26,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตภาษีเจริญ|เพชรเกษม|ซอย 37 - หน้าพุทธมณฑลสาย 1,เพชรเกษม — ซอย 37 - หน้าพุทธมณฑลสาย 1,road_node,,,เขตภาษีเจริญ,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางแค|เพชรเกษม|ตลาดบางแคขาเข้า,เพชรเกษม — ตลาดบางแคขาเข้า,road_node,,,เขตบางแค,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท 21(อโศก)|อาคารรัชภาค - แยกชิโนไท,สุขุมวิท 21(อโศก) — อาคารรัชภาค - แยกชิโนไท,road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางแค|เพชรเกษม|ซอย 59- ซอยวัดม่วง,เพชรเกษม — ซอย 59- ซอยวัดม่วง,road_node,,,เขตบางแค,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|ราชปรารภ|แยกราชปรารภ-สามเหลียมดินแดง,ราชปรารภ — แยกราชปรารภ-สามเหลียมดินแดง,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสวนหลวง|พัฒนาการ|หน้าโชว์รูมเบนซ์,พัฒนาการ — หน้าโชว์รูมเบนซ์,road_node,,,เขตสวนหลวง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตบางแค|เพชรเกษม|หน้า ม.สยาม,เพชรเกษม — หน้า ม.สยาม,road_node,,,เขตบางแค,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตคลองเตย|สุนทรโกษา|5 แยก ณ ระนอง - แยกศุลการกร,สุนทรโกษา — 5 แยก ณ ระนอง - แยกศุลการกร,road_node,,,เขตคลองเตย,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|ศรีอยุธยา|หน้าวังสวนผักกาด - แยกพญาไท,ศรีอยุธยา — หน้าวังสวนผักกาด - แยกพญาไท,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตภาษีเจริญ|เพชรเกษม|หน้าตลาดเสนีย์,เพชรเกษม — หน้าตลาดเสนีย์,road_node,,,เขตภาษีเจริญ,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตราชเทวี|พระรามที่ 6|กองการพัสดุ กรมทางหลวง,พระรามที่ 6 — กองการพัสดุ กรมทางหลวง,road_node,,,เขตราชเทวี,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตดินแดง|รัชดาภิเษก|แยกเทียมร่วมมิตร,รัชดาภิเษก — แยกเทียมร่วมมิตร,road_node,,,เขตดินแดง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตวัฒนา|สุขุมวิท 71|ซอยปรีดีพนมยงค์ 15-20,สุขุมวิท 71 — ซอยปรีดีพนมยงค์ 15-20,road_node,,,เขตวัฒนา,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตหลักสี่|งามวงศ์วาน|หน้าตลาดพงษ์เพชร,งามวงศ์วาน — หน้าตลาดพงษ์เพชร,road_node,,,เขตหลักสี่,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสวนหลวง|พัฒนาการ|อุโมงค์ลอดแยกพัฒนาการ,พัฒนาการ — อุโมงค์ลอดแยกพัฒนาการ,road_node,,,เขตสวนหลวง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสวนหลวง|พัฒนาการ|แยกศรีนครินทร์ (ขาเข้า),พัฒนาการ — แยกศรีนครินทร์ (ขาเข้า),road_node,,,เขตสวนหลวง,,UNVERIFIED,,derived from per-record location fields; no coordinates published
+frd:เขตสวนหลวง|พัฒนาการ|แยกศรีนครินทร์ (ขาออก),พัฒนาการ — แยกศรีนครินทร์ (ขาออก),road_node,,,เขตสวนหลวง,,UNVERIFIED,,derived from per-record location fields; no coordinates published

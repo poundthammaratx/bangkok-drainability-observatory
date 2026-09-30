@@ -73,7 +73,14 @@ class Settings(BaseModel):
     # hides admin/diagnostic controls and internal file paths, and write-capable entry points
     # (ingestion, field-observation import) refuse to run. See docs/PUBLIC_ALPHA_CHECKLIST.md.
     public_deployment: bool = False
+    # Read-through live-source cache TTLs (seconds); see src/bdo/live/ and
+    # docs/LIVE_DATA_ARCHITECTURE.md. Never affects writes — the live layer never writes.
+    live_default_ttl_seconds: int = 300
+    live_ttl_seconds: dict[str, int] = Field(default_factory=dict)
     sources: list[SourceConfig] = Field(default_factory=list)
+
+    def live_ttl_for(self, source_key: str) -> int:
+        return self.live_ttl_seconds.get(source_key, self.live_default_ttl_seconds)
 
     # --- derived paths -------------------------------------------------------
     @property
@@ -170,6 +177,8 @@ def load_settings(config_dir: str | Path | None = None, root: Path | None = None
         log_level=os.environ.get("BDO_LOG_LEVEL", logcfg.get("level", "INFO")),
         log_file=_resolve(log_file, root) if log_file else None,
         public_deployment=_parse_bool(os.environ.get("PUBLIC_DEPLOYMENT", "false")),
+        live_default_ttl_seconds=(raw.get("live", {}) or {}).get("default_ttl_seconds", 300),
+        live_ttl_seconds=(raw.get("live", {}) or {}).get("ttl_seconds", {}) or {},
         sources=[SourceConfig(**s) for s in sources_raw.get("sources", [])],
     )
     values.update(overrides)

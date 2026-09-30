@@ -14,6 +14,10 @@ def ui_env(seeded, settings, monkeypatch):
     run_source(settings, "bkk_open_data_dds", adapter=ckan_adapter(settings))
     monkeypatch.setenv("BDO_DATABASE_URL", settings.database_url)
     monkeypatch.setenv("BDO_DATA_DIR", str(settings.data_dir))
+    # UI smoke tests must not depend on network access; the live read-through layer (bdo.live) has
+    # its own dedicated, network-mocked tests in tests/test_live_data.py. An empty dict here also
+    # exercises the "no live data at all" tolerance path in overview.py / map_view.py.
+    monkeypatch.setattr("bdo.live.manager.get_all_live_states", lambda *a, **kw: {})
     from bdo.ui import components
     components.get_settings_cached.clear()
     yield
@@ -32,7 +36,11 @@ def test_page_renders_without_exception(ui_env, page):
 def test_overview_labels_seed_as_demonstration(ui_env):
     at = AppTest.from_string("from bdo.ui import overview\noverview.render()", default_timeout=60)
     at.run()
-    df = at.dataframe[1].value  # latest-per-series table
+    # locate the "all latest measurements per series" table by its columns rather than a fragile
+    # positional index — the page has grown more dataframes (live current-state groups) since v0.1.
+    candidates = [d.value for d in at.dataframe if "source_key" in d.value.columns and "demo" in d.value.columns]
+    assert len(candidates) == 1
+    df = candidates[0]
     seed_rows = df[df["source_key"].isin(["rid_water_situation", "bma_floodbangkok"])]
     assert len(seed_rows) == 13
     assert set(seed_rows["demo"]) == {"SEED/DEMO"}

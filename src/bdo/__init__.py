@@ -1,6 +1,6 @@
-"""Bangkok Drainability Observatory — research-grade local observatory (v0.1)."""
+"""Bangkok Drainability Observatory — research-grade local observatory (v0.2)."""
 
-__version__ = "0.1.0"
+__version__ = "0.2.1"
 
 DISCLAIMER = (
     "This software is an independent research project. It is not an official Bangkok "

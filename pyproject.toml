@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bangkok-drainability-observatory"
-version = "0.1.0"
+version = "0.2.1"
 description = "Research-grade local observatory for Bangkok / Lower Chao Phraya flood and drainage data (provenance-preserving)."
 readme = "README.md"
 requires-python = ">=3.12"

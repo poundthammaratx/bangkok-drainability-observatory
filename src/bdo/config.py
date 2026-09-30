@@ -58,7 +58,7 @@ class SourceConfig(BaseModel):
 class Settings(BaseModel):
     project_name: str = "Bangkok Drainability Observatory"
     research_title: str = ""
-    version: str = "0.1.0"
+    version: str = "0.2.1"
     display_timezone: str = "Asia/Bangkok"
     database_url: str = "sqlite:///data/bdo.sqlite"
     data_dir: Path = Path("data")
@@ -80,6 +80,12 @@ class Settings(BaseModel):
     sources: list[SourceConfig] = Field(default_factory=list)
 
     def live_ttl_for(self, source_key: str) -> int:
+        """Cache TTL (seconds) for one live source's read-through fetch (see ``bdo.live.manager``).
+
+        An unknown ``source_key`` (not present in ``live_ttl_seconds``) never raises — it fails
+        safe by returning ``live_default_ttl_seconds`` (300s unless overridden), the same default
+        applied when ``config/settings.yaml`` declares no ``live:`` block at all.
+        """
         return self.live_ttl_seconds.get(source_key, self.live_default_ttl_seconds)
 
     # --- derived paths -------------------------------------------------------
@@ -165,7 +171,7 @@ def load_settings(config_dir: str | Path | None = None, root: Path | None = None
     values: dict[str, Any] = dict(
         project_name=project.get("name", "Bangkok Drainability Observatory"),
         research_title=project.get("research_title", ""),
-        version=project.get("version", "0.1.0"),
+        version=project.get("version", "0.2.1"),
         display_timezone=raw.get("display_timezone", "Asia/Bangkok"),
         database_url=_resolve_db_url(db_url, root),
         data_dir=_resolve(data_dir, root),

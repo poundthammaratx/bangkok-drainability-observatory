@@ -1,0 +1,16 @@
+﻿name: Scheduler Smoke Test
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Scheduler heartbeat
+        run: echo "GitHub scheduler alive"

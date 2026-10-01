@@ -1,12 +1,11 @@
-﻿# Production collector for ThaiWater Bangkok only.
-# Runs manually or on a best-effort ~10-minute GitHub Actions schedule.
+﻿# Production collector for ThaiWater Bangkok.
+# Scheduling is externalized to Cloudflare Cron.
+# GitHub Actions acts only as the execution layer.
 
 name: BDO Collector - ThaiWater Bangkok
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "2-59/5 * * * *"
 
 permissions:
   contents: read
@@ -44,3 +43,25 @@ jobs:
 
       - name: Verify collector heartbeat
         run: bdo watchdog --source thaiwater_bangkok --max-age-minutes 30
+
+      - name: Report successful run to Healthchecks
+        if: ${{ success() }}
+        continue-on-error: true
+        env:
+          BDO_HEALTHCHECK_URL: ${{ secrets.BDO_HEALTHCHECK_URL }}
+        run: |
+          curl --fail --silent --show-error \
+            --max-time 10 \
+            --retry 2 \
+            "$BDO_HEALTHCHECK_URL"
+
+      - name: Report failed run to Healthchecks
+        if: ${{ failure() }}
+        continue-on-error: true
+        env:
+          BDO_HEALTHCHECK_URL: ${{ secrets.BDO_HEALTHCHECK_URL }}
+        run: |
+          curl --fail --silent --show-error \
+            --max-time 10 \
+            --retry 2 \
+            "$BDO_HEALTHCHECK_URL/fail"

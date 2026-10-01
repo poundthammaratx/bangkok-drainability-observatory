@@ -77,6 +77,7 @@ def fetch(settings: Settings, adapter: CKANAdapter | None = None) -> LiveSourceS
         station_name="Chao Phraya River at Pak Khlong Talat (dds011)", node_type="river_boundary",
         variable="water_level_daily_max", value_num=rec.get("wl_max"), value_text=None, unit="m",
         measurement_at=measurement_at, evidence_class=EvidenceClass.OFFICIAL_REPORTED.value,
+        source_timestamp_raw=rec.get("wl_date"),
         quality_flags=frozenset({QualityFlag.UNIT_DECLARED_UNVERIFIED.value, QualityFlag.TZ_DECLARED_BY_CONFIG.value}),
         notes="CKAN batch-published dataset, not live telemetry — see docs/SOURCE_ENDPOINTS.md",
         source_url="https://data.bangkok.go.th/",

@@ -93,7 +93,8 @@ def persist_state(
         station_id = station_ids.get(m.external_station_id) if m.external_station_id else None
         nm = NormalizedMeasurement(
             variable=m.variable, value_num=m.value_num, value_text=m.value_text, unit=m.unit,
-            measurement_at=m.measurement_at, evidence_class=EvidenceClass(m.evidence_class),
+            measurement_at=m.measurement_at, source_timestamp_raw=m.source_timestamp_raw,
+            evidence_class=EvidenceClass(m.evidence_class),
             station_external_id=m.external_station_id, quality_flags=set(m.quality_flags), notes=m.notes,
         )
         items.append((nm, station_id, None))

@@ -223,15 +223,27 @@ def _zone2_map(points: pd.DataFrame, live_states: dict) -> None:
 
 def _zone3_trends(settings) -> None:
     st.subheader("Recent hydrological trends")
+    excluded = set(settings.public_history_excluded_sources)
+    visible_sources = [k for k in live_manager.LIVE_SOURCE_KEYS if k not in excluded]
+    if excluded & set(live_manager.LIVE_SOURCE_KEYS):
+        st.caption(
+            f"Historical trends for {', '.join(sorted(excluded & set(live_manager.LIVE_SOURCE_KEYS)))} "
+            "are withheld from this public panel pending redistribution/licensing review (collection "
+            "into the research archive continues unaffected) — see docs/PUBLIC_WAR_ROOM.md."
+        )
     choice = st.selectbox("Window", list(_TREND_WINDOWS), index=1, key="warroom_trend_window")
     hours = _TREND_WINDOWS[choice]
     end = c.now_utc()
     start = end - timedelta(hours=hours)
 
+    if not visible_sources:
+        st.info("No source is currently cleared for public historical display.")
+        return
+
     with c.session() as s:
-        meas = c.measurements_df(s, start=start, end=end, source_keys=list(live_manager.LIVE_SOURCE_KEYS),
+        meas = c.measurements_df(s, start=start, end=end, source_keys=visible_sources,
                                  include_unknown_time=False)
-        earliest_ever = c.measurements_df(s, source_keys=list(live_manager.LIVE_SOURCE_KEYS),
+        earliest_ever = c.measurements_df(s, source_keys=visible_sources,
                                           include_unknown_time=False)
     earliest_at = earliest_ever["measurement_at"].min() if not earliest_ever.empty else None
     if earliest_at is not None and earliest_at > start + timedelta(minutes=5):

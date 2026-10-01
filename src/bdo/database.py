@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from contextlib import contextmanager
+from dataclasses import dataclass
 from typing import Iterator
 
 from sqlalchemy import create_engine, event
@@ -10,9 +11,90 @@ from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session, sessionmaker
 
 from bdo.config import Settings, get_settings
+from bdo.enums import RuntimeRole
 from bdo.models import Base
 
 _engines: dict[str, Engine] = {}
+
+
+class CollectorBackendMisconfigured(RuntimeError):
+    """Raised by ``guard_collector_backend`` — see its docstring."""
+
+
+@dataclass(frozen=True)
+class BackendIdentity:
+    """A credential-safe summary of which database a process is actually talking to — see
+    ``guard_collector_backend`` and the "CLI backend identity" section of
+    docs/DATABASE_DEPLOYMENT.md. Never carries a password, username, host, or full connection
+    string; only the backend *kind* and a coarse locality label.
+    """
+
+    backend: str            # "PostgreSQL" | "SQLite" | "<Other>"
+    archive_label: str      # "ENABLED" | "LOCAL"
+    runtime_role: str       # RuntimeRole.value
+    database_target: str    # "remote PostgreSQL" | "local file" | "in-memory" | "remote database"
+
+    def render(self) -> str:
+        return (
+            f"Backend: {self.backend}\n"
+            f"Archive: {self.archive_label}\n"
+            f"Runtime role: {self.runtime_role}\n"
+            f"Database target: {self.database_target}"
+        )
+
+
+def _backend_name(url: str) -> str:
+    scheme = url.split("://", 1)[0].split("+", 1)[0]
+    return {"sqlite": "SQLite", "postgresql": "PostgreSQL"}.get(scheme, scheme.capitalize() or "Unknown")
+
+
+def _database_target(url: str) -> str:
+    if url.startswith("sqlite"):
+        return "in-memory" if ":memory:" in url else "local file"
+    if url.split("://", 1)[0].split("+", 1)[0] == "postgresql":
+        return "remote PostgreSQL"
+    return "remote database"
+
+
+def backend_identity(settings: Settings | None = None) -> BackendIdentity:
+    """Sanitized identity of ``settings.database_url`` — safe to print in CLI output or logs.
+
+    This exists because an absent/misconfigured ``BDO_DATABASE_URL`` previously let CLI commands
+    silently fall through to the local SQLite default, which was once briefly mistaken for the
+    production PostgreSQL historian (803 stations / 1389 measurements — a local dev file, not the
+    archive). Every operational command prints this before its own output.
+    """
+    settings = settings or get_settings()
+    return BackendIdentity(
+        backend=_backend_name(settings.database_url),
+        archive_label="ENABLED" if settings.archive_enabled else "LOCAL",
+        runtime_role=settings.runtime_role.value,
+        database_target=_database_target(settings.database_url),
+    )
+
+
+def guard_collector_backend(settings: Settings) -> None:
+    """Fail fast if a COLLECTOR run with the archive flag on would silently write to SQLite.
+
+    A production collector (``BDO_RUNTIME_ROLE=COLLECTOR``, ``BDO_ARCHIVE_ENABLED=true``) that
+    resolves to a SQLite ``database_url`` almost certainly means ``BDO_DATABASE_URL`` is absent or
+    wrong — the production Postgres archive was intended. Rather than quietly collecting into a
+    throwaway local file, this raises immediately. The only way past it is the explicit
+    ``BDO_ALLOW_SQLITE_COLLECTOR=true`` development override (``Settings.allow_sqlite_collector``),
+    for deliberately testing the collector against SQLite.
+    """
+    if (
+        settings.runtime_role is RuntimeRole.COLLECTOR
+        and settings.archive_enabled
+        and settings.database_url.startswith("sqlite")
+        and not settings.allow_sqlite_collector
+    ):
+        raise CollectorBackendMisconfigured(
+            "BDO_RUNTIME_ROLE=COLLECTOR with BDO_ARCHIVE_ENABLED=true resolved to a SQLite "
+            "database — this is almost certainly a missing/incorrect BDO_DATABASE_URL, not an "
+            "intentional local run. Set BDO_DATABASE_URL to the production PostgreSQL archive, or "
+            "set BDO_ALLOW_SQLITE_COLLECTOR=true to explicitly override for local development."
+        )
 
 
 def get_engine(settings: Settings | None = None) -> Engine:

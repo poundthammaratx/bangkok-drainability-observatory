@@ -109,6 +109,7 @@ def insert_measurements(
             value_text=nm.value_text,
             unit=nm.unit,
             measurement_at=nm.measurement_at,
+            source_timestamp_raw=nm.source_timestamp_raw,
             retrieved_at=nm.retrieved_at or retrieved_at,
             evidence_class=nm.evidence_class,
             quality_flag=join_flags(flags),

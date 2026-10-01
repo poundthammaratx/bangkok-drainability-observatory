@@ -101,6 +101,10 @@ class NormalizedMeasurement(BaseModel):
     value_text: str | None = None
     unit: str | None = None
     measurement_at: datetime | None = None
+    # The literal timestamp as published by the source (e.g. a naive "YYYY-MM-DD HH:MM" string),
+    # preserved alongside the normalized, timezone-aware measurement_at above — never fabricated
+    # when the source/adapter has no discrete raw field to point to. See bdo.live.base.LiveMeasurement.
+    source_timestamp_raw: str | None = None
     # Only set when the retrieval time differs from the fetch time (e.g. a human transcription
     # that states when the transcriber viewed the original source).
     retrieved_at: datetime | None = None

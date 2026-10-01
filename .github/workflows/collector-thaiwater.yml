@@ -1,0 +1,66 @@
+# Production collector for ThaiWater Bangkok only (v0.3 production hardening).
+#
+# Scope deliberately narrow: this is the FIRST source to run from an actual GitHub Actions host
+# against the production PostgreSQL archive. FloodBangkok, BKK DDS, TMD, RID, and Traffy are not
+# scheduled here yet — see docs/COLLECTOR_ARCHITECTURE.md for why ThaiWater goes first.
+#
+# Required repository secret:
+#   BDO_DATABASE_URL — a postgresql+psycopg://... URL using the COLLECTOR-role credential
+#                       (bdo_collector: SELECT/INSERT/UPDATE only — never the bdo_viewer or an
+#                       owner/admin credential). See docs/DATABASE_DEPLOYMENT.md.
+#
+# Activation sequence (do this in order, do not skip the manual step):
+#   1. Add the BDO_DATABASE_URL secret in the repository's GitHub settings.
+#   2. Merge this file to the default branch — GitHub Actions `schedule` triggers only fire for
+#      workflow files present on the default branch; `workflow_dispatch` works from any branch
+#      once the file exists there, so step 3 can happen before merging.
+#   3. Manually run this workflow once via the Actions tab (workflow_dispatch) and confirm both
+#      steps succeed against the real production host before relying on the cron trigger.
+#   4. Only after a successful manual run should the schedule below be trusted operationally.
+#
+# GitHub's `schedule` cron is a requested cadence, not a guaranteed real-time trigger — GitHub
+# explicitly documents that scheduled workflows can be delayed (sometimes by tens of minutes)
+# during periods of high load, and disables them automatically on repositories with no activity
+# for 60 days. Treat "every 10 minutes" as the intent, not an SLA; the watchdog step below (and
+# `bdo watchdog` run from anywhere else) is what actually detects a missed/delayed run.
+
+name: BDO Collector — ThaiWater Bangkok
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "*/10 * * * *"   # requested cadence — see note above on GitHub's delivery guarantees
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install project (editable, no dev/test extras)
+        run: pip install -e .
+
+      - name: Collect ThaiWater Bangkok
+        env:
+          BDO_DATABASE_URL: ${{ secrets.BDO_DATABASE_URL }}
+          BDO_RUNTIME_ROLE: COLLECTOR
+          BDO_ARCHIVE_ENABLED: "true"
+        run: |
+          echo "::group::bdo collect thaiwater_bangkok"
+          bdo collect thaiwater_bangkok
+          echo "::endgroup::"
+
+      - name: Watchdog — confirm the run actually landed
+        env:
+          BDO_DATABASE_URL: ${{ secrets.BDO_DATABASE_URL }}
+          BDO_RUNTIME_ROLE: COLLECTOR
+          BDO_ARCHIVE_ENABLED: "true"
+        run: |
+          echo "::group::bdo watchdog --source thaiwater_bangkok --max-age-minutes 30"
+          bdo watchdog --source thaiwater_bangkok --max-age-minutes 30
+          echo "::endgroup::"

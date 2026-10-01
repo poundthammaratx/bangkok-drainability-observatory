@@ -69,9 +69,39 @@ the only line of defense.
 bdo collect thaiwater_bangkok        # one source
 bdo collect --all                    # every source with a live adapter
 bdo collector-status                 # latest health per source + recent collector runs
+bdo watchdog --source thaiwater_bangkok --max-age-minutes 30   # data-acquisition health gate
 ```
 
-Exit code is non-zero if any collected source ended `FAILED`.
+Exit code is non-zero if any collected source ended `FAILED`. Every one of these commands prints a
+sanitized backend-identity header first (`Backend: ... / Archive: ... / Runtime role: ... /
+Database target: ...`) — see docs/DATABASE_DEPLOYMENT.md's "CLI backend identity" section for why,
+and for the fail-fast guard that stops a misconfigured COLLECTOR from silently writing to SQLite.
+
+## Watchdog (v0.3 production hardening)
+
+`bdo watchdog` (`bdo.collector.watchdog.check_source`) answers one question per source: *is
+collection itself still happening on schedule?* It is deliberately narrow — **data-acquisition
+health only**, never a hydraulic/flood inference from a stale or missing run:
+
+| Status | Meaning | Exit |
+|---|---|---|
+| `HEALTHY` | Latest successful collector run is within `--max-age-minutes` | `0` |
+| `STALE` | A successful run exists, but it's older than the threshold | non-zero |
+| `NEVER_RUN` | No successful collector run exists for this source at all | non-zero |
+| `FAILED` | The most recent attempt failed and no sufficiently recent success exists | non-zero |
+
+Based strictly on persisted `IngestRun(mode="collector")` and `SourceHealthHistory` rows — nothing
+here touches `LiveHealth` or measurement values directly (though the latest observed `LiveHealth`
+and latest measurement timestamp are included in the report for context). Safe to use as the last
+step of a scheduled job: a non-zero exit fails the job without suppressing anything
+(`.github/workflows/collector-thaiwater.yml`).
+
+## Registry status vs runtime health
+
+`Source.status` (administrative, from `config/sources.yaml`) and `SourceHealthHistory.health`
+(observational, from the most recent collector run) are deliberately kept as two separate
+vocabularies that are never collapsed into one value — see docs/DATABASE_DEPLOYMENT.md for the
+full explanation and why `bdo status` / `bdo collector-status` print both side by side.
 
 ## Scheduling (milestone §12)
 
@@ -88,9 +118,26 @@ python -m bdo.collector.scheduler_contract --all
 It is idempotent and safe to retry (see its docstring) — a scheduler-side timeout or retry never
 risks a duplicate measurement.
 
-### Example: GitHub Actions
+### Production: ThaiWater only (`.github/workflows/collector-thaiwater.yml`)
 
-`.github/workflows/collector.yml.example` shows the intended shape. The `.example` suffix is
+This is a **real, active** workflow file (no `.example` suffix) — the v0.3 production-hardening
+milestone's first deliberate activation, scoped to ThaiWater only (FloodBangkok, BKK DDS, TMD, RID,
+and Traffy are intentionally not scheduled yet; see docs/BACKUP_AND_RECOVERY.md and
+docs/PUBLIC_WAR_ROOM.md for the current production-readiness boundaries). It runs
+`bdo collect thaiwater_bangkok` then `bdo watchdog --source thaiwater_bangkok --max-age-minutes 30`,
+failing the job if either step fails, with `workflow_dispatch` for manual runs and a
+`schedule: */10 * * * *` cron for the requested (not guaranteed-real-time) cadence.
+
+**It does nothing until `BDO_DATABASE_URL` is added as a repository secret** — the workflow file
+existing in the repo is inert without it, exactly like the generic template below. See the comments
+at the top of the file for the exact activation order: add the secret, merge to the default branch
+(GitHub Actions `schedule` only fires from the default branch), then run `workflow_dispatch`
+manually at least once against the real production host before trusting the cron.
+
+### Example / future sources: GitHub Actions
+
+`.github/workflows/collector.yml.example` shows the intended shape for collecting *every* source
+once more of them are production-ready. The `.example` suffix is
 deliberate: GitHub Actions only discovers files ending exactly in `.yml`/`.yaml` directly inside
 `.github/workflows/`, so this file is inert — present for discoverability, incapable of running:
 

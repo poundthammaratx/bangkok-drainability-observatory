@@ -111,6 +111,7 @@ def fetch(settings: Settings, client: httpx.Client | None = None) -> LiveSourceS
             unit="cm",
             measurement_at=measurement_at,
             evidence_class=EvidenceClass.OFFICIAL_REPORTED.value,
+            source_timestamp_raw=raw_ts,
             quality_flags=frozenset(flags),
             latitude=profile.get("lat"),
             longitude=profile.get("long"),

@@ -25,7 +25,7 @@ from sqlalchemy.orm import sessionmaker
 
 from bdo.collector.persistence import persist_state
 from bdo.config import Settings
-from bdo.database import session_factory
+from bdo.database import guard_collector_backend, session_factory
 from bdo.enums import IngestStatus
 from bdo.live import manager as live_manager
 from bdo.live.base import LiveHealth
@@ -68,8 +68,11 @@ def collect_one(settings: Settings, source_key: str, sessions: sessionmaker | No
     """Run the full collect-and-persist sequence for one source. Never raises on a source-side
     failure (network error, bad JSON, ...) — that is recorded as a FAILED run and an UNAVAILABLE
     health row, which is itself the useful signal. It *does* raise ``PublicDeploymentBlocked`` if
-    called under the VIEWER role, and lets a genuine programming/database error propagate."""
+    called under the VIEWER role, ``CollectorBackendMisconfigured`` if a COLLECTOR run with the
+    archive flag on would silently write to SQLite (see ``bdo.database.guard_collector_backend``),
+    and lets a genuine programming/database error propagate."""
     assert_writes_allowed(settings, "collection")
+    guard_collector_backend(settings)
     sessions = sessions or session_factory(settings)
     session = sessions()
     t0 = utcnow()

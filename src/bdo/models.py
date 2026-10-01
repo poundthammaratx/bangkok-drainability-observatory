@@ -263,6 +263,12 @@ class Measurement(Base):
     unit: Mapped[str | None] = mapped_column(String(32))
     # Time the source says the value represents. NULL = unknown (never back-filled with retrieved_at).
     measurement_at: Mapped[datetime | None] = mapped_column(UTCDateTime)
+    # The literal timestamp as published by the source (e.g. ThaiWater's naive "2026-10-01 17:39"),
+    # preserved verbatim alongside the normalized, timezone-aware measurement_at above (v0.3
+    # production hardening — added in migration 0002). NULL when the source/adapter has no discrete
+    # raw timestamp field, or for rows persisted before this column existed; never back-filled or
+    # fabricated either way.
+    source_timestamp_raw: Mapped[str | None] = mapped_column(Text)
     # Time our system (or a human transcriber) retrieved it.
     retrieved_at: Mapped[datetime] = mapped_column(UTCDateTime, nullable=False)
     evidence_class: Mapped[EvidenceClass] = mapped_column(

@@ -62,6 +62,11 @@ class LiveMeasurement:
     unit: str | None
     measurement_at: datetime | None  # aware UTC; None = unknown (never back-filled)
     evidence_class: str
+    # The literal timestamp string/representation as published by the source, before timezone
+    # attachment or parsing (e.g. ThaiWater's "2026-10-01 17:39") — preserved alongside the
+    # normalized, timezone-aware measurement_at. None when the adapter has no discrete raw
+    # timestamp field to point to (never fabricated); see docs/PERSISTENT_ARCHIVE.md.
+    source_timestamp_raw: str | None = None
     quality_flags: frozenset[str] = field(default_factory=frozenset)
     latitude: float | None = None
     longitude: float | None = None

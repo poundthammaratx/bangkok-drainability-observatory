@@ -81,6 +81,16 @@ class Settings(BaseModel):
     # be reachable. When false, archive-dependent UI sections degrade to live-read-through-only
     # rather than attempting a connection — see docs/PERSISTENT_ARCHIVE.md.
     archive_enabled: bool = False
+    # Explicit development override: without this, a COLLECTOR run with archive_enabled=true that
+    # resolves to a SQLite backend fails fast instead of silently collecting into the wrong
+    # database (see bdo.database.guard_collector_backend and docs/DATABASE_DEPLOYMENT.md). Set
+    # BDO_ALLOW_SQLITE_COLLECTOR=true only for deliberate local collector testing.
+    allow_sqlite_collector: bool = False
+    # Source keys whose *persisted historical* measurements (multi-point time series) are withheld
+    # from the public Live Situation "Recent Hydrological Trends" panel, pending redistribution/
+    # licensing review — see docs/PUBLIC_WAR_ROOM.md. Does not affect the single current-value
+    # resolver (Overview/Map/Zone 1), only historical-window queries.
+    public_history_excluded_sources: list[str] = Field(default_factory=list)
     # Read-through live-source cache TTLs (seconds); see src/bdo/live/ and
     # docs/LIVE_DATA_ARCHITECTURE.md. Never affects writes — the live layer never writes.
     live_default_ttl_seconds: int = 300
@@ -211,6 +221,8 @@ def load_settings(config_dir: str | Path | None = None, root: Path | None = None
         public_deployment=_parse_bool(os.environ.get("PUBLIC_DEPLOYMENT", "false")),
         runtime_role=_resolve_runtime_role(_parse_bool(os.environ.get("PUBLIC_DEPLOYMENT", "false"))),
         archive_enabled=_parse_bool(os.environ.get("BDO_ARCHIVE_ENABLED", "false")),
+        allow_sqlite_collector=_parse_bool(os.environ.get("BDO_ALLOW_SQLITE_COLLECTOR", "false")),
+        public_history_excluded_sources=(raw.get("public_archive", {}) or {}).get("history_excluded_sources", []) or [],
         live_default_ttl_seconds=(raw.get("live", {}) or {}).get("default_ttl_seconds", 300),
         live_ttl_seconds=(raw.get("live", {}) or {}).get("ttl_seconds", {}) or {},
         sources=[SourceConfig(**s) for s in sources_raw.get("sources", [])],

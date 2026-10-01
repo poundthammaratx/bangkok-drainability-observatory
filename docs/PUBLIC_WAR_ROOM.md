@@ -87,6 +87,31 @@ Verified by `tests/test_live_situation.py` (`test_renders_with_archive_unavailab
 is never substituted in any of these fallback paths — `resolve_public_current_state()` excludes it
 unconditionally, archive-reachable or not.
 
+## Public historical redistribution gating (v0.3 production hardening)
+
+Zone 3 (Recent Hydrological Trends) and any other read of `bdo.ui.components.measurements_df()`
+withhold a source's **persisted historical** (multi-point) measurements from the public/VIEWER
+deployment when that source is listed in `Settings.public_history_excluded_sources`
+(`config/settings.yaml`'s `public_archive.history_excluded_sources`) — currently
+`thaiwater_bangkok`, pending review of ThaiWater/HII's data redistribution terms. The gate is
+enforced once, centrally, in `measurements_df()` itself (so it applies uniformly to Overview,
+Stations, Data Quality, and Event Archive — including Event Archive's CSV export — without any of
+those pages being modified), and additionally in Zone 3 directly (which is always public-facing by
+definition, regardless of deployment role, with an explanatory caption naming which source is
+withheld and why).
+
+**This does not affect:**
+* Collection into the research archive — the collector still fetches and persists ThaiWater data
+  normally; only public *redistribution* of the resulting history is withheld.
+* The single current-value resolver (`resolve_public_current_state()`) — Overview, Map, and Zone 1
+  still show ThaiWater's *current* reading. Only multi-point historical queries are gated.
+* A researcher running `DEVELOPMENT`/`COLLECTOR` locally (`Settings.is_viewer` is `False`) — full
+  historical access for research use is unaffected. Zone 3 is the one exception: it always excludes
+  the listed sources regardless of role, because the page represents what the public sees.
+
+Re-enabling a source once its licensing terms are cleared is a one-line config change (remove it
+from `history_excluded_sources`), not a code change.
+
 ## Performance (milestone §17G)
 
 All live data behind every zone comes from `bdo.live.manager`'s process-wide TTL cache — one HTTP

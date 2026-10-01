@@ -28,6 +28,7 @@ from bdo.enums import EvidenceClass, QualityFlag
 from bdo.live.base import (
     LiveMeasurement,
     LiveSourceState,
+    RawPayloadCapture,
     classify_live_health,
     make_client,
     unavailable_state,
@@ -57,6 +58,14 @@ def fetch(settings: Settings, client: httpx.Client | None = None) -> LiveSourceS
             readings = now_r.json().get("data", [])
         except ValueError as exc:
             return unavailable_state(SOURCE_KEY, BASE_URL, started, f"invalid JSON: {exc}")
+
+        raw_payloads = (
+            RawPayloadCapture(label="sensor_profile", content=profiles_r.content,
+                              content_type="application/json", request_url=str(profiles_r.url),
+                              http_status=profiles_r.status_code),
+            RawPayloadCapture(label="sensor_now", content=now_r.content, content_type="application/json",
+                              request_url=str(now_r.url), http_status=now_r.status_code),
+        )
     finally:
         if owns_client:
             client.close()
@@ -122,4 +131,5 @@ def fetch(settings: Settings, client: httpx.Client | None = None) -> LiveSourceS
         record_count=len(measurements), source_measurement_at=freshest, freshness=freshness,
         error=None, measurements=tuple(measurements),
         context={"device_status_counts": status_counts, "sensor_count": len(profiles)},
+        raw_payloads=raw_payloads,
     )

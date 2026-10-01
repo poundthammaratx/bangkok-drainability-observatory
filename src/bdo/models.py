@@ -147,11 +147,16 @@ SystemNode = Station
 
 
 class IngestRun(Base):
+    """One run of the write pipeline — local manual/CKAN ingestion (mode ``automatic`` /
+    ``manual`` / ``seed``) or, since v0.3, a collector invocation (mode ``collector``; see
+    ``src/bdo/collector/runner.py``). The milestone's "collector_runs" concept is deliberately
+    *not* a separate table — this one already records exactly that shape of information."""
+
     __tablename__ = "ingest_runs"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     source_id: Mapped[int] = mapped_column(ForeignKey("sources.id"), nullable=False)
-    mode: Mapped[str] = mapped_column(String(16), nullable=False, default="automatic")  # automatic|manual|seed
+    mode: Mapped[str] = mapped_column(String(16), nullable=False, default="automatic")  # automatic|manual|seed|collector
     started_at: Mapped[datetime] = mapped_column(UTCDateTime, default=utcnow, nullable=False)
     finished_at: Mapped[datetime | None] = mapped_column(UTCDateTime)
     status: Mapped[IngestStatus] = mapped_column(_enum(IngestStatus, "ingest_status"), nullable=False)
@@ -167,8 +172,56 @@ class IngestRun(Base):
     source: Mapped[Source] = relationship()
 
 
+class SourceHealthHistory(Base):
+    """One health observation over time (v0.3). ``Source.last_health_message`` /
+    ``last_healthcheck_at`` only ever hold the *latest* result; this table makes availability
+    itself queryable historically — "when did a source stop reporting", "how long was it down",
+    "was the data already stale before the endpoint failed". Populated by the collector
+    (``src/bdo/collector/persistence.py``) once per run; the Streamlit UI never writes here.
+    """
+
+    __tablename__ = "source_health_history"
+    __table_args__ = (Index("ix_health_history_source_checked", "source_id", "checked_at"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    source_id: Mapped[int] = mapped_column(ForeignKey("sources.id"), nullable=False)
+    collector_run_id: Mapped[int | None] = mapped_column(ForeignKey("ingest_runs.id"))
+    checked_at: Mapped[datetime] = mapped_column(UTCDateTime, default=utcnow, nullable=False)
+    # bdo.live.base.LiveHealth vocabulary (HEALTHY/DEGRADED/STALE/UNAVAILABLE/UNKNOWN) — a
+    # different, deliberately separate vocabulary from bdo.enums.SourceStatus (the ingestion
+    # adapter's own ACTIVE/MANUAL/UNAVAILABLE/DEGRADED/UNKNOWN), stored as plain text so the two
+    # never silently collapse into each other.
+    health: Mapped[str] = mapped_column(String(16), nullable=False)
+    http_status: Mapped[int | None] = mapped_column(Integer)
+    latest_measurement_at: Mapped[datetime | None] = mapped_column(UTCDateTime)
+    freshness_label: Mapped[str | None] = mapped_column(String(16))
+    record_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    latency_ms: Mapped[float | None] = mapped_column(Float)
+    error: Mapped[str | None] = mapped_column(Text)
+    endpoint: Mapped[str | None] = mapped_column(Text)
+    parser_version: Mapped[str | None] = mapped_column(String(64))
+
+    source: Mapped[Source] = relationship()
+
+
 class RawSnapshot(Base):
-    """Metadata of an immutable raw payload archived under data/raw/<source_key>/YYYY/MM/DD/."""
+    """Metadata of an immutable raw payload.
+
+    Two storage modes, chosen by whichever repository function writes the row:
+
+    * **File-backed** (``bdo.repository.snapshots.save_snapshot``, the v0.1/v0.2 path): bytes go
+      to ``data/raw/<source_key>/YYYY/MM/DD/`` and ``payload_path`` records where. Used by the
+      local CLI ingestion pipeline, where the writer and the Streamlit viewer share a filesystem.
+    * **Inline** (``bdo.repository.snapshots.save_snapshot_inline``, added in v0.3 for the
+      collector): small text/JSON bodies go straight into ``payload_text``, so a collector running
+      on a separate machine from the viewer (e.g. GitHub Actions writing to a remote Postgres that
+      Streamlit Cloud reads) doesn't need a shared filesystem at all. Binary or oversized payloads
+      (radar images) are recorded as metadata-only provenance — hash and size, no body — rather
+      than stored in the database; see docs/PERSISTENT_ARCHIVE.md's object-storage-reference TODO.
+
+    Exactly one of ``payload_path`` / ``payload_text`` is set, or neither (metadata-only); never
+    both. ``payload_hash`` is always the SHA-256 of the original bytes either way.
+    """
 
     __tablename__ = "raw_snapshots"
 
@@ -177,7 +230,8 @@ class RawSnapshot(Base):
     retrieved_at: Mapped[datetime] = mapped_column(UTCDateTime, nullable=False)
     source_measurement_at: Mapped[datetime | None] = mapped_column(UTCDateTime)
     content_type: Mapped[str] = mapped_column(String(128), nullable=False)
-    payload_path: Mapped[str] = mapped_column(String(1024), nullable=False, unique=True)
+    payload_path: Mapped[str | None] = mapped_column(String(1024), unique=True)
+    payload_text: Mapped[str | None] = mapped_column(Text)
     payload_hash: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
     payload_bytes: Mapped[int] = mapped_column(Integer, nullable=False)
     http_status: Mapped[int | None] = mapped_column(Integer)

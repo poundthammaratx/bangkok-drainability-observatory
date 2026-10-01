@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bangkok-drainability-observatory"
-version = "0.2.1"
+version = "0.3.0.dev0"
 description = "Research-grade local observatory for Bangkok / Lower Chao Phraya flood and drainage data (provenance-preserving)."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -21,10 +21,14 @@ dependencies = [
     "typer>=0.12",
     "python-dotenv>=1.0",
     "pyyaml>=6.0",
+    "alembic>=1.13",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]
+# Install when BDO_DATABASE_URL points at PostgreSQL (production archive) — see
+# docs/DATABASE_DEPLOYMENT.md. Not required for SQLite dev/test.
+postgres = ["psycopg[binary]>=3.1"]
 
 [project.scripts]
 bdo = "bdo.cli:app"

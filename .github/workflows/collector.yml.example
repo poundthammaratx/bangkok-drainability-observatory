@@ -1,0 +1,39 @@
+# Template for the v0.3 collector, run via GitHub Actions. See docs/COLLECTOR_ARCHITECTURE.md.
+#
+# NOT ACTIVE: this file ends in ".example", so GitHub Actions does not discover it (only exact
+# ".yml"/".yaml" files directly inside .github/workflows/ are picked up). Per the v0.3 milestone,
+# a scheduled workflow that requires secrets must not be activated until the production database
+# is actually configured.
+#
+# To activate once BDO_DATABASE_URL is a real, configured secret:
+#   1. rename this file to collector.yml (drop ".example")
+#   2. add the BDO_DATABASE_URL repository secret (a postgresql+psycopg:// URL using the
+#      COLLECTOR-role credential — see docs/DATABASE_DEPLOYMENT.md; never the VIEWER credential)
+#   3. uncomment the `schedule:` trigger below at the cadence you want (see docs/SOURCE_CADENCE.md)
+
+name: BDO Collector
+
+on:
+  workflow_dispatch: {}
+  # schedule:
+  #   - cron: "*/5 * * * *"   # every 5 minutes — adjust per docs/SOURCE_CADENCE.md
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Collect every live source
+        env:
+          BDO_DATABASE_URL: ${{ secrets.BDO_DATABASE_URL }}
+          BDO_RUNTIME_ROLE: COLLECTOR
+          BDO_ARCHIVE_ENABLED: "true"
+        run: python -m bdo.collector.scheduler_contract --all

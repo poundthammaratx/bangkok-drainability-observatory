@@ -15,7 +15,7 @@ import yaml
 from dotenv import load_dotenv
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from bdo.enums import EvidenceClass, SourceStatus
+from bdo.enums import EvidenceClass, RuntimeRole, SourceStatus
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -58,7 +58,7 @@ class SourceConfig(BaseModel):
 class Settings(BaseModel):
     project_name: str = "Bangkok Drainability Observatory"
     research_title: str = ""
-    version: str = "0.2.1"
+    version: str = "0.3.0-dev"
     display_timezone: str = "Asia/Bangkok"
     database_url: str = "sqlite:///data/bdo.sqlite"
     data_dir: Path = Path("data")
@@ -73,11 +73,24 @@ class Settings(BaseModel):
     # hides admin/diagnostic controls and internal file paths, and write-capable entry points
     # (ingestion, field-observation import) refuse to run. See docs/PUBLIC_ALPHA_CHECKLIST.md.
     public_deployment: bool = False
+    # Runtime role (v0.3): see bdo.enums.RuntimeRole and docs/DATABASE_DEPLOYMENT.md. Independent
+    # of public_deployment, which remains authoritative on its own — assert_writes_allowed() blocks
+    # writes when *either* public_deployment is true *or* runtime_role is VIEWER.
+    runtime_role: RuntimeRole = RuntimeRole.DEVELOPMENT
+    # Whether a persistent archive (PostgreSQL/PostGIS in production; SQLite in dev) is expected to
+    # be reachable. When false, archive-dependent UI sections degrade to live-read-through-only
+    # rather than attempting a connection — see docs/PERSISTENT_ARCHIVE.md.
+    archive_enabled: bool = False
     # Read-through live-source cache TTLs (seconds); see src/bdo/live/ and
     # docs/LIVE_DATA_ARCHITECTURE.md. Never affects writes — the live layer never writes.
     live_default_ttl_seconds: int = 300
     live_ttl_seconds: dict[str, int] = Field(default_factory=dict)
     sources: list[SourceConfig] = Field(default_factory=list)
+
+    @property
+    def is_viewer(self) -> bool:
+        """True for the public Streamlit process — reads and live GETs only, never writes."""
+        return self.public_deployment or self.runtime_role is RuntimeRole.VIEWER
 
     def live_ttl_for(self, source_key: str) -> int:
         """Cache TTL (seconds) for one live source's read-through fetch (see ``bdo.live.manager``).
@@ -132,6 +145,19 @@ def _parse_bool(v: str | bool) -> bool:
     return str(v).strip().lower() in {"1", "true", "yes", "on"}
 
 
+def _resolve_runtime_role(public_deployment: bool) -> RuntimeRole:
+    """``BDO_RUNTIME_ROLE`` wins if set; otherwise VIEWER under PUBLIC_DEPLOYMENT, else
+    DEVELOPMENT — matching v0.1/v0.2 behaviour for every existing local/test invocation."""
+    raw = os.environ.get("BDO_RUNTIME_ROLE")
+    if raw:
+        try:
+            return RuntimeRole(raw.strip().upper())
+        except ValueError as exc:
+            valid = ", ".join(r.value for r in RuntimeRole)
+            raise ValueError(f"BDO_RUNTIME_ROLE={raw!r} is not one of: {valid}") from exc
+    return RuntimeRole.VIEWER if public_deployment else RuntimeRole.DEVELOPMENT
+
+
 def _resolve(p: str | Path, root: Path) -> Path:
     p = Path(p)
     return p if p.is_absolute() else (root / p)
@@ -171,7 +197,7 @@ def load_settings(config_dir: str | Path | None = None, root: Path | None = None
     values: dict[str, Any] = dict(
         project_name=project.get("name", "Bangkok Drainability Observatory"),
         research_title=project.get("research_title", ""),
-        version=project.get("version", "0.2.1"),
+        version=project.get("version", "0.3.0-dev"),
         display_timezone=raw.get("display_timezone", "Asia/Bangkok"),
         database_url=_resolve_db_url(db_url, root),
         data_dir=_resolve(data_dir, root),
@@ -183,6 +209,8 @@ def load_settings(config_dir: str | Path | None = None, root: Path | None = None
         log_level=os.environ.get("BDO_LOG_LEVEL", logcfg.get("level", "INFO")),
         log_file=_resolve(log_file, root) if log_file else None,
         public_deployment=_parse_bool(os.environ.get("PUBLIC_DEPLOYMENT", "false")),
+        runtime_role=_resolve_runtime_role(_parse_bool(os.environ.get("PUBLIC_DEPLOYMENT", "false"))),
+        archive_enabled=_parse_bool(os.environ.get("BDO_ARCHIVE_ENABLED", "false")),
         live_default_ttl_seconds=(raw.get("live", {}) or {}).get("default_ttl_seconds", 300),
         live_ttl_seconds=(raw.get("live", {}) or {}).get("ttl_seconds", {}) or {},
         sources=[SourceConfig(**s) for s in sources_raw.get("sources", [])],

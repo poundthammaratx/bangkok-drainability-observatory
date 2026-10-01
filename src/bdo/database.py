@@ -49,6 +49,28 @@ def init_db(settings: Settings | None = None) -> Engine:
     return engine
 
 
+def archive_reachable(settings: Settings | None = None, timeout_seconds: float = 3.0) -> bool:
+    """One cheap ``SELECT 1`` — never raises. Used by archive-dependent UI (Live Situation,
+    Event Archive) to degrade gracefully instead of crashing when the persistent archive
+    (PostgreSQL in production) is temporarily unreachable — milestone §17H / §18. A fresh,
+    short-lived connection is used deliberately rather than the pooled engine, so a stuck/stale
+    pooled connection cannot report "reachable" when the database has actually gone away.
+    """
+    import sqlalchemy as sa
+
+    settings = settings or get_settings()
+    try:
+        engine = sa.create_engine(settings.database_url, connect_args=(
+            {"connect_timeout": int(timeout_seconds)} if not settings.database_url.startswith("sqlite") else {}
+        ))
+        with engine.connect() as conn:
+            conn.execute(sa.text("SELECT 1"))
+        engine.dispose()
+        return True
+    except Exception:
+        return False
+
+
 def session_factory(settings: Settings | None = None) -> sessionmaker[Session]:
     return sessionmaker(bind=get_engine(settings), expire_on_commit=False, future=True)
 

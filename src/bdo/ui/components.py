@@ -30,8 +30,17 @@ FRESHNESS_ICON = {
 def get_settings_cached() -> Settings:
     s = load_settings()
     from bdo.bootstrap import ensure_seeded
+    from bdo.util.logging import get_logger
 
-    ensure_seeded(s)
+    try:
+        ensure_seeded(s)
+    except Exception as exc:
+        # The archive (PostgreSQL in production) can be temporarily unreachable — the whole app
+        # must still boot (milestone v0.3 §18: "never crash the entire application because
+        # PostgreSQL cannot be reached"). Pages that need the database check
+        # bdo.database.archive_reachable() themselves and degrade individually; this only
+        # guarantees get_settings_cached() itself never raises.
+        get_logger("bdo.startup").warning("startup bootstrap skipped: %s", exc)
     return s
 
 

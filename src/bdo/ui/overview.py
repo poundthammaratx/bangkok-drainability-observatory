@@ -5,6 +5,7 @@ from __future__ import annotations
 import pandas as pd
 import streamlit as st
 
+from bdo.analytics.current_state import resolve_public_current_state
 from bdo.live import manager as live_manager
 from bdo.ui import components as c
 from bdo.util.time import format_duration, format_ts
@@ -41,26 +42,27 @@ def current_verified_state(meas: pd.DataFrame) -> pd.DataFrame:
     return latest[(latest["freshness_label"] == "LIVE") & (~latest["demo"].astype(bool))]
 
 
-def _group_rows(live_states: dict, sources: list[tuple[str, list[str] | None]]) -> list[dict]:
+def _group_rows(resolved: list, live_states: dict, sources: list[tuple[str, list[str] | None]]) -> list[dict]:
+    """Rows for one analyst group, sourced from the shared resolver (``resolve_current_state``) —
+    not from ``live_states`` directly, so Overview and Map never disagree about which observation
+    is current for the same (source, station, variable) (milestone §17A0)."""
     rows = []
     now = c.now_utc()
     for source_key, variables in sources:
-        state = live_states.get(source_key)
-        if state is None:
-            continue
-        for m in state.measurements:
-            if variables is not None and m.variable not in variables:
+        for r in resolved:
+            if r.source_key != source_key or (variables is not None and r.variable not in variables):
                 continue
-            age = None if m.measurement_at is None else now - m.measurement_at
-            value = m.value_num if m.value_num is not None else (m.value_text or "—")
+            age = None if r.measurement_at is None else now - r.measurement_at
+            value = r.value_num if r.value_num is not None else (r.value_text or "—")
             rows.append({
-                "source": m.source_key, "station": m.station_name or m.external_station_id or "—",
-                "variable": m.variable, "value": f"{value} {m.unit or ''}".strip(),
-                "measured": format_ts(m.measurement_at, c.tz()) if m.measurement_at else "UNKNOWN",
-                "age": format_duration(age), "evidence_class": m.evidence_class,
-                "notes": m.notes or "",
+                "source": r.source_key, "station": r.station_name or r.external_station_id or "—",
+                "variable": r.variable, "value": f"{value} {r.unit or ''}".strip(),
+                "measured": format_ts(r.measurement_at, c.tz()) if r.measurement_at else "UNKNOWN",
+                "age": format_duration(age), "evidence_class": r.evidence_class,
+                "notes": r.notes or "",
             })
-        if not state.measurements:
+        state = live_states.get(source_key)
+        if state is not None and not any(r.source_key == source_key for r in resolved):
             # source contributes to this group but returned no per-station values (e.g. RID, TMD):
             # surface its source-level state instead of silently omitting the group.
             rows.append({
@@ -92,6 +94,8 @@ def render_live_current_state(settings) -> None:
 def _render_live_body(settings, interval: int | None) -> None:
     page_refreshed = c.now_utc()
     live_states = live_manager.get_all_live_states(settings)
+    with c.session() as s:
+        resolved = resolve_public_current_state(s, settings, live_states)
     freshest = max((v.source_measurement_at for v in live_states.values() if v.source_measurement_at is not None),
                   default=None)
 
@@ -102,7 +106,7 @@ def _render_live_body(settings, interval: int | None) -> None:
 
     for title, sources in LIVE_GROUPS:
         st.markdown(f"**{title}**")
-        rows = _group_rows(live_states, sources)
+        rows = _group_rows(resolved, live_states, sources)
         if not rows:
             st.caption("No live data for this group this cycle.")
             continue

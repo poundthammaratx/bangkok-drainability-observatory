@@ -28,6 +28,18 @@ class SourceStatus(str, Enum):
     UNKNOWN = "UNKNOWN"
 
 
+class RuntimeRole(str, Enum):
+    """Who this process is, for the v0.3 security/runtime-role separation (see
+    docs/DATABASE_DEPLOYMENT.md). Orthogonal to ``Settings.public_deployment``, which both
+    predates this enum and remains independently authoritative for "no writes" — see
+    ``bdo.util.access.assert_writes_allowed``.
+    """
+
+    VIEWER = "VIEWER"            # public Streamlit: DB reads + live GET only, never writes
+    COLLECTOR = "COLLECTOR"      # scheduled/CLI collection: official GET + archive writes
+    DEVELOPMENT = "DEVELOPMENT"  # local researcher use: full read/write, as in v0.1/v0.2
+
+
 class IngestStatus(str, Enum):
     RUNNING = "RUNNING"
     SUCCESS = "SUCCESS"

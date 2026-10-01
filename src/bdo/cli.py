@@ -132,6 +132,52 @@ def import_observations_cmd(
         raise typer.Exit(code=1)
 
 
+@app.command("collect")
+def collect_cmd(
+    source: Optional[str] = typer.Argument(None, help="source_key to collect, e.g. thaiwater_bangkok"),
+    all_: bool = typer.Option(False, "--all", help="collect every source with a live adapter"),
+):
+    """Fetch one (or every) live source and persist it to the archive (v0.3).
+
+    Reuses the same live adapters as the Streamlit read-through layer, then runs the full
+    archive/dedupe/persist sequence — see docs/COLLECTOR_ARCHITECTURE.md. Blocked under the
+    VIEWER runtime role (PUBLIC_DEPLOYMENT=true or BDO_RUNTIME_ROLE=VIEWER): a collector pointed
+    at the public deployment's database refuses to write to it.
+    """
+    from bdo.collector.runner import collect_all, collect_one
+    from bdo.enums import IngestStatus
+
+    s = _settings()
+    init_db(s)
+    if all_ == bool(source):
+        raise typer.BadParameter("give exactly one of SOURCE or --all")
+    results = collect_all(s) if all_ else [collect_one(s, source)]
+    for r in results:
+        typer.echo(r.line())
+    if any(r.status is IngestStatus.FAILED for r in results):
+        raise typer.Exit(code=1)
+
+
+@app.command("collector-status")
+def collector_status_cmd(limit: int = typer.Option(20, help="how many recent collector runs to show")):
+    """Recent collector runs and the latest health observation per source (v0.3)."""
+    from bdo.collector.status import latest_health_by_source, recent_collector_runs
+
+    s = _settings()
+    init_db(s)
+    with session_scope(s) as session:
+        typer.echo("-- latest health per source --")
+        for key, row in sorted(latest_health_by_source(session).items()):
+            typer.echo(f"{key:22s} {row.health:10s} checked_at={row.checked_at.isoformat()} "
+                      f"records={row.record_count} freshness={row.freshness_label} "
+                      f"age_measurement_at={row.latest_measurement_at}")
+        typer.echo("-- recent collector runs --")
+        for run in recent_collector_runs(session, limit=limit):
+            typer.echo(f"run={run.id} source_id={run.source_id} status={run.status.value} "
+                      f"started={run.started_at.isoformat()} inserted={run.records_inserted} "
+                      f"skipped={run.records_skipped} error={run.error_message or ''}"[:200])
+
+
 @app.command("status")
 def status_cmd():
     """Print source registry status and table counts."""

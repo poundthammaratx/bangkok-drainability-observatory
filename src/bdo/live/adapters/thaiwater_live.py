@@ -30,6 +30,7 @@ from bdo.enums import EvidenceClass, QualityFlag
 from bdo.live.base import (
     LiveMeasurement,
     LiveSourceState,
+    RawPayloadCapture,
     classify_live_health,
     make_client,
     unavailable_state,
@@ -70,6 +71,13 @@ def fetch(settings: Settings, client: httpx.Client | None = None) -> LiveSourceS
             wl_rows = wl_r.json().get("data", []) or []
         except ValueError as exc:
             return unavailable_state(SOURCE_KEY, BASE_URL, started, f"invalid JSON: {exc}")
+
+        raw_payloads = (
+            RawPayloadCapture(label="rain24", content=rain_r.content, content_type="application/json",
+                              request_url=str(rain_r.url), http_status=rain_r.status_code),
+            RawPayloadCapture(label="waterlevel", content=wl_r.content, content_type="application/json",
+                              request_url=str(wl_r.url), http_status=wl_r.status_code),
+        )
     finally:
         if owns_client:
             client.close()
@@ -147,4 +155,5 @@ def fetch(settings: Settings, client: httpx.Client | None = None) -> LiveSourceS
         health=health, record_count=len(measurements), source_measurement_at=freshest,
         freshness=freshness, error=None, measurements=tuple(measurements),
         context={"rain_stations": len(rain_rows), "waterlevel_stations": len(wl_rows)},
+        raw_payloads=raw_payloads,
     )

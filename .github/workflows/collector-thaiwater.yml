@@ -1,0 +1,45 @@
+﻿# Production collector for ThaiWater Bangkok only.
+# Phase 1: manual production-host validation only.
+# Automatic scheduling will be enabled only after a successful manual run.
+
+name: BDO Collector - ThaiWater Bangkok
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bdo-thaiwater-collector
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      BDO_DATABASE_URL: ${{ secrets.BDO_DATABASE_URL }}
+      BDO_RUNTIME_ROLE: COLLECTOR
+      BDO_ARCHIVE_ENABLED: "true"
+
+    steps:
+      - name: Checkout frozen collector revision
+        uses: actions/checkout@v4
+        with:
+          ref: d0c932f9f88080b1081de7f141a01edd4acd695f
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install BDO with PostgreSQL support
+        run: python -m pip install -e ".[postgres]"
+
+      - name: Collect ThaiWater Bangkok
+        run: bdo collect thaiwater_bangkok
+
+      - name: Verify collector heartbeat
+        run: bdo watchdog --source thaiwater_bangkok --max-age-minutes 30

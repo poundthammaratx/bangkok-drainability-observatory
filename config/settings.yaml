@@ -2,7 +2,7 @@
 project:
   name: "Bangkok Drainability Observatory"
   research_title: "Urban Drainability Architecture and Recovery Dynamics of Bangkok"
-  version: "0.2.1"
+  version: "0.3.0-dev"
 
 # All timestamps are stored in UTC. This zone is used for presentation and as the
 # declared zone of sources that publish naive local timestamps.
@@ -43,3 +43,12 @@ live:
     tmd_bangkok_radar: 300       # radar product images
     thaiwater_bangkok: 300       # HII api-v3 province endpoints
     rid_water_situation: 1800    # daily bulletin; poll no faster than source cadence
+
+# v0.3 production hardening: sources whose *persisted historical* measurements (multi-point time
+# series) are withheld from the public Live Situation "Recent Hydrological Trends" panel, pending
+# redistribution/licensing review of that source's terms. The current single-value resolver
+# (Overview/Map/Zone 1) is unaffected — this only gates historical-window queries. See
+# docs/PUBLIC_WAR_ROOM.md.
+public_archive:
+  history_excluded_sources:
+    - thaiwater_bangkok

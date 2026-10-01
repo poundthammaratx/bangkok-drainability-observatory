@@ -9,7 +9,7 @@ from typing import Optional
 import typer
 
 from bdo.config import load_settings
-from bdo.database import init_db, session_scope
+from bdo.database import backend_identity, init_db, session_scope
 from bdo.util.logging import configure_logging
 
 app = typer.Typer(add_completion=False, help="Bangkok Drainability Observatory — research data CLI")
@@ -19,6 +19,15 @@ def _settings():
     s = load_settings()
     configure_logging(s.log_level, s.log_file)
     return s
+
+
+def _print_backend_header(s) -> None:
+    """Printed before every operational command's own output (see docs/DATABASE_DEPLOYMENT.md's
+    "CLI backend identity" section) — a prior incident let an absent BDO_DATABASE_URL silently
+    fall through to the local SQLite dev file, which was briefly mistaken for the production
+    PostgreSQL historian. Never prints a password, username, host, or full connection string."""
+    typer.echo(backend_identity(s).render())
+    typer.echo("")
 
 
 @app.command("init-db")
@@ -132,21 +141,105 @@ def import_observations_cmd(
         raise typer.Exit(code=1)
 
 
+@app.command("collect")
+def collect_cmd(
+    source: Optional[str] = typer.Argument(None, help="source_key to collect, e.g. thaiwater_bangkok"),
+    all_: bool = typer.Option(False, "--all", help="collect every source with a live adapter"),
+):
+    """Fetch one (or every) live source and persist it to the archive (v0.3).
+
+    Reuses the same live adapters as the Streamlit read-through layer, then runs the full
+    archive/dedupe/persist sequence — see docs/COLLECTOR_ARCHITECTURE.md. Blocked under the
+    VIEWER runtime role (PUBLIC_DEPLOYMENT=true or BDO_RUNTIME_ROLE=VIEWER): a collector pointed
+    at the public deployment's database refuses to write to it.
+    """
+    from bdo.collector.runner import collect_all, collect_one
+    from bdo.enums import IngestStatus
+
+    s = _settings()
+    _print_backend_header(s)
+    init_db(s)
+    if all_ == bool(source):
+        raise typer.BadParameter("give exactly one of SOURCE or --all")
+    results = collect_all(s) if all_ else [collect_one(s, source)]
+    for r in results:
+        typer.echo(r.line())
+    if any(r.status is IngestStatus.FAILED for r in results):
+        raise typer.Exit(code=1)
+
+
+@app.command("collector-status")
+def collector_status_cmd(limit: int = typer.Option(20, help="how many recent collector runs to show")):
+    """Recent collector runs and the latest health observation per source (v0.3)."""
+    from bdo.collector.status import latest_health_by_source, recent_collector_runs
+
+    s = _settings()
+    _print_backend_header(s)
+    init_db(s)
+    with session_scope(s) as session:
+        typer.echo("-- latest health per source --")
+        for key, row in sorted(latest_health_by_source(session).items()):
+            typer.echo(f"{key:22s} {row.health:10s} checked_at={row.checked_at.isoformat()} "
+                      f"records={row.record_count} freshness={row.freshness_label} "
+                      f"age_measurement_at={row.latest_measurement_at}")
+        typer.echo("-- recent collector runs --")
+        for run in recent_collector_runs(session, limit=limit):
+            typer.echo(f"run={run.id} source_id={run.source_id} status={run.status.value} "
+                      f"started={run.started_at.isoformat()} inserted={run.records_inserted} "
+                      f"skipped={run.records_skipped} error={run.error_message or ''}"[:200])
+
+
 @app.command("status")
 def status_cmd():
-    """Print source registry status and table counts."""
+    """Print backend identity, source registry status vs runtime health, and table counts."""
     from sqlalchemy import func, select
 
+    from bdo.collector.status import registry_vs_runtime_health
     from bdo.models import FieldObservation, IngestRun, Measurement, RawSnapshot, Source, Station
 
     s = _settings()
+    _print_backend_header(s)
     init_db(s)
     with session_scope(s) as session:
         counts = {m.__tablename__: session.scalar(select(func.count()).select_from(m))
                   for m in (Source, Station, Measurement, RawSnapshot, FieldObservation, IngestRun)}
         typer.echo(json.dumps(counts, indent=2))
-        for src in session.scalars(select(Source).order_by(Source.id)):
-            typer.echo(f"{src.source_key:28s} {src.status.value:12s} {src.last_health_message or ''}"[:160])
+        typer.echo("-- registry status vs latest collector health --")
+        typer.echo("   (registry status = config/sources.yaml administrative state; latest collector")
+        typer.echo("    health = most recent runtime observation — these are deliberately separate)")
+        for row in registry_vs_runtime_health(session):
+            typer.echo(f"{row.source_key:28s} registry={row.registry_status:12s} "
+                      f"latest_collector_health={row.latest_collector_health or 'NEVER_COLLECTED'}")
+
+
+@app.command("watchdog")
+def watchdog_cmd(
+    source: Optional[str] = typer.Option(None, "--source", help="one source_key; omit for every live-adapter source"),
+    max_age_minutes: float = typer.Option(30.0, "--max-age-minutes", help="age threshold for a successful collector run"),
+):
+    """Collector data-acquisition watchdog (v0.3 production hardening).
+
+    Reports HEALTHY / STALE / NEVER_RUN / FAILED per source, based strictly on persisted collector
+    run history — never on hydraulic condition. Exit code is 0 only if every checked source is
+    HEALTHY; non-zero otherwise, so this is safe to use as a CI/scheduler gate
+    (see docs/COLLECTOR_ARCHITECTURE.md).
+    """
+    from bdo.collector.watchdog import check_source
+    from bdo.live import manager as live_manager
+
+    s = _settings()
+    _print_backend_header(s)
+    init_db(s)
+    source_keys = [source] if source else list(live_manager.LIVE_SOURCE_KEYS)
+    all_healthy = True
+    with session_scope(s) as session:
+        for key in source_keys:
+            report = check_source(session, key, max_age_minutes=max_age_minutes)
+            typer.echo(report.line())
+            typer.echo("")
+            all_healthy = all_healthy and report.ok
+    if not all_healthy:
+        raise typer.Exit(code=1)
 
 
 if __name__ == "__main__":

@@ -33,6 +33,21 @@ class LiveHealth(str, Enum):
 
 
 @dataclass(frozen=True)
+class RawPayloadCapture:
+    """Raw bytes a live adapter already fetched, kept around for the v0.3 collector to archive as
+    provenance (``bdo.repository.snapshots.save_snapshot_inline``). Populating this is optional —
+    an adapter that doesn't set it just gets a metadata-only snapshot when collected; see
+    docs/PERSISTENT_ARCHIVE.md.
+    """
+
+    label: str
+    content: bytes
+    content_type: str
+    request_url: str | None
+    http_status: int | None
+
+
+@dataclass(frozen=True)
 class LiveMeasurement:
     """One transient, read-through value. Never persisted; see ``bdo.schemas.NormalizedMeasurement``
     for the equivalent object that *does* get archived by the ingestion pipeline."""
@@ -47,6 +62,11 @@ class LiveMeasurement:
     unit: str | None
     measurement_at: datetime | None  # aware UTC; None = unknown (never back-filled)
     evidence_class: str
+    # The literal timestamp string/representation as published by the source, before timezone
+    # attachment or parsing (e.g. ThaiWater's "2026-10-01 17:39") — preserved alongside the
+    # normalized, timezone-aware measurement_at. None when the adapter has no discrete raw
+    # timestamp field to point to (never fabricated); see docs/PERSISTENT_ARCHIVE.md.
+    source_timestamp_raw: str | None = None
     quality_flags: frozenset[str] = field(default_factory=frozenset)
     latitude: float | None = None
     longitude: float | None = None
@@ -74,6 +94,9 @@ class LiveSourceState:
     # Adapter-specific extras that don't fit a single measurement (e.g. FloodBangkok's
     # working/failed sensor counts, TMD's product list). Never used for alerting — display only.
     context: dict = field(default_factory=dict)
+    # Raw bytes already fetched by the adapter, for the collector to archive as provenance (v0.3).
+    # Empty for adapters that don't populate it, or on any UNAVAILABLE/failed fetch.
+    raw_payloads: tuple[RawPayloadCapture, ...] = ()
 
     @property
     def latest_measurement_at(self) -> datetime | None:

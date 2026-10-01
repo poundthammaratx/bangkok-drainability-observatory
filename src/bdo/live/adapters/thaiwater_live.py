@@ -30,6 +30,7 @@ from bdo.enums import EvidenceClass, QualityFlag
 from bdo.live.base import (
     LiveMeasurement,
     LiveSourceState,
+    RawPayloadCapture,
     classify_live_health,
     make_client,
     unavailable_state,
@@ -70,6 +71,13 @@ def fetch(settings: Settings, client: httpx.Client | None = None) -> LiveSourceS
             wl_rows = wl_r.json().get("data", []) or []
         except ValueError as exc:
             return unavailable_state(SOURCE_KEY, BASE_URL, started, f"invalid JSON: {exc}")
+
+        raw_payloads = (
+            RawPayloadCapture(label="rain24", content=rain_r.content, content_type="application/json",
+                              request_url=str(rain_r.url), http_status=rain_r.status_code),
+            RawPayloadCapture(label="waterlevel", content=wl_r.content, content_type="application/json",
+                              request_url=str(wl_r.url), http_status=wl_r.status_code),
+        )
     finally:
         if owns_client:
             client.close()
@@ -96,7 +104,8 @@ def fetch(settings: Settings, client: httpx.Client | None = None) -> LiveSourceS
             source_key=SOURCE_KEY, external_station_id=station.get("tele_station_oldcode") or str(station.get("id")),
             station_name=name, node_type="rain_gauge", variable="rainfall_24h",
             value_num=r.get("rain_24h"), value_text=None, unit="mm", measurement_at=measurement_at,
-            evidence_class=EvidenceClass.OFFICIAL_REPORTED.value, quality_flags=frozenset(flags),
+            evidence_class=EvidenceClass.OFFICIAL_REPORTED.value,
+            source_timestamp_raw=r.get("rainfall_datetime"), quality_flags=frozenset(flags),
             latitude=station.get("tele_station_lat"), longitude=station.get("tele_station_long"),
             district=((r.get("geocode") or {}).get("amphoe_name") or {}).get("en"),
             operator="Hydro-Informatics Institute", notes=f"rain_1h={r.get('rain_1h')} mm",
@@ -128,7 +137,8 @@ def fetch(settings: Settings, client: httpx.Client | None = None) -> LiveSourceS
             source_key=SOURCE_KEY, external_station_id=station.get("tele_station_oldcode") or str(station.get("id")),
             station_name=name, node_type="water_level_station", variable="water_level_msl",
             value_num=value, value_text=None, unit="m", measurement_at=measurement_at,
-            evidence_class=EvidenceClass.OFFICIAL_REPORTED.value, quality_flags=frozenset(flags),
+            evidence_class=EvidenceClass.OFFICIAL_REPORTED.value,
+            source_timestamp_raw=r.get("waterlevel_datetime"), quality_flags=frozenset(flags),
             latitude=station.get("tele_station_lat"), longitude=station.get("tele_station_long"),
             district=((r.get("geocode") or {}).get("amphoe_name") or {}).get("en"),
             operator="Hydro-Informatics Institute",
@@ -147,4 +157,5 @@ def fetch(settings: Settings, client: httpx.Client | None = None) -> LiveSourceS
         health=health, record_count=len(measurements), source_measurement_at=freshest,
         freshness=freshness, error=None, measurements=tuple(measurements),
         context={"rain_stations": len(rain_rows), "waterlevel_stations": len(wl_rows)},
+        raw_payloads=raw_payloads,
     )

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "retrieved_at": "2026-09-30T17:50:58.682437+00:00",
+  "retrieved_at": "2026-10-01T07:42:26.677747+00:00",
   "generated_by": "scripts/export_reference_registry.py",
   "source": {
     "source_key": "bkk_open_data_dds",
@@ -17,7 +17,7 @@
       "resource_id": "638f3adb-2fca-4767-b8f0-7528035ce319",
       "kind": "station_registry",
       "record_count": 582,
-      "sha256": "fbc360e1b217bd082a54024d7daae94535f86f533101900cd059b8e4568ba275"
+      "sha256": "41843f70b9d80a788d8a1fdcf1deecf47bb8d0bceeb15462a242668c25cf1f3a"
     },
     {
       "file": "bma_drainage_assets.csv",

@@ -1,14 +1,19 @@
-"""Map page — static reference topology + live overlays; renders even with an empty database.
+"""Map page — static reference topology + canonical current state; renders even with an empty DB.
 
-Three layers are merged into one point table (see ``build_points``):
+Point sources merged into one table (see ``build_points``), in priority order:
 
-1. **Database** — stations already ingested into this deployment's SQLite (``stations`` table),
-   joined to their latest measurement if any. Empty on a fresh PUBLIC_DEPLOYMENT container.
-2. **Static reference** — the packaged BKK CKAN snapshot under ``data/reference/`` (see
-   ``bdo.repository.reference``), loaded whenever a DB station for the same network is missing.
+1. **Resolved dynamic state** — ``bdo.analytics.current_state.resolve_current_state()``, the one
+   shared current-state layer also used by Overview and Live Situation (milestone §17A0). This
+   already reconciles the persisted archive against the transient live read-through per natural
+   key, so a FloodBangkok sensor that a collector has persisted into the ``stations`` table is
+   never double-plotted alongside its own live reading — the resolver picks one winner per key.
+2. **Static DB topology** — stations in this deployment's database with *no* resolved current
+   reading (e.g. BKK telemetry nodes a researcher ingested locally but hasn't collected live data
+   for). Shown as ``status="static"``.
+3. **Static reference** — the packaged BKK CKAN snapshot under ``data/reference/`` (see
+   ``bdo.repository.reference``), loaded whenever neither of the above has a row for that network.
    This is what makes the map render on a fresh, empty database (milestone item C).
-3. **Live** — read-through FloodBangkok and ThaiWater points (see ``bdo.live``), which are never
-   persisted and are not present in the DB or the reference snapshot at all.
+4. **Field observations** — unchanged from v0.1/v0.2, a separate network with its own evidence class.
 
 Only nodes with a published latitude/longitude are ever plotted — coordinates are never invented.
 """
@@ -16,17 +21,18 @@ Only nodes with a published latitude/longitude are ever plotted — coordinates 
 from __future__ import annotations
 
 import os
+from datetime import datetime, timezone
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from bdo.analytics.freshness import classify_age
+from bdo.analytics.current_state import ResolvedObservation, resolve_public_current_state
+from bdo.database import archive_reachable
 from bdo.live import manager as live_manager
 from bdo.live.base import LiveHealth
 from bdo.repository import reference as ref_repo
 from bdo.ui import components as c
-from bdo.ui.overview import latest_per_series
 from bdo.util.time import format_duration, format_ts
 
 NO_RECENT = "STATE UNKNOWN / NO RECENT MEASUREMENT"
@@ -35,35 +41,70 @@ POINT_COLUMNS = ["id", "external_station_id", "name", "node_type", "layer", "lat
                  "district", "point_source", "operator", "value_display", "measured", "retrieved",
                  "age_now", "freshness_label", "freshness", "evidence_class", "status"]
 
+_EPOCH = datetime(1970, 1, 1, tzinfo=timezone.utc)
+
 
 def _empty_points() -> pd.DataFrame:
     return pd.DataFrame(columns=POINT_COLUMNS)
 
 
-def _db_points(s) -> pd.DataFrame:
+def _dynamic_points(resolved: list[ResolvedObservation]) -> pd.DataFrame:
+    """One map point per (source, station) from the shared resolver — see module docstring.
+
+    A station reporting several variables (e.g. a future multi-sensor node) is still one point:
+    its hover value lists every variable, and its freshness/measured fields come from whichever
+    variable has the newest ``measurement_at``.
+    """
+    groups: dict[tuple[str, str], list[ResolvedObservation]] = {}
+    for r in resolved:
+        if r.external_station_id is None or r.latitude is None or r.longitude is None:
+            continue
+        groups.setdefault((r.source_key, r.external_station_id), []).append(r)
+
+    rows = []
+    for (source_key, ext_id), items in groups.items():
+        best = max(items, key=lambda r: r.measurement_at or _EPOCH)
+        value_display = "; ".join(
+            f"{r.variable}: {r.value_num if r.value_num is not None else (r.value_text or '—')} {r.unit or ''}".strip()
+            for r in items
+        )
+        status = "static"
+        notes_blob = " ".join(r.notes or "" for r in items)
+        if "device_status=" in notes_blob:
+            status = notes_blob.split("device_status=", 1)[1].split(";")[0].split()[0].strip()
+        elif best.measurement_at is not None:
+            status = best.freshness.value
+        rows.append({
+            "id": ext_id, "external_station_id": ext_id, "name": best.station_name or ext_id,
+            "node_type": best.node_type, "layer": best.node_type, "latitude": best.latitude,
+            "longitude": best.longitude, "district": best.district, "point_source": source_key,
+            "operator": best.operator, "value_display": value_display,
+            "measured": format_ts(best.measurement_at, c.tz()) if best.measurement_at else "UNKNOWN",
+            "retrieved": format_ts(best.retrieved_at, c.tz()) if best.retrieved_at else "UNKNOWN",
+            "age_now": format_duration(None if best.measurement_at is None else c.now_utc() - best.measurement_at),
+            "freshness_label": best.freshness.value, "freshness": c.FRESHNESS_ICON[best.freshness.value],
+            "evidence_class": best.evidence_class, "status": status,
+        })
+    return pd.DataFrame(rows)
+
+
+def _static_db_points(s, dynamic_keys: set[tuple[str, str]]) -> pd.DataFrame:
+    """DB-registered stations with no resolved current reading — topology only."""
     stations = c.stations_df(s)
     if stations.empty:
         return _empty_points()
-    meas = c.measurements_df(s)
-    latest = latest_per_series(meas) if not meas.empty else meas
-    if not latest.empty:
-        latest = latest.assign(value_display=latest.apply(c.value_display, axis=1))
-        per_station = (latest.dropna(subset=["station_id"])
-                       .sort_values("measurement_at")
-                       .groupby("station_id")
-                       .tail(1)
-                       .set_index("station_id"))
-    else:
-        per_station = pd.DataFrame()
     geo = stations.dropna(subset=["latitude", "longitude"]).copy()
+    geo = geo[~geo.apply(lambda r: (r["source_key"], r["external_station_id"]) in dynamic_keys, axis=1)]
+    if geo.empty:
+        return _empty_points()
     geo["layer"] = geo["node_type"]
     geo["point_source"] = geo["source_key"].fillna("db")
     geo["operator"] = "Bangkok Metropolitan Administration"
-    for col, default in (("value_display", None), ("measured", None), ("retrieved", None),
-                         ("age_now", None), ("freshness_label", "UNKNOWN"), ("freshness", None),
+    for col, default in (("value_display", None), ("measured", "UNKNOWN"), ("retrieved", "UNKNOWN"),
+                         ("age_now", None), ("freshness_label", "UNKNOWN"), ("freshness", "⚪ UNKNOWN"),
                          ("evidence_class", None)):
-        geo[col] = geo["id"].map(per_station[col]) if (not per_station.empty and col in per_station.columns) else default
-    geo["status"] = geo["freshness_label"].where(geo["value_display"].notna(), "static")
+        geo[col] = default
+    geo["status"] = "static"
     return geo
 
 
@@ -112,45 +153,45 @@ def _field_obs_points(s) -> pd.DataFrame:
     return geo
 
 
-def _live_points(settings, live_states: dict) -> pd.DataFrame:
-    rows = []
-    now = c.now_utc()
-    for source_key, state in live_states.items():
-        thresholds = settings.thresholds_for(source_key)
-        for m in state.measurements:
-            if m.latitude is None or m.longitude is None:
-                continue
-            age = None if m.measurement_at is None else now - m.measurement_at
-            label = classify_age(age, thresholds)
-            status = "static"
-            flags = m.notes or ""
-            if "device_status=" in flags:
-                status = flags.split("device_status=", 1)[1].split(";")[0].strip()
-            elif m.measurement_at is not None:
-                status = label.value
-            rows.append({
-                "id": m.external_station_id, "external_station_id": m.external_station_id,
-                "name": m.station_name or m.external_station_id, "node_type": m.node_type,
-                "layer": m.node_type, "latitude": m.latitude, "longitude": m.longitude,
-                "district": m.district, "point_source": source_key, "operator": m.operator,
-                "value_display": f"{m.variable}: {m.value_num if m.value_num is not None else m.value_text} {m.unit or ''}".strip(),
-                "measured": format_ts(m.measurement_at, c.tz()) if m.measurement_at else "UNKNOWN",
-                "retrieved": format_ts(state.fetch_finished_at, c.tz()) if state.fetch_finished_at else "UNKNOWN",
-                "age_now": format_duration(age),
-                "freshness_label": label.value, "freshness": c.FRESHNESS_ICON[label.value],
-                "evidence_class": m.evidence_class, "status": status,
-                "validation_status": None, "source_type_code": None, "notes": m.notes,
-            })
-    return pd.DataFrame(rows)
+def build_points_offline(settings, live_states: dict) -> pd.DataFrame:
+    """Map points with **no database access at all** — packaged reference topology + live
+    read-through only. Used when the persistent archive is unreachable (milestone §17H/§18):
+    ``resolve_current_state`` isn't even called here, since it would try to query the DB; callers
+    pass pre-computed ``live_only_observations(settings, live_states)`` to ``resolved`` instead
+    of this function querying anything itself.
+    """
+    from bdo.analytics.current_state import live_only_observations
+
+    resolved = live_only_observations(settings, live_states)
+    dynamic = _dynamic_points(resolved)
+    dynamic_keys = {(row.source_key, row.external_station_id) for row in resolved
+                    if row.external_station_id is not None and row.latitude is not None}
+    ref = _reference_points({ext_id for _, ext_id in dynamic_keys})
+
+    frames = [f.reindex(columns=POINT_COLUMNS) for f in (dynamic, ref) if not f.empty]
+    if not frames:
+        return _empty_points()
+    points = pd.concat(frames, ignore_index=True)
+    points["hover_state"] = points["value_display"].fillna(NO_RECENT)
+    points["freshness_label"] = points["freshness_label"].fillna("UNKNOWN")
+    points["status"] = points["status"].fillna("static")
+    return points
 
 
 def build_points(s, settings, live_states: dict) -> pd.DataFrame:
-    db = _db_points(s)
-    exclude_ids = set(db["external_station_id"].dropna()) if not db.empty else set()
+    resolved = resolve_public_current_state(s, settings, live_states)
+    dynamic = _dynamic_points(resolved)
+    dynamic_keys = {(row.source_key, row.external_station_id) for row in resolved
+                    if row.external_station_id is not None and row.latitude is not None}
+    static_db = _static_db_points(s, dynamic_keys)
+
+    stations_all = c.stations_df(s)
+    exclude_ids = (set(stations_all["external_station_id"].dropna()) if not stations_all.empty else set()) \
+        | {ext_id for _, ext_id in dynamic_keys}
     ref = _reference_points(exclude_ids)
-    live = _live_points(settings, live_states)
     fobs = _field_obs_points(s)
-    frames = [f.reindex(columns=POINT_COLUMNS) for f in (db, ref, live, fobs) if not f.empty]
+
+    frames = [f.reindex(columns=POINT_COLUMNS) for f in (dynamic, static_db, ref, fobs) if not f.empty]
     if not frames:
         return _empty_points()
     points = pd.concat(frames, ignore_index=True)
@@ -167,8 +208,17 @@ def render() -> None:
     settings = c.get_settings_cached()
     live_states = live_manager.get_all_live_states(settings)
 
-    with c.session() as s:
-        points = build_points(s, settings, live_states)
+    archive_ok = archive_reachable(settings)
+    if archive_ok:
+        try:
+            with c.session() as s:
+                points = build_points(s, settings, live_states)
+        except Exception:
+            archive_ok = False  # reachability probe can race an actual failure
+    if not archive_ok:
+        st.caption("Persistent archive unavailable this cycle — showing packaged topology and "
+                  "live read-through only (milestone v0.3 §18).")
+        points = build_points_offline(settings, live_states)
 
     unavailable = [k for k, st_ in live_states.items() if st_.health is LiveHealth.UNAVAILABLE]
     if unavailable:

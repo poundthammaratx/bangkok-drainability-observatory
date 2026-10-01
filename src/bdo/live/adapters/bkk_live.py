@@ -23,7 +23,13 @@ import httpx
 from bdo.config import Settings
 from bdo.enums import EvidenceClass, QualityFlag
 from bdo.ingestion.adapters.bkk_ckan import CKANAdapter, CKANError
-from bdo.live.base import LiveMeasurement, LiveSourceState, classify_live_health, unavailable_state
+from bdo.live.base import (
+    LiveMeasurement,
+    LiveSourceState,
+    RawPayloadCapture,
+    classify_live_health,
+    unavailable_state,
+)
 from bdo.util.time import ensure_utc, utcnow
 
 SOURCE_KEY = "bkk_open_data_dds"
@@ -37,10 +43,20 @@ def fetch(settings: Settings, adapter: CKANAdapter | None = None) -> LiveSourceS
     owns_adapter = adapter is None
     adapter = adapter or CKANAdapter(cfg, settings)
     try:
+        # Call the low-level _get() directly (same request datastore_search() would make) so the
+        # raw response bytes are available to archive as provenance — datastore_search() itself
+        # discards them after parsing. Not a reimplementation of CKAN parsing: same endpoint, same
+        # success-envelope check, one extra line to keep r.content.
         try:
-            result = adapter.datastore_search(RESOURCE_ID, limit=1, sort="_id desc")
+            r, url = adapter._get("datastore_search",
+                                  {"resource_id": RESOURCE_ID, "limit": 1, "offset": 0, "sort": "_id desc"})
+            result = adapter._json(r)
         except (CKANError, httpx.HTTPError) as exc:
             return unavailable_state(SOURCE_KEY, adapter.active_base, started, str(exc))
+        raw_payloads = (
+            RawPayloadCapture(label="dds011_latest", content=r.content, content_type="application/json",
+                              request_url=url, http_status=r.status_code),
+        )
     finally:
         if owns_adapter:
             adapter.close()
@@ -61,6 +77,7 @@ def fetch(settings: Settings, adapter: CKANAdapter | None = None) -> LiveSourceS
         station_name="Chao Phraya River at Pak Khlong Talat (dds011)", node_type="river_boundary",
         variable="water_level_daily_max", value_num=rec.get("wl_max"), value_text=None, unit="m",
         measurement_at=measurement_at, evidence_class=EvidenceClass.OFFICIAL_REPORTED.value,
+        source_timestamp_raw=rec.get("wl_date"),
         quality_flags=frozenset({QualityFlag.UNIT_DECLARED_UNVERIFIED.value, QualityFlag.TZ_DECLARED_BY_CONFIG.value}),
         notes="CKAN batch-published dataset, not live telemetry — see docs/SOURCE_ENDPOINTS.md",
         source_url="https://data.bangkok.go.th/",
@@ -74,5 +91,5 @@ def fetch(settings: Settings, adapter: CKANAdapter | None = None) -> LiveSourceS
         source_key=SOURCE_KEY, endpoint=f"{adapter.active_base}datastore_search?resource_id={RESOURCE_ID}",
         fetch_started_at=started, fetch_finished_at=utcnow(), http_status=200, health=health,
         record_count=1, source_measurement_at=measurement_at, freshness=freshness,
-        error=None, measurements=(measurement,),
+        error=None, measurements=(measurement,), raw_payloads=raw_payloads,
     )

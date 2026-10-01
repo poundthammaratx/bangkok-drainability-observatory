@@ -60,6 +60,11 @@ sources:
           node_type_by_code_prefix:
             "WL.": water_level_station
             "RF.": rain_gauge
+            # v0.3 cross-reference: "FL." codes in this registry were confirmed (2026-10-01) to be
+            # the same physical stations as FloodBangkok's live API — identical coordinates for
+            # every sampled code (e.g. FL.CTC.07 at 13.83469,100.57972 in both). See
+            # docs/SOURCE_ENDPOINTS.md.
+            "FL.": road_flood_sensor
           default_node_type: other
 
         - key: dds011_pak_khlong_talat_wl_max

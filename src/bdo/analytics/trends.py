@@ -2,7 +2,29 @@
 
 from __future__ import annotations
 
+from datetime import datetime
+
 import pandas as pd
+
+RISING, FALLING, UNCHANGED, INSUFFICIENT = "RISING SINCE PREVIOUS OBSERVATION", \
+    "FALLING SINCE PREVIOUS OBSERVATION", "UNCHANGED", "INSUFFICIENT DATA"
+
+
+def descriptive_trend_label(series: list[tuple[datetime, float]]) -> str:
+    """RISING/FALLING/UNCHANGED from exactly the two most recent points of an already-filtered,
+    unit-compatible series — never smoothed, modelled, or compared across stations/variables/units
+    (milestone v0.3 §17C). Callers must pre-filter to one (source, station, variable, unit); this
+    function only orders and compares, it does not know what "compatible" means.
+    """
+    timed = sorted((t, v) for t, v in series if t is not None and v is not None)
+    if len(timed) < 2:
+        return INSUFFICIENT
+    (_, prev), (_, latest) = timed[-2], timed[-1]
+    if latest > prev:
+        return RISING
+    if latest < prev:
+        return FALLING
+    return UNCHANGED
 
 
 def finite_differences(df: pd.DataFrame, time_col: str = "measurement_at", value_col: str = "value_num") -> pd.DataFrame:

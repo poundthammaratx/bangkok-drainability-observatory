@@ -30,8 +30,17 @@ FRESHNESS_ICON = {
 def get_settings_cached() -> Settings:
     s = load_settings()
     from bdo.bootstrap import ensure_seeded
+    from bdo.util.logging import get_logger
 
-    ensure_seeded(s)
+    try:
+        ensure_seeded(s)
+    except Exception as exc:
+        # The archive (PostgreSQL in production) can be temporarily unreachable — the whole app
+        # must still boot (milestone v0.3 §18: "never crash the entire application because
+        # PostgreSQL cannot be reached"). Pages that need the database check
+        # bdo.database.archive_reachable() themselves and degrade individually; this only
+        # guarantees get_settings_cached() itself never raises.
+        get_logger("bdo.startup").warning("startup bootstrap skipped: %s", exc)
     return s
 
 
@@ -193,6 +202,13 @@ def measurements_df(
          .outerjoin(RawSnapshot, Measurement.raw_snapshot_id == RawSnapshot.id))
     if source_keys:
         q = q.where(Source.source_key.in_(source_keys))
+    if settings.is_viewer and settings.public_history_excluded_sources:
+        # v0.3 production hardening (§7): the public/VIEWER deployment must not redistribute a
+        # source's persisted historical records pending licensing review, regardless of what the
+        # caller or a page's own filter widget asked for — see docs/PUBLIC_WAR_ROOM.md and
+        # Settings.public_history_excluded_sources. A researcher running DEVELOPMENT/COLLECTOR
+        # locally is unaffected; collection into the research archive continues either way.
+        q = q.where(Source.source_key.not_in(settings.public_history_excluded_sources))
     if station_ids:
         q = q.where(Measurement.station_id.in_(station_ids))
     if variables:

@@ -14,4 +14,4 @@ pyyaml>=6.0
 alembic>=1.13
 # Uncomment if BDO_DATABASE_URL points at PostgreSQL in this deployment (see
 # docs/DATABASE_DEPLOYMENT.md); not needed for the default SQLite configuration.
-# psycopg[binary]>=3.1
+psycopg[binary]>=3.1

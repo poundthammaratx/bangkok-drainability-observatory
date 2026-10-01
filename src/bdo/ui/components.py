@@ -17,6 +17,7 @@ from bdo.enums import FreshnessLabel
 from bdo.models import FieldObservation, IngestRun, Measurement, RawSnapshot, Source, Station
 from bdo.util.time import format_duration, format_ts, utcnow
 
+
 FRESHNESS_ICON = {
     FreshnessLabel.LIVE.value: "🟢 LIVE",
     FreshnessLabel.RECENT.value: "🟡 RECENT",
@@ -98,8 +99,10 @@ def help_now_panel() -> None:
         for i, (label, url) in enumerate(OFFICIAL_LINKS):
             cols[i % 3].link_button(label, url, width="stretch")
         st.markdown("**Bangkok contact centre: 1555**")
-        st.caption("For emergencies, use the relevant official emergency service. This observatory "
-                   "does not dispatch assistance and does not infer emergency need from sensor values.")
+        st.caption(
+            "For emergencies, use the relevant official emergency service. This observatory "
+            "does not dispatch assistance and does not infer emergency need from sensor values."
+        )
 
 
 FOOTER_NOTICE = (
@@ -108,6 +111,7 @@ FOOTER_NOTICE = (
     "Data remain attributable to their respective source agencies. No affiliation or endorsement "
     "by BMA, DDS, RID, TMD, HII, Traffy Fondue, or other data providers is implied."
 )
+
 
 _FOOTER_SOURCES = """
 | Source | Agency |
@@ -124,6 +128,7 @@ Full registry, adapters and access mode: see the Stations and Data Quality pages
 `config/sources.yaml` in the repository.
 """
 
+
 _FOOTER_METHODOLOGY = """
 * **Two clocks.** *Measurement time* is what the source says a value represents; *retrieval time*
   is when this system obtained it. Freshness is always measurement time.
@@ -135,6 +140,7 @@ _FOOTER_METHODOLOGY = """
 
 Details: `docs/architecture.md`, `docs/source_policy.md`, `docs/data_model.md`.
 """
+
 
 _FOOTER_LIMITATIONS = """
 * No hydraulic prediction, flood forecasting or routing recommendation is computed in v0.1.
@@ -152,7 +158,11 @@ def footer() -> None:
     st.divider()
     st.caption(FOOTER_NOTICE)
     cols = st.columns(4)
-    cols[0].link_button("POUND Global →", "https://pound-global-website.vercel.app/", width="stretch")
+    cols[0].link_button(
+        "POUND Global →",
+        "https://pound-global-website.vercel.app/",
+        width="stretch",
+    )
     with cols[1].popover("Data Sources", width="stretch"):
         st.markdown(_FOOTER_SOURCES)
     with cols[2].popover("Methodology", width="stretch"):
@@ -165,22 +175,46 @@ def footer() -> None:
 # Data access
 # ------------------------------------------------------------------------------------------------
 
+
 def sources_df(s: Session) -> pd.DataFrame:
     rows = []
     for src in s.scalars(select(Source).order_by(Source.id)):
-        n_meas = s.scalar(select(func.count()).select_from(Measurement).where(Measurement.source_id == src.id))
-        last_meas = s.scalar(select(func.max(Measurement.measurement_at)).where(Measurement.source_id == src.id))
-        last_run = s.scalars(select(IngestRun).where(IngestRun.source_id == src.id)
-                             .order_by(IngestRun.id.desc()).limit(1)).first()
-        rows.append({
-            "source_key": src.source_key, "name": src.name, "agency": src.agency, "status": src.status.value,
-            "access_mode": src.access_mode, "adapter": src.adapter, "priority": src.priority,
-            "default_evidence": src.default_evidence_class.value, "measurements": n_meas,
-            "latest_measurement_at": last_meas,
-            "last_run_status": last_run.status.value if last_run else None,
-            "last_run_at": last_run.started_at if last_run else None,
-            "last_health": src.last_health_message, "base_url": src.base_url, "notes": src.notes,
-        })
+        n_meas = s.scalar(
+            select(func.count())
+            .select_from(Measurement)
+            .where(Measurement.source_id == src.id)
+        )
+        last_meas = s.scalar(
+            select(func.max(Measurement.measurement_at))
+            .where(Measurement.source_id == src.id)
+        )
+        last_run = s.scalars(
+            select(IngestRun)
+            .where(IngestRun.source_id == src.id)
+            .order_by(IngestRun.id.desc())
+            .limit(1)
+        ).first()
+
+        rows.append(
+            {
+                "source_key": src.source_key,
+                "name": src.name,
+                "agency": src.agency,
+                "status": src.status.value,
+                "access_mode": src.access_mode,
+                "adapter": src.adapter,
+                "priority": src.priority,
+                "default_evidence": src.default_evidence_class.value,
+                "measurements": n_meas,
+                "latest_measurement_at": last_meas,
+                "last_run_status": last_run.status.value if last_run else None,
+                "last_run_at": last_run.started_at if last_run else None,
+                "last_health": src.last_health_message,
+                "base_url": src.base_url,
+                "notes": src.notes,
+            }
+        )
+
     return pd.DataFrame(rows)
 
 
@@ -195,132 +229,391 @@ def measurements_df(
     limit: int | None = None,
 ) -> pd.DataFrame:
     settings = get_settings_cached()
-    q = (select(Measurement, Source.source_key, Source.name.label("source_name"), Station.name.label("station_name"),
-                Station.node_type, Station.external_station_id, RawSnapshot.payload_path, RawSnapshot.request_url)
-         .join(Source, Measurement.source_id == Source.id)
-         .outerjoin(Station, Measurement.station_id == Station.id)
-         .outerjoin(RawSnapshot, Measurement.raw_snapshot_id == RawSnapshot.id))
+
+    # Public/VIEWER deployments intentionally do NOT receive SELECT permission on
+    # raw_snapshots. The public query must therefore not reference that table at all.
+    #
+    # This is stronger than selecting provenance fields and hiding them afterwards:
+    # PostgreSQL privilege checks happen while executing the SQL query itself.
+    public_read_only = settings.is_viewer or settings.public_deployment
+
+    q = (
+        select(
+            Measurement,
+            Source.source_key,
+            Source.name.label("source_name"),
+            Station.name.label("station_name"),
+            Station.node_type,
+            Station.external_station_id,
+        )
+        .join(Source, Measurement.source_id == Source.id)
+        .outerjoin(Station, Measurement.station_id == Station.id)
+    )
+
+    # Full raw-snapshot provenance remains available to DEVELOPMENT / COLLECTOR
+    # runtimes where the database role is explicitly allowed to read it.
+    if not public_read_only:
+        q = (
+            q.add_columns(
+                RawSnapshot.payload_path,
+                RawSnapshot.request_url,
+            )
+            .outerjoin(
+                RawSnapshot,
+                Measurement.raw_snapshot_id == RawSnapshot.id,
+            )
+        )
+
     if source_keys:
         q = q.where(Source.source_key.in_(source_keys))
-    if settings.is_viewer and settings.public_history_excluded_sources:
-        # v0.3 production hardening (§7): the public/VIEWER deployment must not redistribute a
-        # source's persisted historical records pending licensing review, regardless of what the
-        # caller or a page's own filter widget asked for — see docs/PUBLIC_WAR_ROOM.md and
-        # Settings.public_history_excluded_sources. A researcher running DEVELOPMENT/COLLECTOR
-        # locally is unaffected; collection into the research archive continues either way.
-        q = q.where(Source.source_key.not_in(settings.public_history_excluded_sources))
+
+    if public_read_only and settings.public_history_excluded_sources:
+        # v0.3 production hardening (§7): public deployments must not redistribute a
+        # source's persisted historical records pending licensing review, regardless
+        # of what the caller or page filter requested.
+        #
+        # Collection into the internal research archive continues independently.
+        q = q.where(
+            Source.source_key.not_in(settings.public_history_excluded_sources)
+        )
+
     if station_ids:
         q = q.where(Measurement.station_id.in_(station_ids))
+
     if variables:
         q = q.where(Measurement.variable.in_(variables))
+
     if start is not None or end is not None:
         cond = []
+
         if start is not None:
             cond.append(Measurement.measurement_at >= start)
+
         if end is not None:
             cond.append(Measurement.measurement_at <= end)
+
         from sqlalchemy import and_, or_
+
         timed = and_(*cond)
-        q = q.where(or_(timed, Measurement.measurement_at.is_(None)) if include_unknown_time else timed)
+
+        q = q.where(
+            or_(timed, Measurement.measurement_at.is_(None))
+            if include_unknown_time
+            else timed
+        )
+
     elif not include_unknown_time:
         q = q.where(Measurement.measurement_at.is_not(None))
-    q = q.order_by(Measurement.measurement_at.desc().nulls_last(), Measurement.id.desc())
+
+    q = q.order_by(
+        Measurement.measurement_at.desc().nulls_last(),
+        Measurement.id.desc(),
+    )
+
     if limit:
         q = q.limit(limit)
 
     now = now_utc()
     rows = []
-    for m, skey, sname, stname, ntype, ext, ppath, rurl in s.execute(q):
-        fr = assess(m.measurement_at, m.retrieved_at, settings.thresholds_for(skey), m.quality_flag, now=now)
-        rows.append({
-            "id": m.id, "source_key": skey, "source": sname, "station_id": m.station_id,
-            "station": stname or "—", "external_station_id": ext, "node_type": ntype, "variable": m.variable,
-            "value_num": m.value_num, "value_text": m.value_text, "unit": m.unit,
-            "measurement_at": m.measurement_at, "retrieved_at": m.retrieved_at,
-            "measured": fmt(m.measurement_at), "retrieved": fmt(m.retrieved_at),
-            "age_at_retrieval": format_duration(fr.age_at_retrieval),
-            "age_now": format_duration(fr.age),
-            "freshness": FRESHNESS_ICON[fr.label.value], "freshness_label": fr.label.value,
-            "demo": fr.is_demonstration, "evidence_class": m.evidence_class.value,
-            "quality_flag": m.quality_flag, "raw_snapshot_id": m.raw_snapshot_id,
-            "raw_payload": ppath if not settings.public_deployment else None,
-            "request_url": rurl, "ingest_run_id": m.ingest_run_id, "parser_version": m.parser_version,
-            "external_record_id": m.external_record_id, "notes": m.notes,
-        })
+
+    for row in s.execute(q):
+        if public_read_only:
+            m, skey, sname, stname, ntype, ext = row
+            ppath = None
+            rurl = None
+        else:
+            m, skey, sname, stname, ntype, ext, ppath, rurl = row
+
+        fr = assess(
+            m.measurement_at,
+            m.retrieved_at,
+            settings.thresholds_for(skey),
+            m.quality_flag,
+            now=now,
+        )
+
+        rows.append(
+            {
+                "id": m.id,
+                "source_key": skey,
+                "source": sname,
+                "station_id": m.station_id,
+                "station": stname or "—",
+                "external_station_id": ext,
+                "node_type": ntype,
+                "variable": m.variable,
+                "value_num": m.value_num,
+                "value_text": m.value_text,
+                "unit": m.unit,
+                "measurement_at": m.measurement_at,
+                "retrieved_at": m.retrieved_at,
+                "measured": fmt(m.measurement_at),
+                "retrieved": fmt(m.retrieved_at),
+                "age_at_retrieval": format_duration(fr.age_at_retrieval),
+                "age_now": format_duration(fr.age),
+                "freshness": FRESHNESS_ICON[fr.label.value],
+                "freshness_label": fr.label.value,
+                "demo": fr.is_demonstration,
+                "evidence_class": m.evidence_class.value,
+                "quality_flag": m.quality_flag,
+                "raw_snapshot_id": m.raw_snapshot_id,
+                "raw_payload": None if public_read_only else ppath,
+                "request_url": None if public_read_only else rurl,
+                "ingest_run_id": m.ingest_run_id,
+                "parser_version": m.parser_version,
+                "external_record_id": m.external_record_id,
+                "notes": m.notes,
+            }
+        )
+
     df = pd.DataFrame(rows)
+
     if not df.empty:
-        df["measurement_at"] = pd.to_datetime(df["measurement_at"], utc=True)
-        df["retrieved_at"] = pd.to_datetime(df["retrieved_at"], utc=True)
+        df["measurement_at"] = pd.to_datetime(
+            df["measurement_at"],
+            utc=True,
+        )
+        df["retrieved_at"] = pd.to_datetime(
+            df["retrieved_at"],
+            utc=True,
+        )
+
     return df
 
 
 def stations_df(s: Session) -> pd.DataFrame:
     rows = []
-    for st_, skey in s.execute(select(Station, Source.source_key).outerjoin(Source, Station.source_id == Source.id)
-                               .order_by(Station.id)):
-        rows.append({
-            "id": st_.id, "source_key": skey, "external_station_id": st_.external_station_id, "name": st_.name,
-            "node_type": st_.node_type, "latitude": st_.latitude, "longitude": st_.longitude,
-            "district": st_.district, "validation_status": st_.validation_status.value,
-            "coordinate_evidence": st_.coordinate_evidence_class.value if st_.coordinate_evidence_class else None,
-            "source_type_code": st_.source_type_code, "raw_snapshot_id": st_.raw_snapshot_id, "notes": st_.notes,
-        })
+
+    for st_, skey in s.execute(
+        select(
+            Station,
+            Source.source_key,
+        )
+        .outerjoin(
+            Source,
+            Station.source_id == Source.id,
+        )
+        .order_by(Station.id)
+    ):
+        rows.append(
+            {
+                "id": st_.id,
+                "source_key": skey,
+                "external_station_id": st_.external_station_id,
+                "name": st_.name,
+                "node_type": st_.node_type,
+                "latitude": st_.latitude,
+                "longitude": st_.longitude,
+                "district": st_.district,
+                "validation_status": st_.validation_status.value,
+                "coordinate_evidence": (
+                    st_.coordinate_evidence_class.value
+                    if st_.coordinate_evidence_class
+                    else None
+                ),
+                "source_type_code": st_.source_type_code,
+                "raw_snapshot_id": st_.raw_snapshot_id,
+                "notes": st_.notes,
+            }
+        )
+
     return pd.DataFrame(rows)
 
 
-def snapshots_df(s: Session, start: datetime | None = None, end: datetime | None = None,
-                 source_keys: list[str] | None = None, limit: int | None = 500) -> pd.DataFrame:
+def snapshots_df(
+    s: Session,
+    start: datetime | None = None,
+    end: datetime | None = None,
+    source_keys: list[str] | None = None,
+    limit: int | None = 500,
+) -> pd.DataFrame:
     settings = get_settings_cached()
-    q = select(RawSnapshot, Source.source_key).join(Source, RawSnapshot.source_id == Source.id)
+
+    columns = [
+        "id",
+        "source_key",
+        "label",
+        "retrieved",
+        "source_measurement_at",
+        "content_type",
+        "bytes",
+        "sha256",
+        "http_status",
+        "payload_path",
+        "request_url",
+        "parser_version",
+        "ingest_run_id",
+        "notes",
+    ]
+
+    # Raw snapshots are an internal provenance/research surface.
+    # Public/VIEWER credentials intentionally have no SELECT privilege here.
+    if settings.is_viewer or settings.public_deployment:
+        return pd.DataFrame(columns=columns)
+
+    q = (
+        select(
+            RawSnapshot,
+            Source.source_key,
+        )
+        .join(
+            Source,
+            RawSnapshot.source_id == Source.id,
+        )
+    )
+
     if source_keys:
         q = q.where(Source.source_key.in_(source_keys))
+
     if start is not None:
         q = q.where(RawSnapshot.retrieved_at >= start)
+
     if end is not None:
         q = q.where(RawSnapshot.retrieved_at <= end)
+
     q = q.order_by(RawSnapshot.id.desc())
+
     if limit:
         q = q.limit(limit)
-    rows = [{
-        "id": r.id, "source_key": k, "label": r.label, "retrieved": fmt(r.retrieved_at),
-        "source_measurement_at": fmt(r.source_measurement_at), "content_type": r.content_type,
-        "bytes": r.payload_bytes, "sha256": r.payload_hash[:16] + "…", "http_status": r.http_status,
-        "payload_path": r.payload_path if not settings.public_deployment else None,
-        "request_url": r.request_url, "parser_version": r.parser_version,
-        "ingest_run_id": r.ingest_run_id, "notes": r.notes,
-    } for r, k in s.execute(q)]
-    return pd.DataFrame(rows)
+
+    rows = [
+        {
+            "id": r.id,
+            "source_key": k,
+            "label": r.label,
+            "retrieved": fmt(r.retrieved_at),
+            "source_measurement_at": fmt(r.source_measurement_at),
+            "content_type": r.content_type,
+            "bytes": r.payload_bytes,
+            "sha256": r.payload_hash[:16] + "…",
+            "http_status": r.http_status,
+            "payload_path": r.payload_path,
+            "request_url": r.request_url,
+            "parser_version": r.parser_version,
+            "ingest_run_id": r.ingest_run_id,
+            "notes": r.notes,
+        }
+        for r, k in s.execute(q)
+    ]
+
+    return pd.DataFrame(rows, columns=columns)
 
 
 def runs_df(s: Session, limit: int = 50) -> pd.DataFrame:
-    q = (select(IngestRun, Source.source_key).join(Source, IngestRun.source_id == Source.id)
-         .order_by(IngestRun.id.desc()).limit(limit))
+    q = (
+        select(
+            IngestRun,
+            Source.source_key,
+        )
+        .join(
+            Source,
+            IngestRun.source_id == Source.id,
+        )
+        .order_by(IngestRun.id.desc())
+        .limit(limit)
+    )
+
     rows = []
+
     for r, k in s.execute(q):
-        rows.append({
-            "run": r.id, "source_key": k, "mode": r.mode, "status": r.status.value, "started": fmt(r.started_at),
-            "duration_s": (r.finished_at - r.started_at).total_seconds() if r.finished_at else None,
-            "snapshots": r.snapshots_saved, "retrieved": r.records_retrieved, "inserted": r.records_inserted,
-            "skipped_dup": r.records_skipped, "failed": r.records_failed, "stations": r.stations_upserted,
-            "parser": r.parser_version, "message": r.error_message,
-        })
+        rows.append(
+            {
+                "run": r.id,
+                "source_key": k,
+                "mode": r.mode,
+                "status": r.status.value,
+                "started": fmt(r.started_at),
+                "duration_s": (
+                    (r.finished_at - r.started_at).total_seconds()
+                    if r.finished_at
+                    else None
+                ),
+                "snapshots": r.snapshots_saved,
+                "retrieved": r.records_retrieved,
+                "inserted": r.records_inserted,
+                "skipped_dup": r.records_skipped,
+                "failed": r.records_failed,
+                "stations": r.stations_upserted,
+                "parser": r.parser_version,
+                "message": r.error_message,
+            }
+        )
+
     return pd.DataFrame(rows)
 
 
-def field_obs_df(s: Session, start: datetime | None = None, end: datetime | None = None) -> pd.DataFrame:
-    q = select(FieldObservation).order_by(FieldObservation.observed_at.desc())
+def field_obs_df(
+    s: Session,
+    start: datetime | None = None,
+    end: datetime | None = None,
+) -> pd.DataFrame:
+    settings = get_settings_cached()
+
+    columns = [
+        "id",
+        "observation_id",
+        "observed",
+        "location_name",
+        "district",
+        "latitude",
+        "longitude",
+        "evidence_class",
+        "phenomenon",
+        "water_depth_cm",
+        "passability",
+        "trend",
+        "photo_ref",
+        "source_url",
+        "raw_snapshot_id",
+        "notes",
+    ]
+
+    # Field observations are not part of the current least-privilege public read
+    # contract. Avoid querying a table for which bdo_viewer has no SELECT grant.
+    if settings.is_viewer or settings.public_deployment:
+        return pd.DataFrame(columns=columns)
+
+    q = select(FieldObservation).order_by(
+        FieldObservation.observed_at.desc()
+    )
+
     if start is not None:
         q = q.where(FieldObservation.observed_at >= start)
+
     if end is not None:
         q = q.where(FieldObservation.observed_at <= end)
-    rows = [{
-        "id": o.id, "observation_id": o.external_observation_id, "observed": fmt(o.observed_at),
-        "location_name": o.location_name, "district": o.district, "latitude": o.latitude, "longitude": o.longitude,
-        "evidence_class": o.evidence_class.value, "phenomenon": o.phenomenon, "water_depth_cm": o.water_depth_cm,
-        "passability": o.passability.value if o.passability else None, "trend": o.trend.value if o.trend else None,
-        "photo_ref": o.photo_ref, "source_url": o.source_url, "raw_snapshot_id": o.raw_snapshot_id, "notes": o.notes,
-    } for o in s.scalars(q)]
-    return pd.DataFrame(rows)
+
+    rows = [
+        {
+            "id": o.id,
+            "observation_id": o.external_observation_id,
+            "observed": fmt(o.observed_at),
+            "location_name": o.location_name,
+            "district": o.district,
+            "latitude": o.latitude,
+            "longitude": o.longitude,
+            "evidence_class": o.evidence_class.value,
+            "phenomenon": o.phenomenon,
+            "water_depth_cm": o.water_depth_cm,
+            "passability": (
+                o.passability.value
+                if o.passability
+                else None
+            ),
+            "trend": (
+                o.trend.value
+                if o.trend
+                else None
+            ),
+            "photo_ref": o.photo_ref,
+            "source_url": o.source_url,
+            "raw_snapshot_id": o.raw_snapshot_id,
+            "notes": o.notes,
+        }
+        for o in s.scalars(q)
+    ]
+
+    return pd.DataFrame(rows, columns=columns)
 
 
 def value_display(row) -> str:
@@ -329,9 +622,27 @@ def value_display(row) -> str:
         txt = f"{v:g}"
     else:
         txt = str(row.get("value_text") or "")
+
     unit = row.get("unit")
-    return f"{txt} {unit}" if unit and not pd.isna(unit) else txt
+
+    return (
+        f"{txt} {unit}"
+        if unit and not pd.isna(unit)
+        else txt
+    )
 
 
-PROVENANCE_COLUMNS = ["measured", "retrieved", "age_at_retrieval", "age_now", "freshness", "evidence_class",
-                      "quality_flag", "source_key", "raw_snapshot_id", "raw_payload", "ingest_run_id", "parser_version"]
+PROVENANCE_COLUMNS = [
+    "measured",
+    "retrieved",
+    "age_at_retrieval",
+    "age_now",
+    "freshness",
+    "evidence_class",
+    "quality_flag",
+    "source_key",
+    "raw_snapshot_id",
+    "raw_payload",
+    "ingest_run_id",
+    "parser_version",
+]

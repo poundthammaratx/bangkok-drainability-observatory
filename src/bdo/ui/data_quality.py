@@ -112,7 +112,7 @@ def render() -> None:
         st.caption("Full per-record error lists: data/processed/ingest_errors/run_<id>.txt")
 
     st.subheader("Raw archive integrity")
-    if settings.public_deployment:
+    if settings.is_viewer or settings.public_deployment:
         st.info("Raw-archive verification is a research/developer control and is disabled in the "
                 "Public Alpha read-only deployment.")
     elif st.button("Verify SHA-256 of every raw snapshot"):

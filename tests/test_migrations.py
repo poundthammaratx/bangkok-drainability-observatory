@@ -143,3 +143,57 @@ def test_no_duplicate_constraint_or_index_names_on_postgresql():
 
     duplicate_indexes = sorted({n for n in index_names if index_names.count(n) > 1})
     assert not duplicate_indexes, f"duplicate index names across migrations: {duplicate_indexes}"
+
+
+# Alembic's own bookkeeping table is ``alembic_version(version_num VARCHAR(32))`` — this is
+# Alembic's hardcoded default (not something bdo's schema defines), so a revision id longer than
+# this can never be stamped on *any* deployment using that default, regardless of backend.
+_ALEMBIC_VERSION_NUM_LENGTH = 32
+
+
+def test_revision_ids_fit_alembic_version_column():
+    """Regression test for a real failed production deployment:
+
+        psycopg.errors.StringDataRightTruncation: value too long for type character varying(32)
+
+    The revision id ``0002_measurement_source_timestamp_raw`` (37 characters) didn't fit the
+    deployed ``alembic_version.version_num`` column (``VARCHAR(32)``, Alembic's own default width).
+    PostgreSQL's transactional DDL rolled the failed ``UPDATE alembic_version ...`` back before any
+    schema change landed, so the failure was caught cleanly — but the SQLite round-trip test never
+    catches it, because SQLite's ``TEXT`` affinity has no length limit to violate. Every revision
+    id in the repository must fit, not just the one that already failed once.
+    """
+    from alembic.script import ScriptDirectory
+
+    cfg = _alembic_config(Path("unused"))
+    script_dir = ScriptDirectory.from_config(cfg)
+    revisions = list(script_dir.walk_revisions())
+    assert revisions, "expected at least one Alembic revision to check"
+
+    oversized = {r.revision: len(r.revision) for r in revisions
+                 if len(r.revision) > _ALEMBIC_VERSION_NUM_LENGTH}
+    assert not oversized, (
+        f"revision id(s) exceed alembic_version.version_num's VARCHAR({_ALEMBIC_VERSION_NUM_LENGTH}): "
+        f"{oversized}"
+    )
+
+
+def test_revision_ids_unique_and_graph_resolves_to_one_head():
+    """No duplicate revision ids, and the down_revision chain forms one valid, single-headed graph
+    (no orphaned branch, no broken parent reference) — ``ScriptDirectory.get_heads()`` raises on a
+    broken graph, and returns every independent head otherwise."""
+    from alembic.script import ScriptDirectory
+
+    cfg = _alembic_config(Path("unused"))
+    script_dir = ScriptDirectory.from_config(cfg)
+    revisions = list(script_dir.walk_revisions())
+
+    ids = [r.revision for r in revisions]
+    assert len(ids) == len(set(ids)), f"duplicate revision ids: {sorted(ids)}"
+
+    heads = script_dir.get_heads()
+    assert len(heads) == 1, f"expected exactly one migration head, found: {heads}"
+    assert heads[0] == "0002_source_ts_raw"
+
+    head_rev = script_dir.get_revision(heads[0])
+    assert head_rev.down_revision == "0001_baseline_schema"

@@ -1,0 +1,162 @@
+# BDO production PostgreSQL off-site backup.
+# Manual-only until the full backup and verification path is proven.
+
+name: BDO Production Backup
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bdo-production-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      PGHOST: ${{ vars.BDO_BACKUP_PGHOST }}
+      PGPORT: ${{ vars.BDO_BACKUP_PGPORT }}
+      PGDATABASE: ${{ vars.BDO_BACKUP_PGDATABASE }}
+      PGUSER: ${{ vars.BDO_BACKUP_PGUSER }}
+      PGPASSWORD: ${{ secrets.BDO_BACKUP_PGPASSWORD }}
+      PGSSLMODE: require
+
+      R2_BUCKET: ${{ vars.R2_BUCKET }}
+      R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: auto
+      AWS_EC2_METADATA_DISABLED: "true"
+
+    steps:
+      - name: Prepare backup tools
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          docker pull postgres:17
+          python -m pip install --disable-pip-version-check --quiet awscli
+
+          pg_dump_version="$(
+            docker run --rm postgres:17 pg_dump --version
+          )"
+
+          aws_version="$(aws --version 2>&1)"
+
+          echo "$pg_dump_version"
+          echo "$aws_version"
+
+      - name: Create PostgreSQL logical backup
+        id: dump
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          STAMP="$(date -u +'%Y%m%dT%H%M%SZ')"
+          NAME="bdo-production-${STAMP}.dump"
+          OUTDIR="${RUNNER_TEMP}/bdo-backup"
+          OBJECT_KEY="postgres/${STAMP}/${NAME}"
+
+          mkdir -p "$OUTDIR"
+
+          docker run --rm \
+            -e PGPASSWORD \
+            -e PGSSLMODE \
+            -v "${OUTDIR}:/backup" \
+            postgres:17 \
+            pg_dump \
+              -h "$PGHOST" \
+              -p "$PGPORT" \
+              -U "$PGUSER" \
+              -d "$PGDATABASE" \
+              --format=custom \
+              --schema=public \
+              --no-owner \
+              --no-acl \
+              --file="/backup/${NAME}"
+
+          docker run --rm \
+            -v "${OUTDIR}:/backup:ro" \
+            postgres:17 \
+            pg_restore --list "/backup/${NAME}" > /dev/null
+
+          HASH="$(sha256sum "${OUTDIR}/${NAME}" | awk '{print $1}')"
+          printf '%s  %s\n' "$HASH" "$NAME" > "${OUTDIR}/${NAME}.sha256"
+
+          echo "name=${NAME}" >> "$GITHUB_OUTPUT"
+          echo "path=${OUTDIR}/${NAME}" >> "$GITHUB_OUTPUT"
+          echo "sha_path=${OUTDIR}/${NAME}.sha256" >> "$GITHUB_OUTPUT"
+          echo "key=${OBJECT_KEY}" >> "$GITHUB_OUTPUT"
+          echo "hash=${HASH}" >> "$GITHUB_OUTPUT"
+
+          echo "Created ${NAME}"
+          echo "SHA-256: ${HASH}"
+
+      - name: Upload backup to Cloudflare R2
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          aws s3 cp \
+            "${{ steps.dump.outputs.path }}" \
+            "s3://${R2_BUCKET}/${{ steps.dump.outputs.key }}" \
+            --endpoint-url "$R2_ENDPOINT" \
+            --only-show-errors
+
+          aws s3 cp \
+            "${{ steps.dump.outputs.sha_path }}" \
+            "s3://${R2_BUCKET}/${{ steps.dump.outputs.key }}.sha256" \
+            --endpoint-url "$R2_ENDPOINT" \
+            --only-show-errors
+
+      - name: Verify objects exist in R2
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          aws s3api head-object \
+            --bucket "$R2_BUCKET" \
+            --key "${{ steps.dump.outputs.key }}" \
+            --endpoint-url "$R2_ENDPOINT" \
+            > /dev/null
+
+          aws s3api head-object \
+            --bucket "$R2_BUCKET" \
+            --key "${{ steps.dump.outputs.key }}.sha256" \
+            --endpoint-url "$R2_ENDPOINT" \
+            > /dev/null
+
+          echo "R2 objects confirmed."
+
+      - name: Download and verify SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          VERIFY_FILE="${RUNNER_TEMP}/bdo-r2-verify.dump"
+
+          aws s3 cp \
+            "s3://${R2_BUCKET}/${{ steps.dump.outputs.key }}" \
+            "$VERIFY_FILE" \
+            --endpoint-url "$R2_ENDPOINT" \
+            --only-show-errors
+
+          REMOTE_HASH="$(sha256sum "$VERIFY_FILE" | awk '{print $1}')"
+          EXPECTED_HASH="${{ steps.dump.outputs.hash }}"
+
+          echo "Expected SHA-256: $EXPECTED_HASH"
+          echo "Retrieved SHA-256: $REMOTE_HASH"
+
+          test "$REMOTE_HASH" = "$EXPECTED_HASH"
+
+          docker run --rm \
+            -v "${RUNNER_TEMP}:/verify:ro" \
+            postgres:17 \
+            pg_restore --list "/verify/bdo-r2-verify.dump" > /dev/null
+
+          echo "Downloaded R2 backup verified successfully."
